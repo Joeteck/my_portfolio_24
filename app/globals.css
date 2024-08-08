@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Damion&family=Domine:wght@400..700&family=Freehand&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
-/* verdana, Segoe UI - 400, Manus - 400, Domine - 400 italic, Rajdhani - 700 */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Gwendolyn:wght@400;700&family=Rokkitt:ital,wght@0,100..900;1,100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,31 +7,24 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Archivo", sans-serif;
 }
 
-.notosans {
-  font-family: "Noto Sans", sans-serif;
+.archivo {
+  font-family: "Archivo", sans-serif;
 }
-.freehand {
-  font-family: "Freehand", sans-serif;
-}
-
-.domine {
-  font-family: "Domine", serif;
+.gwendolyn {
+  font-family: "Gwendolyn", sans-serif;
 }
 
-.rajdhani {
-  font-family: "Rajdhani", sans-serif;
-}
-.damion {
-  font-family: "Damion", sans-serif;
+.rokkitt {
+  font-family: "Rokkitt", serif;
 }
 
 p {
   line-height: 1.5rem;
   font-size: 1.1rem;
-  font-family: "Domine", sans-serif;
+  font-family: "Archivo", sans-serif;
 }
 
 /* START: General styles */

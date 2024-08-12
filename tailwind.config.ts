@@ -20,14 +20,18 @@ module.exports = {
         "black-100": "#2B352F",
         "primary-green": {
           DEFAULT: "#010604",
+          700: "#03170f",
+          600: "#052919",
           100: "#f4fdf9",
+        },
+        "grey": {
+          "DEFAULT": "#C5CDCB"
         },
         "secondary-orange": "#EA8850",
         "light-white": {
-          DEFAULT: "rgba(59,60,152,0.03)",
-          100: "rgba(59,60,152,0.02)",
+          DEFAULT: "#f4fdf9 ",
+          100: "#e2fbf0",
         },
-        grey: "##C5CDCB",
       },
       backgroundImage: {
         'pattern': "url('/pattern.png')",

@@ -2,6 +2,8 @@
 import { useState, useEffect } from "react";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import Hero from "@/components/Hero";
+import Section2 from "@/components/section2";
+import Section3 from "@/components/Section3";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState(1);
@@ -29,11 +31,11 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="w-full min-h-screen md:px-8 px-4 bg-primary-green">
-      {/* Section 1 */}
+    <main className="w-[100%] min-h-screen bg-primary-green">
+            {/* Section 1 */}
       <section
         id="section1"
-        className={`w-full h-[100vh] flex drop-shadow-lg shadow-green-300 justify-center bg-primary-green transition-transform duration-700 sticky top-0 ${
+        className={`p-4 w-full h-full flex drop-shadow-lg shadow-grey justify-center bg-primary-green transition-transform duration-700 sticky top-0 ${
           activeSection >= 2 ? "z-0" : "z-50"
         }`}
       >
@@ -44,19 +46,19 @@ export default function Home() {
       {/* Section 2 */}
       <section
         id="section2"
-        className={`w-full h-[100vh] flex items-center shadow-lg drop-shadow-lg justify-center bg-green-700 transition-transform duration-700 sticky top-0 ${
+        className={`p-4 w-full h-full flex items-center shadow-lg shadow-black justify-center transition-transform duration-700 sticky top-0 ${
           activeSection >= 3 ? "z-0" : "z-50"
         }`}
       >
-        <h2 className="text-green-100 text-4xl">SECTION 1</h2>
+        <Section2/>
       </section>
 
       {/* Section 3 */}
       <section
         id="section3"
-        className={`w-full h-[100vh] flex items-center shadow-lg justify-center bg-green-500 transition-transform duration-700 sticky top-0 z-50`}
+        className={`p-4 w-full h-[100vh] flex items-center shadow-lg shadow-primary-green-700 justify-center transition-transform duration-700 sticky top-0 left-0 z-50`}
       >
-        <h2 className="text-green-100 text-4xl">SECTION 2</h2>
+        <Section3/>
       </section>
     </main>
   );

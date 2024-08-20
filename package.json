@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/drei": "^9.109.5",
+    "@react-three/fiber": "^8.17.5",
     "@remotion/cli": "4.0.193",
     "@remotion/eslint-plugin": "^4.0.194",
     "clsx": "^2.1.1",
@@ -17,7 +19,8 @@
     "react": "^18",
     "react-dom": "^18",
     "remotion": "4.0.193",
-    "tailwind-merge": "^2.4.0"
+    "tailwind-merge": "^2.4.0",
+    "three": "^0.167.1"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -30,6 +30,30 @@ p {
   font-family: "Archivo", sans-serif;
 }
 
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #333; /* Dark background color for the scrollbar track */
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #555; /* Dark color for the scrollbar thumb */
+  border-radius: 10px;
+  border: 2px solid #333; /* Border around the thumb */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #444; /* Darker color when hovering over the scrollbar thumb */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:active {
+  background-color: #444; /* Darker color when clicking on the scrollbar thumb */
+}
+
+
 /* START: General styles */
 .max-width {
   @apply max-w-[1440px] mx-auto;

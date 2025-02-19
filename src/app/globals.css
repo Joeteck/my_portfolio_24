@@ -11,9 +11,13 @@
     --secondary: #ff6600;
     --accent: #f4a261;
     --hover-light: #e0e0e0;
-    --hover-dark: #383838;
+    --hover-dark: #2c2d2c;
     --error: #e63946;
     --success: #2a9d8f;
+
+    /* Custom Shadows */
+    --shadow-custom: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-custom-dark: 4px 4px 6px 1px rgba(75, 75, 75, 0.3), 4px 2px 4px 1px rgba(75, 75, 75, 0.2);
 
     /* Fonts */
     --font-sans: 'Roboto', Arial, sans-serif;
@@ -31,7 +35,7 @@
     font-family: var(--font-sans);
     background-color: var(--background);
     color: var(--foreground);
-    line-height: 1.6;
+    line-height: 1.7;
   }
 
   code {
@@ -42,63 +46,107 @@
 /* Custom Utilities */
 @layer utilities {
   /* Responsive spacing */
-  .spacing-xs {@apply p-2;}
-  .spacing-sm {@apply p-4;}
-  .spacing-md {@apply p-6;}
-  .spacing-lg {@apply p-8;}
-  .spacing-xl {@apply p-12;}
+  .spacing-xs {@apply p-3;}
+  .spacing-sm {@apply p-5;}
+  .spacing-md {@apply p-7;}
+  .spacing-lg {@apply p-9;}
+  .spacing-xl {@apply p-14;}
 
   /* Custom shadows */
   .shadow-custom {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--shadow-custom);
   }
   .shadow-custom-dark {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-custom-dark);
   }
 }
 
 /* Button Variations */
 @layer components {
   .btn {
-    @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300 ease-in-out bg-opacity-100;
+    @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300 ease-in-out w-fit cursor-pointer;
+    box-shadow: var(--shadow-custom);
+  }
+
+  .btn:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   }
 
   .btn-primary {
-    @apply bg-primary text-background hover:bg-opacity-80 shadow-custom hover:shadow-md;
+    @apply text-background;
+    background-color: var(--primary);
+  }
+  
+  .btn-primary:hover {
+    background-color: rgba(25, 191, 136, 0.85); /* Softer hover */
   }
 
   .btn-secondary {
-    @apply bg-secondary text-background hover:bg-opacity-80 shadow-custom hover:shadow-md;
+    @apply text-background;
+    background-color: var(--secondary);
   }
-
+  
+  .btn-secondary:hover {
+    background-color: rgba(255, 102, 0, 0.85);
+  }
+  
   .btn-accent {
-    @apply bg-accent text-background hover:bg-opacity-80 shadow-custom hover:shadow-md;
+    @apply text-background;
+    background-color: var(--accent);
+  }
+  
+  .btn-accent:hover {
+    background-color: rgba(244, 162, 97, 0.85);
   }
 
   .btn-error {
-    @apply bg-error text-background hover:bg-opacity-80 shadow-custom hover:shadow-md;
+    @apply text-background;
+    background-color: var(--error);
   }
-
+  
+  .btn-error:hover {
+    background-color: rgba(230, 57, 70, 0.85);
+  }
+  
   .btn-success {
-    @apply bg-success text-background hover:bg-opacity-80 shadow-custom hover:shadow-md;
+    @apply text-background;
+    background-color: var(--success);
   }
-
+  
+  .btn-success:hover {
+    background-color: rgba(42, 157, 143, 0.85);
+  }
+  
   .btn-outline {
-    @apply border-2 border-primary text-primary hover:bg-opacity-80 hover:text-background;
+    @apply bg-transparent border-2 text-primary;
+    border-color: var(--primary);
   }
-
+  
+  .btn-outline:hover {
+    background-color: rgba(25, 191, 136, 0.1);
+  }
+  
   .btn-ghost {
-    @apply text-foreground hover:bg-hover-light dark:hover:bg-hover-dark;
+    @apply bg-transparent text-foreground;
   }
+  
+  .btn-ghost:hover {
+    background-color: var(--hover-light);
+  }
+  
+  .dark .btn-ghost:hover {
+    background-color: var(--hover-dark);
+  }
+  
 
   /* Typography */
-  h1 {@apply text-5xl font-bold mb-6;}
-  h2 {@apply text-4xl font-bold mb-5;}
-  h3 {@apply text-3xl font-bold mb-4;}
-  h4 {@apply text-2xl font-bold mb-3;}
-  h5 {@apply text-xl font-bold mb-2;}
-  h6 {@apply text-lg font-bold mb-1;}
-  p {@apply text-base mb-4 leading-relaxed;}
+  h1 {@apply text-6xl font-extrabold mb-7;}
+  h2 {@apply text-5xl font-bold mb-6;}
+  h3 {@apply text-4xl font-semibold mb-5;}
+  h4 {@apply text-3xl font-semibold mb-4;}
+  h5 {@apply text-2xl font-semibold mb-3;}
+  h6 {@apply text-xl font-medium mb-2;}
+  p {@apply text-lg mb-5 leading-relaxed;}
 
   /* Links */
   .link {
@@ -106,25 +154,111 @@
   }
 
   /* Dividers */
-  .divider-horizontal {@apply w-full h-px bg-foreground/20 my-6;}
-  .divider-vertical {@apply h-full w-px bg-foreground/20 mx-6;}
+  .divider-horizontal {
+    @apply w-full h-px my-8;
+    background: linear-gradient(to right, transparent, var(--foreground) 50%, transparent);
+  }
+
+  .divider-vertical {
+    @apply h-full w-px mx-6;
+    background: linear-gradient(to bottom, transparent, var(--foreground) 50%, transparent);
+  }
 
   /* Cards */
   .card {
-    @apply bg-background p-6 rounded-lg shadow-custom dark:shadow-custom-dark;
+    @apply bg-background p-6 rounded-2xl shadow-custom dark:shadow-custom-dark transition-all duration-300 ease-in-out;
+  }
+
+  .card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Add a shadow on hover for a subtle lift effect. Adjust the values as needed. */
+  }
+  
+  /* Profile Card (User Info) */
+  .profile-card {
+    @apply flex flex-col items-center text-center gap-3 w-72 h-80;
+  }
+  .profile-card .avatar {
+    @apply w-20 h-20 rounded-full shadow-lg;
+  }
+  .profile-card .name {
+    @apply text-lg font-semibold;
+  }
+  .profile-card .role {
+    @apply text-sm opacity-70;
+  }
+
+  /* Platform Card (For UI Elements like Services, Features) */
+  .platform-card {
+    @apply flex flex-col items-start gap-4 w-80 h-60;
+  }
+  .platform-card .icon {
+    @apply w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center shadow-md;
+  }
+  .platform-card .title {
+    @apply text-lg font-medium;
+  }
+  .platform-card .description {
+    @apply text-sm opacity-80;
+  }
+
+  /* Glassmorphic Effect */
+  .glassmorphic {
+    @apply bg-opacity-30 backdrop-blur-lg border border-white/20 shadow-lg;
+  }
+
+  /* Neumorphic Effect (Soft 3D Look) */
+  .neumorphic {
+    @apply bg-gray-100 shadow-[5px_5px_10px_rgba(0,0,0,0.1),_-5px_-5px_10px_rgba(255,255,255,0.7)];
+  }
+
+  /* Minimalist Card */
+  .minimal {
+    @apply border border-gray-300 bg-white shadow-none p-4 w-64 h-48;
+  }
+
+  /* Card Variations */
+  .card-testimonial {
+    @apply card flex flex-col items-center text-center;
+  }
+
+  .card-team-member {
+    @apply card flex flex-col items-center text-center;
+  }
+
+  .card-project {
+    @apply card flex flex-col;
+  }
+
+  .card-project img {
+    @apply rounded-t-2xl;
+  }
+
+  .card-project .card-content {
+    @apply p-6;
   }
 
   /* Forms */
+  .form-container {
+    @apply w-full max-w-[400px] mx-auto;
+  }
+
   .input, .textarea, .select {
-    @apply w-full px-4 py-2 border border-foreground/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary;
+    @apply w-full px-5 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200;
+    border-color: color-mix(in srgb, var(--foreground) 100%, transparent);
+  }
+  
+
+  .input:focus, .textarea:focus, .select:focus {
+    box-shadow: 0 0 10px rgba(25, 191, 136, 0.3);
   }
 
   /* Responsive Containers */
   .responsive-container {
-    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+    @apply container mx-auto px-6 sm:px-10 lg:px-12;
   }
 
   .responsive-grid {
-    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8;
   }
 }

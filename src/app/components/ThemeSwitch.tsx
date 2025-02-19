@@ -5,10 +5,12 @@ const ThemeSwitch = ({ setTheme, theme }: { setTheme: (theme: string) => void; t
     
         return (
         <button
-            className={` dark:btn-outline ${theme === 'dark' ? 'btn-outline' : 'btn-primary'} btn`}
+            className={`btn ${
+            theme === 'light' ? 'btn-outline' : 'btn-primary'
+            }`}
             onClick={toggleTheme}
         >
-            Toggle theme
+            Toggle {theme === 'dark' ? 'Light' : 'Dark'} Mode
         </button>
         );
     };

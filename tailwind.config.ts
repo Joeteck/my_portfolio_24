@@ -20,6 +20,8 @@ export default {
         hover_dark: 'var(--hover-dark)',
         error: 'var(--error)',
         success: 'var(--success)',
+        black: 'var(--black)',
+        white: 'var(--white)',
       },
 
       /* Custom Fonts */

@@ -1,5 +1,5 @@
 "use client";
-import ThemeSwitch from './components/ThemeSwitch';
+import ThemeSwitch from '../components/globals/ui/ThemeSwitch';
 import { useState, useEffect } from 'react';
 
 export default function StyleGuide() {

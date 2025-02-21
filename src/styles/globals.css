@@ -297,7 +297,7 @@
 @layer components {
   .form-container {
     @apply w-full max-w-[400px] mx-auto p-6 space-y-4 rounded-lg shadow-lg relative;
-    background: rgba(5, 169, 119, 9); /* Light translucent background */
+    /* background: rgba(5, 169, 119, 9); Light translucent background */
     backdrop-filter: blur(10px) saturate(180%);
     -webkit-backdrop-filter: blur(10px) saturate(180%);
     border: 2px solid rgba(244, 244, 244, 0.2);

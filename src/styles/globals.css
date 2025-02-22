@@ -22,8 +22,8 @@
     --shadow-custom-dark: 4px 4px 6px 1px rgba(75, 75, 75, 0.3), 4px 2px 4px 1px rgba(75, 75, 75, 0.2);
 
     /* Fonts */
-    --font-sans: 'Roboto', Arial, sans-serif;
-    --font-mono: 'Roboto Mono', monospace;
+    --font-sans: 'Circular', 'Circular Std', '-apple-system', 'BlinkMacSystemFont', 'Roboto', Arial, sans-serif;
+    --font-mono: ' Roboto Mono', 'monospace';
   }
 
   .dark {
@@ -63,76 +63,108 @@
 /* Button Variations */
 @layer components {
   .btn {
-    @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300 ease-in-out w-fit cursor-pointer;
+    @apply px-5 py-3 rounded-lg text-base  font-semibold 
+      transition-all duration-200 ease-in-out w-fit cursor-pointer relative
+      touch-manipulation
+      text-center inline-flex items-center justify-center 
+      border border-transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    width: auto;
     box-shadow: var(--shadow-custom);
   }
 
+  /* Hover Effect */
   .btn:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 
-  .btn-primary {
-    @apply text-background;
-    background-color: var(--primary);
+  /* Active (Click) Effect */
+  .btn:active {
+    transform: scale(0.96);
+    box-shadow: none;
   }
-  
+
+  /* Focus Effect */
+  .btn:focus-visible {
+    box-shadow: 0 0 0 2px var(--primary), 0 0 0 4px rgba(255, 255, 255, 0.8);
+  }
+
+  /* Primary Button */
+  .btn-primary {
+    @apply text-white;
+    background-color: var(--primary);
+    border: 1px solid var(--primary-dark);
+  }
+
   .btn-primary:hover {
     background-color: rgba(25, 191, 136, 0.85);
   }
 
+  /* Secondary Button */
   .btn-secondary {
-    @apply text-background;
+    @apply text-white;
     background-color: var(--secondary);
+    border: 1px solid var(--secondary-dark);
   }
-  
+
   .btn-secondary:hover {
     background-color: rgba(255, 102, 0, 0.85);
   }
-  
+
+  /* Accent Button */
   .btn-accent {
-    @apply text-background;
+    @apply text-white;
     background-color: var(--accent);
+    border: 1px solid var(--accent-dark);
   }
-  
+
   .btn-accent:hover {
     background-color: rgba(244, 162, 97, 0.85);
   }
 
+  /* Error Button */
   .btn-error {
-    @apply text-background;
+    @apply text-white;
     background-color: var(--error);
+    border: 1px solid var(--error-dark);
   }
-  
+
   .btn-error:hover {
     background-color: rgba(230, 57, 70, 0.85);
   }
-  
+
+  /* Success Button */
   .btn-success {
-    @apply text-background;
+    @apply text-white;
     background-color: var(--success);
+    border: 1px solid var(--success-dark);
   }
-  
+
   .btn-success:hover {
     background-color: rgba(42, 157, 143, 0.85);
   }
-  
+
+  /* Outline Button */
   .btn-outline {
-    @apply bg-transparent px-5 py-2.5 border-2 text-primary;
+    @apply bg-transparent border text-primary;
     border-color: var(--primary);
   }
-  
+
   .btn-outline:hover {
     background-color: rgba(25, 191, 136, 0.1);
+    border-color: var(--primary-dark);
   }
-  
+
+  /* Ghost Button */
   .btn-ghost {
     @apply bg-transparent text-foreground;
   }
-  
+
   .btn-ghost:hover {
     background-color: var(--hover-light);
   }
-  
+
   .dark .btn-ghost:hover {
     background-color: var(--hover-dark);
   }
@@ -142,6 +174,7 @@
     @apply opacity-50 cursor-not-allowed;
   }
 }
+
 
 /* Typography */
 @layer components {
@@ -228,7 +261,7 @@
 /* Cards */
 @layer components {
   .card {
-    @apply bg-background p-6 rounded-2xl shadow-custom dark:shadow-custom-dark transition-all duration-300 ease-in-out;
+    @apply max-w-80  bg-background p-6 rounded-2xl shadow-custom dark:shadow-custom-dark transition-all duration-300 ease-in-out;
   }
 
   .card:hover {
@@ -236,62 +269,29 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   }
 
-  /* Profile Card */
-  .profile-card {
-    @apply flex flex-col items-center text-center gap-3 w-72 h-80;
+  /* Variants */
+  .profile-card, .team-member-card, .service-card, .testimonial-card, .pricing-card {
+    @apply flex flex-col items-center text-center;
   }
 
-  /* Project Showcase Card */
-  .project-card {
-    @apply card flex flex-col;
+  .project-card, .case-study-card {
+    @apply flex flex-col;
   }
 
-  .project-card img {
-    @apply rounded-t-2xl;
-  }
-
-  .project-card .card-content {
-    @apply p-6;
-  }
-
-  /* Testimonial Carousel */
-  .testimonial-card {
-    @apply card flex flex-col items-center text-center;
-  }
-
-  /* Service Card */
-  .service-card {
-    @apply card flex flex-col items-center text-center;
-  }
-
-  /* Team Member Card */
-  .team-member-card {
-    @apply card flex flex-col items-center text-center;
-  }
-
-  /* Pricing Table */
-  .pricing-card {
-    @apply card flex flex-col items-center text-center;
-  }
-
-  /* FAQ Section */
   .faq-card {
     @apply card;
   }
 
-  /* Case Study Preview */
-  .case-study-card {
-    @apply card flex flex-col;
-  }
-
-  .case-study-card img {
+  /* Image Handling */
+  .card img {
     @apply rounded-t-2xl;
   }
 
-  .case-study-card .card-content {
+  .card-content {
     @apply p-6;
   }
 }
+
 
 /* Forms & Inputs */
 @layer components {
@@ -375,3 +375,61 @@
     padding: 1.5rem;
   }
 }
+
+
+/* Accordion styling */
+
+@layer components {
+  .accordion {
+    @apply w-full transition-all duration-300 border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .dark .accordion {
+    background: rgba(29, 40, 36, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .accordion-item {
+    @apply border-b last:border-b-0;
+  }
+
+  .accordion-header {
+    @apply w-full flex justify-between items-center px-4 py-3 cursor-pointer;
+  }
+
+  .accordion-header:hover {
+    background: linear-gradient(90deg, var(--primary), var(--hover));
+  }
+
+  .dark .accordion-header {
+    background: linear-gradient(90deg, var(--black), var(--hover-dark));
+  }
+
+  .accordion-content {
+    @apply p-4 bg-white dark:bg-gray-900 border-t border-gray-300 dark:border-gray-700;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .dark .accordion-content {
+    background: rgba(18, 18, 18, 0.3);
+  }
+
+  .accordion-content.active {
+    max-height: 500px; /* Adjust height dynamically */
+  }
+
+  .accordion-icon {
+    @apply transition-transform duration-300;
+  }
+
+  .accordion-content.active + .accordion-icon {
+    transform: rotate(180deg);
+  }
+}
+
+

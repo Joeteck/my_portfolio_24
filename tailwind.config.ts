@@ -26,8 +26,8 @@ export default {
 
       /* Custom Fonts */
       fontFamily: {
-        sans: ['var(--font-sans)', 'Arial', 'sans-serif'],
-        mono: ['var(--font-mono)', 'monospace'],
+        sans: ['Circular', 'Circular Std', '-apple-system', 'BlinkMacSystemFont', 'Roboto', 'Arial', 'sans-serif'],
+        mono: ['Roboto Mono', 'monospace'],
       },
 
       /* Custom Shadows */

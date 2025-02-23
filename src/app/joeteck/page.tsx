@@ -24,21 +24,27 @@ const TestingPage = () => {
     return (
         <>
             <ThemeSwitch setTheme={setTheme} theme={theme} />
-            <div className="max-w-2xl mx-auto space-y-6 p-4">
+            <div className="w-fit grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 place-content-center justify-center bg-green-700/35 mx-auto space-y-6 p-4 rounded-3xl">
                 {/* ✅ Profile Card */}
                 <Card 
                     variant="profile"
-                    image="/images/profile.jpg"
+                    headImage = "/images/card banner.jpg"
+                    image="/images/profile.png"
                     title="John Doe"
                     description="Full Stack Developer"
+                    tilt={true}
+
                 />
 
                 {/* ✅ Project Showcase Card */}
                 <Card 
                     variant="project"
+                    headImage="#2a9d8f"
                     image="/images/project.jpg"
                     title="Next.js Portfolio"
                     description="A modern portfolio built with Next.js and Tailwind CSS."
+                    tilt={true}
+
                 >
                     <button className="mt-2 p-2 bg-primary text-white rounded-md">View Project</button>
                 </Card>
@@ -53,8 +59,10 @@ const TestingPage = () => {
                 {/* ✅ Service Card */}
                 <Card 
                     variant="service"
+                    headImage="rgba(42, 157, 143, 0.4)"
                     title="Web Development"
                     description="Custom website solutions to scale your business."
+                    className="bg-primary text-white h-fit"
                 />
 
                 {/* ✅ Team Member Card */}
@@ -63,11 +71,13 @@ const TestingPage = () => {
                     image="/images/team-member.jpg"
                     title="Jane Smith"
                     description="UI/UX Designer"
+                    tilt={true}
                 />
 
                 {/* ✅ Pricing Card */}
                 <Card 
                     variant="pricing"
+                    headImage="#FF9D23"
                     title="Premium Plan"
                     description="$49/month - All features included."
                 >
@@ -87,6 +97,8 @@ const TestingPage = () => {
                     image="/images/case-study.jpg"
                     title="E-Commerce Success"
                     description="How we helped an online store increase sales by 300%."
+                    tilt={true}
+
                 />
             </div>
         </>

@@ -260,13 +260,45 @@
 
 /* Cards */
 @layer components {
+  /* Base Card */
   .card {
-    @apply max-w-80  bg-background p-6 rounded-2xl shadow-custom dark:shadow-custom-dark transition-all duration-300 ease-in-out;
+    @apply max-w-80 h-fit bg-background bg-opacity-50 rounded-2xl shadow-custom dark:shadow-custom-dark transition-all duration-300 ease-in-out backdrop-blur-lg relative overflow-hidden;
   }
 
   .card:hover {
     transform: scale(1.02);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Optional 3D Tilt Effect */
+  .card-container {
+    perspective: 1000px;
+  }
+
+  .tilt-card {
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out;
+  }
+
+  .tilt-card:hover {
+    transform: perspective(1000px) rotateX(var(--tiltY, 0deg)) rotateY(var(--tiltX, 0deg));
+  }
+
+  /* Mouse Move Effect */
+  .card::before {
+    content: "";
+    position: absolute;
+    top: var(--y, 50%);
+    left: var(--x, 50%);
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    transition: opacity 1ms ease-out;
+  }
+
+  .card:hover::before {
+    opacity: 1;
   }
 
   /* Variants */
@@ -284,13 +316,14 @@
 
   /* Image Handling */
   .card img {
-    @apply rounded-t-2xl;
+    @apply bg-primary;
   }
 
   .card-content {
     @apply p-6;
   }
 }
+
 
 
 /* Forms & Inputs */

@@ -1,0 +1,141 @@
+
+
+
+CARD COMPONENTS
+
+
+{/* ✅ Profile Card */}
+                <Card 
+                    variant="profile"
+                    headImage = "/images/card banner.jpg"
+                    image="/images/profile.png"
+                    title="John Doe"
+                    description="Full Stack Developer"
+                    tilt={true}
+
+                />
+
+                {/* ✅ Project Showcase Card */}
+                <Card 
+                    variant="project"
+                    headImage="#2a9d8f"
+                    image="/images/project.jpg"
+                    title="Next.js Portfolio"
+                    description="A modern portfolio built with Next.js and Tailwind CSS."
+                    tilt={true}
+
+                >
+                    <button className="mt-2 p-2 bg-primary text-white rounded-md">View Project</button>
+                </Card>
+
+                {/* ✅ Testimonial Card */}
+                <Card 
+                    variant="testimonial"
+                    title="Amazing Service!"
+                    description="This is the best platform I've ever used. Highly recommended!"
+                />
+
+                {/* ✅ Service Card */}
+                <Card 
+                    variant="service"
+                    headImage="rgba(42, 157, 143, 0.4)"
+                    title="Web Development"
+                    description="Custom website solutions to scale your business."
+                    className="bg-primary text-white h-fit"
+                />
+
+                {/* ✅ Team Member Card */}
+                <Card 
+                    variant="team"
+                    image="/images/team-member.jpg"
+                    title="Jane Smith"
+                    description="UI/UX Designer"
+                    tilt={true}
+                />
+
+                {/* ✅ Pricing Card */}
+                <Card 
+                    variant="pricing"
+                    headImage="#FF9D23"
+                    title="Premium Plan"
+                    description="$49/month - All features included."
+                >
+                    <button className="mt-2 p-2 bg-primary text-white rounded-md">Subscribe</button>
+                </Card>
+
+                {/* ✅ FAQ Card */}
+                <Card 
+                    variant="faq"
+                    title="How does this work?"
+                    description="Simply choose a plan, and you're ready to go!"
+                />
+
+                {/* ✅ Case Study Card */}
+                <Card 
+                    variant="case-study"
+                    image="/images/case-study.jpg"
+                    title="E-Commerce Success"
+                    description="How we helped an online store increase sales by 300%."
+                    tilt={true}
+
+                />
+
+
+
+MODAL COMPONENTS
+
+
+
+
+            <div className="w-fit grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 place-content-center justify-center bg-green-700/35 mx-auto p-4 rounded-3xl">
+            {([
+                { variant: "info", title: "Info Modal" },
+                { variant: "success", title: "Success Modal" },
+                { variant: "warning", title: "Warning Modal" },
+                { variant: "error", title: "Error Modal" },
+                { variant: "confirm", title: "Confirmation Modal" },
+                { variant: "form", title: "Form Modal" },
+            ] as const).map(({ variant, title }) => (
+                <Button 
+                    key={variant} 
+                    onClick={() => setOpenModal(variant)} 
+                    className="btn btn-secondary"
+                >
+                    Open {title}
+                </Button>
+            ))}
+
+            </div>
+            
+            {openModal && (
+                <Modal 
+                    isOpen={!!openModal} 
+                    onClose={() => setOpenModal(null)}  // ✅ Use null instead of "undefined"
+                    variant={openModal} 
+                    title={`${openModal.charAt(0).toUpperCase() + openModal.slice(1)} Modal`}
+                >
+                    {openModal === "form" ? (
+                        <form className="space-y-4 text-white">
+                            <input type="text" placeholder="Your Name" className="w-full text-white p-2 border rounded" />
+                            <input type="email" placeholder="Your Email" className="w-full text-white p-2 border rounded" />
+                            <textarea placeholder="Your Message" className="w-full text-white p-2 border rounded"></textarea>
+                            <Button type="submit" className="btn btn-primary">Submit</Button>
+                        </form>
+                    ) : openModal === "confirm" ? (
+                        <div>
+                            <p>Are you sure you want to proceed?</p>
+                            <div className="flex space-x-4 mt-4">
+                                <Button className="btn btn-primary">Yes</Button>
+                                <Button className="btn bg-red-500 hover:bg-red-700" onClick={() => setOpenModal(null)}>No</Button>
+                            </div>
+                        </div>
+                    ) : (
+                        <p>This is a {openModal} modal for testing purposes.</p>
+                    )}
+                </Modal>
+            )}
+
+
+
+
+

@@ -324,6 +324,90 @@
   }
 }
 
+@layer components {
+  /* Base Modal */
+  .modal-overlay {
+    @apply fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center transition-opacity;
+  }
+  
+  .modal {
+    @apply bg-background p-6 rounded-2xl shadow-lg dark:shadow-xl transition-transform transform scale-95;
+  }
+
+  .modal-container {
+    @apply bg-white dark:bg-gray-900 p-6 justify-center place-items-center rounded-2xl shadow-lg max-w-md w-full;
+  }
+  
+  .modal.show {
+    @apply scale-100;
+  }
+  
+  /* Modal Variants */
+  .modal-form {
+    @apply w-full max-w-md text-white;
+  }
+
+  .modal-content{
+    @apply w-full max-w-md py-6 justify-center items-center;
+  }
+  /* Variant styles */
+  .modal-info {
+    @apply border-l-4 border-blue-500 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300 p-4;
+  }
+
+  .modal-success {
+    @apply border-l-4 border-green-500 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-300 p-4;
+  }
+
+  .modal-warning {
+    @apply border-l-4 border-yellow-500 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-300 p-4;
+  }
+
+  .modal-error {
+    @apply border-l-4 border-red-500 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-300 p-4;
+  }
+
+  .modal-confirm {
+    @apply border-l-4 border-purple-500 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-300 p-4;
+  }
+
+  /* Modal Header */
+  .modal-header {
+    @apply flex items-center gap-2 text-lg font-semibold mb-3;
+  }
+
+  /* Close Button */
+  .modal-close {
+    @apply absolute top-2 right-2 text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-100 p-2 rounded-full;
+  }
+
+  /* Icons */
+  .modal-icon {
+    @apply text-2xl;
+  }
+
+  
+  /* Dark Mode Enhancements */
+  .dark .modal {
+    @apply bg-opacity-90 border border-gray-700;
+  }
+  
+  /* Animation Effects */
+  .modal-enter {
+    @apply opacity-0 scale-90;
+  }
+  .modal-enter-active {
+    @apply opacity-100 scale-100 transition duration-300 ease-in-out;
+  }
+  .modal-exit {
+    @apply opacity-100 scale-100;
+  }
+  .modal-exit-active {
+    @apply opacity-0 scale-90 transition duration-300 ease-in-out;
+  }
+}
+
+
 
 
 /* Forms & Inputs */

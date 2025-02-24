@@ -2,16 +2,15 @@
 
 import { useState, useEffect } from "react";
 import ThemeSwitch from "../../components/globals/ui/ThemeSwitch";
-// import Button  from "../../components/globals/ui/Button";
+import Popover from "../../components/globals/ui/Popovers";
+import Button from "../../components/globals/ui/Button";
 
 const TestingPage = () => {
     const [theme, setTheme] = useState("");
 
-
-
-
     useEffect(() => {
-        const savedTheme = localStorage.getItem("theme") || 
+        const savedTheme =
+            localStorage.getItem("theme") ||
             (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
         setTheme(savedTheme);
     }, []);
@@ -30,9 +29,12 @@ const TestingPage = () => {
             <ThemeSwitch setTheme={setTheme} theme={theme} />
 
             <div className="w-fit grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 place-content-center justify-center bg-green-700/35 mx-auto p-4 rounded-3xl">
+                {/* ✅ Popover Testing */}
+                <Popover trigger={<Button variant="primary">Click Me</Button>}>
+                    <div className="p-4">This is a test popover!</div>
+                </Popover>
 
             </div>
-
         </>
     );
 };

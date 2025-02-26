@@ -1,21 +1,20 @@
 "use client";
-
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/utils/cn";
-import Button from "./Button";
 
 interface PopoverProps {
     trigger: React.ReactNode;
     children: React.ReactNode;
     position?: "top" | "bottom" | "left" | "right";
     className?: string;
+    hover?: boolean;
 }
 
-export default function Popover({ trigger, children, position = "bottom", className }: PopoverProps) {
+export default function Popover({ trigger, children, position = "bottom", className, hover = false }: PopoverProps) {
     const [isOpen, setIsOpen] = useState(false);
     const popoverRef = useRef<HTMLDivElement>(null);
-    const triggerRef = useRef<HTMLButtonElement>(null);
+    const triggerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
@@ -33,14 +32,14 @@ export default function Popover({ trigger, children, position = "bottom", classN
     }, []);
 
     return (
-        <div className="relative inline-block">
-            <Button
-                ref={triggerRef}
-                onClick={() => setIsOpen(!isOpen)}
-                className="popover-trigger"
-            >
-                {trigger}
-            </Button>
+        <div 
+            className="relative inline-block"
+            ref={triggerRef}
+            onMouseEnter={hover ? () => setIsOpen(true) : undefined}
+            onMouseLeave={hover ? () => setIsOpen(false) : undefined}
+            onClick={!hover ? () => setIsOpen(!isOpen) : undefined}
+        >
+            {trigger}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div

@@ -530,8 +530,36 @@
 }
 
 
-
-
+/* Toasts Notification */
+@layer components {
+  .toast-container {
+      @apply fixed top-4 sm:right-10 flex flex-col space-y-2 z-50 w-full max-w-xs;
+  }
+  
+  .toast {
+      @apply flex items-center justify-between px-8 py-3 rounded-lg shadow-md text-white;
+  }
+  
+  .toast-success {
+      @apply bg-green-400;
+  }
+  
+  .toast-error {
+      @apply bg-red-400;
+  }
+  
+  .toast-warning {
+      @apply bg-yellow-400;
+  }
+  
+  .toast-info {
+      @apply bg-blue-400;
+  }
+  
+  .toast-close {
+      @apply ml-4 text-white hover:text-gray-200;
+  }
+}
 
 /* Forms & Inputs */
 @layer components {

@@ -2,12 +2,11 @@
 
 import { useState, useEffect } from "react";
 import ThemeSwitch from "../../components/globals/ui/ThemeSwitch";
-import Tabs from "../../components/globals/ui/Tabs";
-import { FaHome, FaUser, FaCog } from "react-icons/fa";
+import { ToastProvider, useToast } from "../../components/globals/ui/Toast Notifications";
 
 const TestingPage = () => {
     const [theme, setTheme] = useState("");
-    
+
     useEffect(() => {
         const savedTheme = localStorage.getItem("theme") || 
             (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
@@ -23,48 +22,45 @@ const TestingPage = () => {
         localStorage.setItem("theme", theme);
     }, [theme]);
 
-    const tabItems = [
-        { label: "Home", value: "home", icon: <FaHome /> },
-        { label: "Profile", value: "profile", icon: <FaUser /> },
-        { label: "Settings", value: "settings", icon: <FaCog /> }
-    ];
+    return (
+        <ToastProvider>
+            <ThemeSwitch setTheme={setTheme} theme={theme} />
+            <ToastDemo />
+        </ToastProvider>
+    );
+};
 
-    const contentMap = {
-        home: <p>Welcome to the Home section!</p>,
-        profile: <p>This is your Profile section.</p>,
-        settings: <p>Adjust your Settings here.</p>
-    };
+// ✅ Now `useToast()` is inside a valid component
+const ToastDemo = () => {
+    const { showToast } = useToast();
 
     return (
-        <>
-            <ThemeSwitch setTheme={setTheme} theme={theme} />
-            <div className="w-fit grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 place-content-center justify-center bg-green-700/35 mx-auto p-4 rounded-3xl">
-                <div>
-                    <h2 className="text-lg font-bold mb-2">Underline Variant</h2>
-                    <Tabs tabs={tabItems} variant="underline" contentMap={contentMap} />
-                </div>
-                <div>
-                    <h2 className="text-lg font-bold mb-2">Pill Variant</h2>
-                    <Tabs tabs={tabItems} variant="pill" contentMap={contentMap} />
-                </div>
-                <div>
-                    <h2 className="text-lg font-bold mb-2">Boxed Variant</h2>
-                    <Tabs tabs={tabItems} variant="boxed" contentMap={contentMap} />
-                </div>
-                <div>
-                    <h2 className="text-lg font-bold mb-2">With Animation</h2>
-                    <Tabs tabs={tabItems} animate={true} contentMap={contentMap} />
-                </div>
-                <div>
-                    <h2 className="text-lg font-bold mb-2">Without Animation</h2>
-                    <Tabs tabs={tabItems} animate={false} contentMap={contentMap} />
-                </div>
-                <div>
-                    <h2 className="text-lg font-bold mb-2">Scroll to Section</h2>
-                    <Tabs tabs={tabItems} scrollToSection={true} />
-                </div>
-            </div>
-        </>
+        <div className="w-fit grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 place-content-center justify-center bg-green-700/35 mx-auto p-4 rounded-3xl">
+            <button
+                className="bg-green-500 text-white px-4 py-2 rounded-lg"
+                onClick={() => showToast("Success weif eui wf iwe fiwe edi wp iw efh wpefpb pwep wf wefp pwedfuwef  message!", "success")}
+            >
+                Show Success Toast
+            </button>
+            <button
+                className="bg-red-500 text-white px-4 py-2 rounded-lg"
+                onClick={() => showToast("Error  eciwe dediwed eedied edioed message!", "error")}
+            >
+                Show Error Toast
+            </button>
+            <button
+                className="bg-yellow-500 text-black px-4 py-2 rounded-lg"
+                onClick={() => showToast("Warning message!", "warning")}
+            >
+                Show Warning Toast
+            </button>
+            <button
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+                onClick={() => showToast("Info message!", "info")}
+            >
+                Show Info Toast
+            </button>
+        </div>
     );
 };
 

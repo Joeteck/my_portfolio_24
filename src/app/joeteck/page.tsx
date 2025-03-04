@@ -1,14 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import ThemeSwitch from "../../components/globals/ui/ThemeSwitch";
-import { ToastProvider, useToast } from "../../components/globals/ui/Toast Notifications";
+import { Badge } from "../../components/globals/typography/Badges";
 
 const TestingPage = () => {
     const [theme, setTheme] = useState("");
 
     useEffect(() => {
-        const savedTheme = localStorage.getItem("theme") || 
+        const savedTheme = localStorage.getItem("theme") ||
             (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
         setTheme(savedTheme);
     }, []);
@@ -23,43 +22,42 @@ const TestingPage = () => {
     }, [theme]);
 
     return (
-        <ToastProvider>
-            <ThemeSwitch setTheme={setTheme} theme={theme} />
-            <ToastDemo />
-        </ToastProvider>
-    );
-};
+        <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-900 p-6">
+            <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-6">
+                Badge Component Showcase
+            </h1>
 
-// ✅ Now `useToast()` is inside a valid component
-const ToastDemo = () => {
-    const { showToast } = useToast();
+            {/* Grid Layout for Badges */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
+                {/* Solid Badges */}
+                <Badge variant="solid" color="primary">Primary</Badge>
+                <Badge variant="solid" color="secondary">Secondary</Badge>
+                <Badge variant="solid" color="success">Success</Badge>
+                <Badge variant="solid" color="danger">Danger</Badge>
+                <Badge variant="solid" color="warning">Warning</Badge>
+                <Badge variant="solid" color="info">Info</Badge>
 
-    return (
-        <div className="w-fit grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 place-content-center justify-center bg-green-700/35 mx-auto p-4 rounded-3xl">
-            <button
-                className="bg-green-500 text-white px-4 py-2 rounded-lg"
-                onClick={() => showToast("Success weif eui wf iwe fiwe edi wp iw efh wpefpb pwep wf wefp pwedfuwef  message!", "success")}
-            >
-                Show Success Toast
-            </button>
-            <button
-                className="bg-red-500 text-white px-4 py-2 rounded-lg"
-                onClick={() => showToast("Error  eciwe dediwed eedied edioed message!", "error")}
-            >
-                Show Error Toast
-            </button>
-            <button
-                className="bg-yellow-500 text-black px-4 py-2 rounded-lg"
-                onClick={() => showToast("Warning message!", "warning")}
-            >
-                Show Warning Toast
-            </button>
-            <button
-                className="bg-blue-500 text-white px-4 py-2 rounded-lg"
-                onClick={() => showToast("Info message!", "info")}
-            >
-                Show Info Toast
-            </button>
+                {/* Outline Badges */}
+                <Badge variant="outline" color="primary">Primary</Badge>
+                <Badge variant="outline" color="secondary">Secondary</Badge>
+                <Badge variant="outline" color="success">Success</Badge>
+                <Badge variant="outline" color="danger">Danger</Badge>
+                <Badge variant="outline" color="warning">Warning</Badge>
+                <Badge variant="outline" color="info">Info</Badge>
+
+                {/* Subtle Badges */}
+                <Badge variant="subtle" color="primary">Primary</Badge>
+                <Badge variant="subtle" color="secondary">Secondary</Badge>
+                <Badge variant="subtle" color="success">Success</Badge>
+                <Badge variant="subtle" color="danger">Danger</Badge>
+                <Badge variant="subtle" color="warning">Warning</Badge>
+                <Badge variant="subtle" color="info">Info</Badge>
+
+                {/* Different Sizes */}
+                <Badge variant="solid" color="success" size="sm">Small</Badge>
+                <Badge variant="solid" color="success" size="md">Medium</Badge>
+                <Badge variant="solid" color="success" size="lg">Large</Badge>
+            </div>
         </div>
     );
 };

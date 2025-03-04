@@ -529,6 +529,41 @@
   }
 }
 
+@layer components {
+  .badge {
+      @apply inline-flex items-center justify-center rounded-full font-semibold transition-all;
+  }
+
+  /* Sizes */
+  .badge-sm { @apply text-xs px-2 py-0.5; }
+  .badge-md { @apply text-sm px-3 py-1; }
+  .badge-lg { @apply text-base px-4 py-1.5; }
+
+  /* Solid Variants */
+  .badge-solid.badge-primary { @apply bg-blue-600 text-white; }
+  .badge-solid.badge-secondary { @apply bg-gray-600 text-white; }
+  .badge-solid.badge-success { @apply bg-green-600 text-white; }
+  .badge-solid.badge-danger { @apply bg-red-600 text-white; }
+  .badge-solid.badge-warning { @apply bg-yellow-500 text-black; }
+  .badge-solid.badge-info { @apply bg-blue-500 text-white; }
+
+  /* Outline Variants */
+  .badge-outline.badge-primary { @apply border border-blue-600 text-blue-600; }
+  .badge-outline.badge-secondary { @apply border border-gray-600 text-gray-600; }
+  .badge-outline.badge-success { @apply border border-green-600 text-green-600; }
+  .badge-outline.badge-danger { @apply border border-red-600 text-red-600; }
+  .badge-outline.badge-warning { @apply border border-yellow-500 text-yellow-500; }
+  .badge-outline.badge-info { @apply border border-blue-500 text-blue-500; }
+
+  /* Subtle Variants */
+  .badge-subtle.badge-primary { @apply bg-blue-100 text-blue-600; }
+  .badge-subtle.badge-secondary { @apply bg-gray-100 text-gray-600; }
+  .badge-subtle.badge-success { @apply bg-green-100 text-green-600; }
+  .badge-subtle.badge-danger { @apply bg-red-100 text-red-600; }
+  .badge-subtle.badge-warning { @apply bg-yellow-100 text-yellow-600; }
+  .badge-subtle.badge-info { @apply bg-blue-100 text-blue-600; }
+}
+
 
 /* Toasts Notification */
 @layer components {

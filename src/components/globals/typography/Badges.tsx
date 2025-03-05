@@ -7,18 +7,18 @@ interface BadgeProps {
     children: React.ReactNode;
 }
 
-export function Badge({ variant = "solid", color = "primary", size = "md", children }: BadgeProps) {
+export function Badge({ variant = "solid", color = "primary", size = "sm", children }: BadgeProps) {
     return (
         <span
             className={cn(
                 "badge", 
-                `badge-${size}`,
+                `badge-${size}`, 
+                `badge-${color}`, 
                 {
                     "badge-solid": variant === "solid",
                     "badge-outline": variant === "outline",
                     "badge-subtle": variant === "subtle",
-                },
-                `badge-${color}`
+                }
             )}
         >
             {children}

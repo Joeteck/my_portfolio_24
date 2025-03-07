@@ -8,9 +8,9 @@ interface DividerProps {
 }
 
 export function Divider({
-    orientation = "horizontal",
-    thickness = "medium",
-    color = "muted",
+    orientation = "vertical",
+    thickness = "thick",
+    color = "primary",
     className,
 }: DividerProps) {
     return (

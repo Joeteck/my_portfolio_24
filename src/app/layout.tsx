@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head>
         {/* Load Roboto and Roboto Mono from Google Fonts */}
         <link
@@ -21,8 +21,8 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap"
         />
       </head>
-      <body className="font-sans bg-background text-foreground">
-        <Providers>
+      <body className="font-sans bg-background text-foreground" suppressHydrationWarning>
+      <Providers>
           {children}
         </Providers>
       </body>

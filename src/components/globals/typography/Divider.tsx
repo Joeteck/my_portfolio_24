@@ -1,27 +1,13 @@
-import { cn } from "@/utils/cn";
+import { cn } from "@/utils/cn"; // Ensure you're using the cn utility for merging classes
 
 interface DividerProps {
-    orientation?: "horizontal" | "vertical";
-    thickness?: "thin" | "medium" | "thick";
-    color?: "primary" | "secondary" | "muted";
     className?: string;
 }
 
-export function Divider({
-    orientation = "vertical",
-    thickness = "thick",
-    color = "primary",
-    className,
-}: DividerProps) {
-    return (
-        <div
-            className={cn(
-                "divider",
-                `divider-${orientation}`,
-                `divider-${thickness}`,
-                `divider-${color}`,
-                className
-            )}
-        />
-    );
+export function HorizontalDivider({ className }: DividerProps) {
+    return <div className={cn("w-full", className)} />;
+}
+
+export function VerticalDivider({ className }: DividerProps) {
+    return <div className={cn("h-full", className)} />;
 }

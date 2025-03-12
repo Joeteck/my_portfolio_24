@@ -2,8 +2,10 @@
 
 import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
-import { Heading } from "@/components/globals/typography/Headings"; // Adjust the import path as needed
+import { Heading } from "@/components/globals/typography/Headings";
 import { Paragraph } from "@/components/globals/typography/Paragraphs";
+import { Container } from "@/components/globals/layout/Container";
+import { Footer } from "@/components/globals/layout/Footer";
 
 const ThemeSwitch = dynamic(() => import("@/components/globals/ui/ThemeSwitch"), { ssr: false });
 
@@ -27,23 +29,52 @@ const TestingPage = () => {
     }, [theme]);
 
     return (
-        <div className="min-h-screen p-6 pb-32 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-            <ThemeSwitch setTheme={setTheme} theme={theme} />
+        <>
+            <div className="min-h-screen flex flex-col justify-between p-6 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+                <div>
+                    <ThemeSwitch setTheme={setTheme} theme={theme} />
 
-            <div className="mt-8 space-y-6">
-                <Heading variant="title">Testing List Component</Heading>
+                    <Heading className="mt-6">Container Variants</Heading>
+                    <Paragraph className="mb-4">Testing different container configurations.</Paragraph>
 
-                <Paragraph size="lg" weight="bold" tone="success" align="center">
-                    This is a success message!
-                </Paragraph>
+                    <Container>
+                        <Paragraph>Default Container</Paragraph>
+                        <Container fluid className="mt-6">
+                            <Paragraph>Fluid Container (Full Width)</Paragraph>
+                        </Container>
+                    </Container>
 
-                <Paragraph size="sm" weight="light" tone="muted" align="justify" >
-                    This is a very long paragraph that will be truncated if it exceeds the container width...
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum dolores cum soluta repellat quibusdam nobis molestiae! Non voluptatum impedit labore, libero doloribus consequuntur, quo minima asperiores, odio ea dolore veniam.
-                </Paragraph>
+                    <Container maxWidth="sm" className="mt-6">
+                        <Paragraph>Max Width: sm</Paragraph>
+                    </Container>
 
+                    <Container maxWidth="md" className="mt-6">
+                        <Paragraph>Max Width: md</Paragraph>
+                    </Container>
+
+                    <Container maxWidth="lg" className="mt-6">
+                        <Paragraph>Max Width: lg</Paragraph>
+                    </Container>
+
+                    <Container maxWidth="xl" className="mt-6">
+                        <Paragraph>Max Width: xl</Paragraph>
+                    </Container>
+
+                    <Container maxWidth="2xl" className="mt-6">
+                        <Paragraph>Max Width: 2xl</Paragraph>
+                    </Container>
+                </div>
+
+                {/* FOOTERS */}
             </div>
-        </div>
+            <div className="mt-12">
+                <Heading className="mt-6 text-center">Joeteck IT Consult Footer</Heading>
+                <Footer type="company" />
+
+                <Heading className="mt-6 text-center">Portfolio Footer</Heading>
+                <Footer type="portfolio" />
+            </div>
+        </>
     );
 };
 

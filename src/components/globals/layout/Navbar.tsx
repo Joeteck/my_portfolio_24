@@ -66,9 +66,11 @@ export const Navbar = ({ type }: NavbarProps) => {
 
             <div className="flex flex-row">
             <button className="hidden md:block p-2 bg-transparent text-sm font-extralight">Action</button>
-            <ThemeSwitch/>
+            <div className="md:block hidden justify-center items-center"> 
+                <ThemeSwitch />
+            </div>
             <button
-                className={cn("md:hidden p-2 rounded-full transition-colors", isOpen ? "" : "border border-primary")}
+                className={cn("md:hidden p-2 rounded-full transition-colors", isOpen ? "" : "")}
                 onClick={() => setIsOpen(!isOpen)}
             >
                 ☰

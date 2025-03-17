@@ -642,63 +642,57 @@
 @layer components {
   .form-container {
     @apply w-full max-w-[400px] mx-auto p-6 space-y-4 rounded-lg shadow-lg relative;
-    /* background: rgba(5, 169, 119, 9); Light translucent background */
     backdrop-filter: blur(10px) saturate(180%);
     -webkit-backdrop-filter: blur(10px) saturate(180%);
     border: 2px solid rgba(244, 244, 244, 0.2);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   }
-  
-/* Improved Dark Mode */
-.dark .form-container {
-  background: rgba(18, 18, 18, 0.4); /* Darker transparency */
-  border: 2px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-}
-  
+
+  .dark .form-container {
+    background: rgba(18, 18, 18, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  }
 
   .input, .textarea, .select {
-    @apply w-full px-5 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200;
-    background: rgba(255, 255, 255, 2); /* Light glass effect */
-    border-color: rgba(255, 255, 255, 0.3);
+    @apply w-full px-5 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200 text-sm md:text-xs leading-loose;
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
   }
-  
+
   .dark .input, 
   .dark .textarea, 
   .dark .select {
-    background: rgba(0, 0, 0, 0.3); /* Slightly darker glass effect */
+    background: rgba(0, 0, 0, 0.3);
     border-color: rgba(255, 255, 255, 0.2);
     color: #e0e0e0;
   }
-  
+
   .input:focus, .textarea:focus, .select:focus {
-    box-shadow: 0 0 12px rgba(25, 191, 136, 0.4); /* Softer glow effect */
+    box-shadow: 0 0 12px rgba(25, 191, 136, 0.4);
   }
 
-  /* Checkbox & Radio Buttons */
   .checkbox, .radio {
     @apply w-5 h-5 border rounded focus:ring-2 focus:ring-primary;
   }
 
-  /* Toggle Switch */
   .toggle-switch {
-    @apply relative inline-block w-10 h-6 bg-gray-300 rounded-full transition-all duration-200;
+    @apply relative inline-block w-10 h-6 rounded-full cursor-pointer transition-colors duration-300;
+  }
+  
+  .switch-circle {
+    @apply absolute top-[2px] bg-white w-5 h-5 rounded-full shadow-md transition-transform duration-300;
+    transform: translateY(-50%);
   }
 
-  .toggle-switch:checked {
-    @apply bg-primary;
-  }
-
-  /* File Upload */
-  .file-upload {
+  .file-upload, .date-picker {
     @apply w-full px-5 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200;
-  }
-
-  /* Date Picker */
-  .date-picker {
-    @apply w-full px-5 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200;
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 }
 

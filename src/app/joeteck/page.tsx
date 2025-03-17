@@ -13,11 +13,33 @@ import Textarea from "@/components/globals/form/Textarea";
 import DatePicker from "@/components/globals/form/DatePicker";
 import ToggleSwitch from "@/components/globals/form/ToggleSwitch";
 import FileUpload from "@/components/globals/form/FileUpload";
+import BlogPostPreviewCard from "@/components/features/company/Blog Post Preview Card";
 
 // Dynamic import for ThemeSwitch to prevent SSR issues
 const ThemeSwitch = dynamic(() => import("@/components/globals/ui/ThemeSwitch"), { ssr: false });
 
 const TestingPage = () => {
+    const blogPosts = [
+        {
+        title: "The Future of Web Development",
+        description: "Discover the latest trends shaping the future of web technologies.",
+        imageUrl: "/images/blog/web_future.jpg",
+        link: "#",
+        },
+        {
+        title: "UI/UX Best Practices for 2025",
+        description: "Learn about modern UI/UX principles for creating seamless experiences.",
+        imageUrl: "/images/blog/ui-ux-tips.png",
+        link: "#",
+        },
+        {
+        title: "Mastering JavaScript Performance",
+        description: "Optimize your JavaScript code for speed and efficiency.",
+        imageUrl: "/images/blog/js-performance.jpg",
+        link: "#",
+        },
+    ];
+
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
     const handleFileSelect = (file: File) => {
@@ -63,6 +85,15 @@ const TestingPage = () => {
             <Navbar type="company" />
             <div className="min-h-screen flex flex-col justify-between p-6 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
                     <ThemeSwitch />
+
+                    <Container className="py-10 my-10">
+                        <Heading className="mb-6">Blog Post Preview Test</Heading>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {blogPosts.map((post, index) => (
+                            <BlogPostPreviewCard key={index} {...post} />
+                            ))}
+                        </div>
+                    </Container>
                     
 
                 <Container maxWidth="sm" className="w-[95%] md:w-[30%]">

@@ -180,71 +180,89 @@
   }
 }
 
-/* Cards */
+
+/* Card Variant */
 @layer components {
   /* Base Card */
   .card {
-    @apply max-w-80 h-fit bg-background bg-opacity-50 rounded-2xl shadow-custom dark:shadow-custom-dark transition-all duration-300 ease-in-out backdrop-blur-lg relative overflow-hidden;
+    @apply  max-w-sm rounded-lg overflow-hidden shadow-xl 
+            bg-white bg-opacity-80 dark:bg-gray-800 dark:bg-opacity-80 backdrop-blur-lg 
+            transition-transform duration-300 hover:scale-[1.03] 
+            hover:shadow-2xl relative;
   }
 
-  .card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  /* Image Wrapper */
+  .card-image-wrapper {
+    @apply relative w-full h-56;
   }
 
-  /* Optional 3D Tilt Effect */
-  .card-container {
-    perspective: 1000px;
+  /* Image */
+  .card-image {
+    @apply w-full h-full object-cover transition-opacity duration-300;
   }
 
-  .tilt-card {
-    transform-style: preserve-3d;
-    transition: transform 0.1s ease-out;
+  /* Dark Overlay Effect */
+  .card-overlay {
+    @apply absolute inset-0 bg-[rgba(0,0,0,0.7)] transition-opacity duration-300 group-hover:bg-[rgba(0,0,0,0.2)] pointer-events-none;
+}
+
+
+
+  /* Card Content */
+  .card-content {
+    @apply p-4 text-gray-900 dark:text-white;
   }
 
-  .tilt-card:hover {
-    transform: perspective(1000px) rotateX(var(--tiltY, 0deg)) rotateY(var(--tiltX, 0deg));
+  /* Title */
+  .card-title {
+    @apply text-lg font-semibold;
   }
 
-  /* Mouse Move Effect */
+  /* Description */
+  .card-description {
+    @apply text-sm text-gray-600 dark:text-gray-300 mt-2;
+  }
+
+  /* Read More Link */
+  .card-link {
+    @apply inline-flex items-center gap-1 mt-4 text-primary font-medium hover:underline;
+  }
+
+  /* Glassy, Soft Glow Effect on Hover */
   .card::before {
     content: "";
     position: absolute;
-    top: var(--y, 50%);
-    left: var(--x, 50%);
-    transform: translate(-50%, -50%);
-    width: 200px;
-    height: 200px;
+    inset: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
     opacity: 0;
-    transition: opacity 1ms ease-out;
+    transition: opacity 0.3s ease-out;
   }
 
   .card:hover::before {
-    opacity: 1;
+    opacity: 0.1;
   }
 
   /* Variants */
-  .profile-card, .team-member-card, .service-card, .testimonial-card, .pricing-card {
+  .blog-card,
+  .profile-card,
+  .team-member-card,
+  .service-card,
+  .testimonial-card,
+  .pricing-card {
     @apply flex flex-col items-center text-center;
   }
 
-  .project-card, .case-study-card {
+  .project-card,
+  .case-study-card {
     @apply flex flex-col;
   }
 
   .faq-card {
     @apply card;
   }
-
-  /* Image Handling */
-  .card img {
-    @apply bg-primary;
-  }
-
-  .card-content {
-    @apply p-6;
-  }
 }
+
+
 
 /* Modal Style*/
 @layer components {

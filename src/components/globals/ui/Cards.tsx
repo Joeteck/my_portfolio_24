@@ -5,8 +5,7 @@ import { cn } from "@/utils/cn";
 import { useRef } from "react";
 
 interface CardProps {
-    variant?: "profile" | "project" | "testimonial" | "service" | "team" | "pricing" | "faq" | "case-study";
-    headImage?: string; // Can be an image URL or a color
+    variant?: "profile" | "project" | "testimonial" | "service" | "team" | "pricing" | "faq" | "case-study" | "blog";
     image?: string;
     title?: string;
     description?: string;
@@ -18,7 +17,6 @@ interface CardProps {
 
 export default function Card({
     variant,
-    headImage,
     image,
     title,
     description,
@@ -54,45 +52,18 @@ export default function Card({
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
         >
-            {/* Head Image (Color or Image) */}
-            {headImage && (
-                <div
-                    className="relative w-full h-7 rounded-t-2xl"
-                    style={{
-                        backgroundColor: headImage.startsWith("#") || headImage.startsWith("rgb") ? headImage : "transparent",
-                    }}
-                >
-                    {!headImage.startsWith("#") && !headImage.startsWith("rgb") && (
-                        <Image
-                            src={headImage}
-                            alt={imageAlt}
-                            fill
-                            className="rounded-t-2xl object-cover"
-                            sizes="100%"
-                            priority
-                        />
-                    )}
-                </div>
-            )}
-
-            {/* Main Image */}
+            {/* Image Section */}
             {image && (
-                <div className="relative w-full h-48">
-                    <Image
-                        src={image}
-                        alt={imageAlt}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        priority
-                    />
+                <div className="card-image-wrapper">
+                    <Image src={image} alt={imageAlt} width={400} height={250} className="card-image" />
+                    <div className="card-overlay" />
                 </div>
             )}
 
-            {/* Card Content */}
+            {/* Content */}
             <div className="card-content">
-                {title && <h3 className="text-lg font-semibold">{title}</h3>}
-                {description && <p className="text-sm text-muted-foreground">{description}</p>}
+                {title && <h3 className="card-title">{title}</h3>}
+                {description && <p className="card-description">{description}</p>}
                 {children}
             </div>
         </div>

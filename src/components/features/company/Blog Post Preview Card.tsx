@@ -1,5 +1,5 @@
 import Card from "@/components/globals/ui/Cards";
-import { ArrowBigRightDash } from "lucide-react";
+import Link from "next/link";
 
 type BlogPostPreviewProps = {
     title: string;
@@ -16,9 +16,10 @@ const BlogPostPreviewCard = ({ title, description, imageUrl, link }: BlogPostPre
             title={title}
             description={description}
         >
-            <a href={link} className="inline-flex items-center gap-1 mt-4 text-primary font-medium hover:underline">
-                Read More <ArrowBigRightDash />
-            </a>
+            {/* Call-to-Action Button */}
+            <Link href={link} className="card-link mt-4 inline-block">
+                Read More
+            </Link>
         </Card>
     );
 };

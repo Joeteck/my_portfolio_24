@@ -9,6 +9,9 @@ interface CardProps {
     image?: string;
     title?: string;
     description?: string;
+    price?: string; // For pricing
+    author?: string; // For blog/testimonial
+    role?: string; // For profile/team
     children?: React.ReactNode;
     className?: string;
     imageAlt?: string;
@@ -20,6 +23,9 @@ export default function Card({
     image,
     title,
     description,
+    price,
+    author,
+    role,
     children,
     className,
     imageAlt = "Card image",
@@ -29,12 +35,10 @@ export default function Card({
 
     const handleMouseMove = (event: React.MouseEvent) => {
         if (!tilt || !cardRef.current) return;
-
         const card = cardRef.current;
         const { left, top, width, height } = card.getBoundingClientRect();
         const x = event.clientX - left - width / 2;
         const y = event.clientY - top - height / 2;
-
         card.style.setProperty("--tiltX", `${x / 25}deg`);
         card.style.setProperty("--tiltY", `${-y / 25}deg`);
     };
@@ -52,19 +56,89 @@ export default function Card({
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
         >
-            {/* Image Section */}
+            {/* Image Section - Different Styles for Different Variants */}
             {image && (
-                <div className="card-image-wrapper">
-                    <Image src={image} alt={imageAlt} width={400} height={250} className="card-image" />
+                <div className={cn("card-image-wrapper", variant && `image-${variant}`)}>
+                    <Image src={image} alt={imageAlt} width={400} height={250} className={cn("card-image", variant && `image-${variant}`)} />
                     <div className="card-overlay" />
                 </div>
             )}
 
-            {/* Content */}
+            {/* Content based on variant */}
             <div className="card-content">
-                {title && <h3 className="card-title">{title}</h3>}
-                {description && <p className="card-description">{description}</p>}
-                {children}
+                {variant === "blog" && (
+                    <>
+                        {title && <h3 className="card-title">{title}</h3>}
+                        {author && <p className="card-meta">By {author}</p>}
+                        {description && <p className="card-description">{description}</p>}
+                        {children}
+                    </>
+                )}
+
+                {variant === "profile" && (
+                    <>
+                        {title && <h3 className="profile-name">{title}</h3>}
+                        {role && <p className="profile-role">{role}</p>}
+                        {description && <p className="profile-description">{description}</p>}
+                        {children}
+                    </>
+                )}
+
+                {variant === "project" && (
+                    <>
+                        {title && <h3 className="project-title">{title}</h3>}
+                        {description && <p className="project-description">{description}</p>}
+                        {children}
+                    </>
+                )}
+
+                {variant === "testimonial" && (
+                    <>
+                        {description && <p className="testimonial-text">{description}</p>}
+                        {author && <p className="testimonial-author">— {author}</p>}
+                    </>
+                )}
+
+                {variant === "service" && (
+                    <>
+                        {title && <h3 className="service-title">{title}</h3>}
+                        {description && <p className="service-description">{description}</p>}
+                        {children}
+                    </>
+                )}
+
+                {variant === "team" && (
+                    <>
+                        {title && <h3 className="team-name">{title}</h3>}
+                        {role && <p className="team-role">{role}</p>}
+                        {children}
+                    </>
+                )}
+
+                {variant === "pricing" && (
+                    <>
+                        {title && <h3 className="pricing-title">{title}</h3>}
+                        {price && <p className="pricing-price">{price}</p>}
+                        {description && <p className="pricing-description">{description}</p>}
+                        {children}
+                    </>
+                )}
+
+                {variant === "faq" && (
+                    <>
+                        {title && <h3 className="faq-question">{title}</h3>}
+                        {description && <p className="faq-answer">{description}</p>}
+                        {children}
+                    </>
+                )}
+
+                {variant === "case-study" && (
+                    <>
+                        {title && <h3 className="case-study-title">{title}</h3>}
+                        {description && <p className="case-study-description">{description}</p>}
+                        {children}
+                    </>
+                )}
             </div>
         </div>
     );

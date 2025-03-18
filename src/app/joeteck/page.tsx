@@ -14,6 +14,7 @@ import DatePicker from "@/components/globals/form/DatePicker";
 import ToggleSwitch from "@/components/globals/form/ToggleSwitch";
 import FileUpload from "@/components/globals/form/FileUpload";
 import BlogPostPreviewCard from "@/components/features/company/Blog Post Preview Card";
+import ContactInfoCard from "@/components/features/company/Contact Info Card";
 
 // Dynamic import for ThemeSwitch to prevent SSR issues
 const ThemeSwitch = dynamic(() => import("@/components/globals/ui/ThemeSwitch"), { ssr: false });
@@ -24,19 +25,19 @@ const TestingPage = () => {
         title: "The Future of Web Development",
         description: "Discover the latest trends shaping the future of web technologies.",
         imageUrl: "/images/blog/web_future.jpg",
-        link: "#",
+        link: "https://fast.com/",
         },
         {
         title: "UI/UX Best Practices for 2025",
         description: "Learn about modern UI/UX principles for creating seamless experiences.",
         imageUrl: "/images/blog/ui-ux-tips.png",
-        link: "#",
+        link: "https://fast.com/",
         },
         {
         title: "Mastering JavaScript Performance",
         description: "Optimize your JavaScript code for speed and efficiency.",
         imageUrl: "/images/blog/js-performance.jpg",
-        link: "#",
+        link: "https://fast.com/",
         },
     ];
 
@@ -93,6 +94,16 @@ const TestingPage = () => {
                             <BlogPostPreviewCard key={index} {...post} />
                             ))}
                         </div>
+                    </Container>
+
+                    <Container>
+                        <ContactInfoCard
+                                name = "Adeyoju Joel"
+                                role = "Software Engineer"
+                                email = "joelitserver@gmail.com"
+                                phone = "+2348058509717"
+                                location = "Nigeria(Remote)"
+                        />
                     </Container>
                     
 

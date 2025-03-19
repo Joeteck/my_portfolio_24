@@ -223,12 +223,12 @@
 
   /* Description */
   .card-description {
-    @apply text-sm text-gray-600 dark:text-gray-300 mt-2;
+    @apply text-sm text-gray-400 dark:text-gray-300 mt-2;
   }
 
   /* Read More Link */
   .card-link {
-    @apply relative z-10 items-center gap-1 mt-4 text-primary font-medium hover:underline;
+    @apply relative z-10 items-start top-4 text-primary font-medium hover:underline;
   }
 
   /* Glassy, Soft Glow Effect on Hover */
@@ -292,6 +292,44 @@
   /* FAQ - No Image, Just a Simple Card */
   .faq-card {
     @apply card;
+  }
+
+  .card-pricing {
+    @apply  w-full max-w-sm p-8 rounded-xl shadow-lg text-center transition-transform duration-300 
+            hover:scale-[1.03] hover:shadow-2xl bg-white dark:bg-gray-900;
+  }
+
+  .card-pricing-premium {
+    @apply bg-gray-900 text-white;
+  }
+
+  .pricing-title {
+    @apply text-lg font-semibold text-gray-900 dark:text-white;
+  }
+
+  .pricing-price {
+    @apply text-4xl font-bold my-4;
+  }
+
+  .pricing-description {
+    @apply text-sm text-gray-600 dark:text-gray-300;
+  }
+
+  .pricing-features {
+    @apply space-y-3 mt-6;
+  }
+
+  .pricing-feature {
+    @apply flex items-center gap-2 text-gray-700 dark:text-gray-300;
+  }
+
+  .pricing-button {
+    @apply  mt-6 py-2 px-6 rounded-full font-medium text-white bg-gray-900 dark:bg-white 
+            dark:text-gray-900 hover:bg-opacity-80 transition-all duration-300;
+  }
+
+  .card-pricing-premium .pricing-button {
+    @apply bg-white text-gray-900 hover:bg-gray-200;
   }
 }
 

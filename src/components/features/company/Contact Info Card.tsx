@@ -55,12 +55,12 @@ export default function ContactInfoCard({
                     <MapPin size={16} aria-label="Location" /> 
                     {location}
                 </p>
-            </div>
 
-            {/* Call-to-Action Button */}
-            <Link href={`mailto:${email}`} className="card-link mt-4">
-                Send a Message ✉️
-            </Link>
+                {/* Call-to-Action Button */}
+                <Link href={`mailto:${email}`} className="card-link">
+                    Send a Message ✉️
+                </Link>
+            </div>
         </Card>
     );
 }

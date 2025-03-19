@@ -15,6 +15,9 @@ import ToggleSwitch from "@/components/globals/form/ToggleSwitch";
 import FileUpload from "@/components/globals/form/FileUpload";
 import BlogPostPreviewCard from "@/components/features/company/Blog Post Preview Card";
 import ContactInfoCard from "@/components/features/company/Contact Info Card";
+import Card from "@/components/globals/ui/Cards";
+import { Grid } from "@/components/globals/layout/Grid System";
+import PricingTable from "@/components/features/company/Pricing Table";
 
 // Dynamic import for ThemeSwitch to prevent SSR issues
 const ThemeSwitch = dynamic(() => import("@/components/globals/ui/ThemeSwitch"), { ssr: false });
@@ -89,21 +92,32 @@ const TestingPage = () => {
 
                     <Container className="py-10 my-10">
                         <Heading className="mb-6">Blog Post Preview Test</Heading>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <Grid cols={3}>
                             {blogPosts.map((post, index) => (
                             <BlogPostPreviewCard key={index} {...post} />
                             ))}
-                        </div>
+                        </Grid>
                     </Container>
 
                     <Container>
-                        <ContactInfoCard
-                                name = "Adeyoju Joel"
-                                role = "Software Engineer"
-                                email = "joelitserver@gmail.com"
-                                phone = "+2348058509717"
-                                location = "Nigeria(Remote)"
-                        />
+                        <Grid>
+
+                            <ContactInfoCard
+                                    name = "Adeyoju Joel"
+                                    role = "Software Engineer"
+                                    email = "joelitserver@gmail.com"
+                                    phone = "+2348058509717"
+                                    location = "Nigeria(Remote)"
+                                    />
+                            <Card
+                                variant="pricing" 
+                                title="Premium Plan" 
+                                price="$49/month" 
+                                description="Get unlimited access to all features!"
+                            />
+                        </Grid>
+                        
+                        <PricingTable/>
                     </Container>
                     
 

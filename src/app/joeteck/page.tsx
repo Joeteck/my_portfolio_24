@@ -100,8 +100,7 @@ const TestingPage = () => {
                     </Container>
 
                     <Container>
-                        <Grid>
-
+                        <Grid cols={2} className="mb-6">
                             <ContactInfoCard
                                     name = "Adeyoju Joel"
                                     role = "Software Engineer"
@@ -116,8 +115,7 @@ const TestingPage = () => {
                                 description="Get unlimited access to all features!"
                             />
                         </Grid>
-                        
-                        <PricingTable/>
+                            <PricingTable/>
                     </Container>
                     
 

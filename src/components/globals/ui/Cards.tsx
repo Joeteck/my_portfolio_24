@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { cn } from "@/utils/cn";
 import { useRef } from "react";
+import { Paragraph } from "../typography/Paragraphs";
+import { Heading } from "../typography/Headings";
 
 interface CardProps {
     variant?: "profile" | "project" | "testimonial" | "service" | "team" | "pricing" | "faq" | "case-study" | "blog";
@@ -60,7 +62,7 @@ export default function Card({
             {image && (
                 <div className={cn("card-image-wrapper", variant && `image-${variant}`)}>
                     <Image src={image} alt={imageAlt} width={400} height={250} className={cn("card-image", variant && `image-${variant}`)} />
-                    <div className="card-overlay" />
+                    {variant === "blog" && <div className="card-overlay" />}
                 </div>
             )}
 
@@ -68,74 +70,74 @@ export default function Card({
             <div className="card-content">
                 {variant === "blog" && (
                     <>
-                        {title && <h3 className="card-title">{title}</h3>}
-                        {author && <p className="card-meta">By {author}</p>}
-                        {description && <p className="card-description">{description}</p>}
+                        {title && <Heading className="card-title">{title}</Heading>}
+                        {author && <Paragraph className="card-meta">By {author}</Paragraph>}
+                        {description && <Paragraph className="card-description">{description}</Paragraph>}
                         {children}
                     </>
                 )}
 
                 {variant === "profile" && (
                     <>
-                        {title && <h3 className="profile-name">{title}</h3>}
-                        {role && <p className="profile-role">{role}</p>}
-                        {description && <p className="profile-description">{description}</p>}
+                        {title && <Heading className="profile-name">{title}</Heading>}
+                        {role && <Paragraph className="profile-role">{role}</Paragraph>}
+                        {description && <Paragraph className="profile-description">{description}</Paragraph>}
                         {children}
                     </>
                 )}
 
                 {variant === "project" && (
                     <>
-                        {title && <h3 className="project-title">{title}</h3>}
-                        {description && <p className="project-description">{description}</p>}
+                        {title && <Heading className="project-title">{title}</Heading>}
+                        {description && <Paragraph className="project-description">{description}</Paragraph>}
                         {children}
                     </>
                 )}
 
                 {variant === "testimonial" && (
                     <>
-                        {description && <p className="testimonial-text">{description}</p>}
-                        {author && <p className="testimonial-author">— {author}</p>}
+                        {description && <Paragraph className="testimonial-text">{description}</Paragraph>}
+                        {author && <Paragraph className="testimonial-author">— {author}</Paragraph>}
                     </>
                 )}
 
                 {variant === "service" && (
                     <>
-                        {title && <h3 className="service-title">{title}</h3>}
-                        {description && <p className="service-description">{description}</p>}
+                        {title && <Heading className="service-title">{title}</Heading>}
+                        {description && <Paragraph className="service-description">{description}</Paragraph>}
                         {children}
                     </>
                 )}
 
                 {variant === "team" && (
                     <>
-                        {title && <h3 className="team-name">{title}</h3>}
-                        {role && <p className="team-role">{role}</p>}
+                        {title && <Heading className="team-name">{title}</Heading>}
+                        {role && <Paragraph className="team-role">{role}</Paragraph>}
                         {children}
                     </>
                 )}
 
                 {variant === "pricing" && (
                     <>
-                        {title && <h3 className="pricing-title">{title}</h3>}
-                        {price && <p className="pricing-price">{price}</p>}
-                        {description && <p className="pricing-description">{description}</p>}
+                        {title && <Heading className="pricing-title">{title}</Heading>}
+                        {price && <Paragraph className="pricing-price">{price}</Paragraph>}
+                        {description && <Paragraph className="pricing-description">{description}</Paragraph>}
                         {children}
                     </>
                 )}
 
                 {variant === "faq" && (
                     <>
-                        {title && <h3 className="faq-question">{title}</h3>}
-                        {description && <p className="faq-answer">{description}</p>}
+                        {title && <Heading className="faq-question">{title}</Heading>}
+                        {description && <Paragraph className="faq-answer">{description}</Paragraph>}
                         {children}
                     </>
                 )}
 
                 {variant === "case-study" && (
                     <>
-                        {title && <h3 className="case-study-title">{title}</h3>}
-                        {description && <p className="case-study-description">{description}</p>}
+                        {title && <Heading className="case-study-title">{title}</Heading>}
+                        {description && <Paragraph className="case-study-description">{description}</Paragraph>}
                         {children}
                     </>
                 )}

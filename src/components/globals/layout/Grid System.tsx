@@ -22,7 +22,7 @@ export const Grid = ({
     return (
         <div
             className={cn(
-                `grid grid-cols-${cols} gap-${gap} items-${align} justify-${justify} ${responsive}`,
+                `m-2 grid grid-cols-${cols} gap-${gap} items-${align} justify-${justify} ${responsive}`,
                 className
             )}
         >

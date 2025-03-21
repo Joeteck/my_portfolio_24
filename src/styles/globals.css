@@ -208,7 +208,7 @@
   }
 
   .card:hover .card-overlay {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0);
   }
 
   /* Card Content */
@@ -295,12 +295,12 @@
   }
 
   .card-pricing {
-    @apply  w-full max-w-sm p-8 rounded-xl shadow-lg text-center transition-transform duration-300 
-            hover:scale-[1.03] hover:shadow-2xl bg-white dark:bg-gray-900;
+    @apply  w-full max-w-sm p-8 rounded-xl shadow-lg item-center justify-center text-center transition-transform duration-300 
+            hover:scale-[1.03] hover:shadow-2xl bg-white dark:bg-gray-800;
   }
 
   .card-pricing-premium {
-    @apply bg-gray-900 text-white;
+    @apply bg-gray-800 text-white;
   }
 
   .pricing-title {
@@ -320,7 +320,7 @@
   }
 
   .pricing-feature {
-    @apply flex items-center gap-2 text-gray-700 dark:text-gray-300;
+    @apply flex justify-center items-center gap-2 text-gray-700 dark:text-gray-300;
   }
 
   .pricing-button {

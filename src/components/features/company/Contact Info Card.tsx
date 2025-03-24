@@ -8,15 +8,17 @@ import Link from "next/link";
 interface ContactInfoCardProps {
     name: string;
     role: string;
-    email: string;
-    phone: string;
-    location: string;
+    description?: string;
+    email?: string;
+    phone?: string;
+    location?: string;
     image?: string;
 }
 
 export default function ContactInfoCard({
     name,
     role,
+    description,
     email,
     phone,
     location,
@@ -28,19 +30,20 @@ export default function ContactInfoCard({
             image={image}
             imageAlt={`${name}'s profile picture`}
             title={name}
-            description={role}
+            role={role}
+            description={description}
         >
             {/* Contact Details */}
-            <div className="space-y-3 text-sm text-gray-100 dark:text-gray-300">
-                <Paragraph className="flex items-center gap-2">
+            <div className="w-full text-sm text-gray-100 justify-center items-center text-center dark:text-gray-300">
+                <Paragraph className="flex justify-center items-center gap-2">
                     <Mail size={16} aria-label="Email" /> 
                     <a href={`mailto:${email}`} className="hover:underline">{email}</a>
                 </Paragraph>
-                <Paragraph className="flex items-center gap-2">
+                <Paragraph className="flex justify-center items-center gap-2">
                     <Phone size={16} aria-label="Phone" /> 
                     <a href={`tel:${phone}`} className="hover:underline">{phone}</a>
                 </Paragraph>
-                <Paragraph className="flex items-center gap-2">
+                <Paragraph className="flex justify-center items-center gap-2">
                     <MapPin size={16} aria-label="Location" /> 
                     {location}
                 </Paragraph>

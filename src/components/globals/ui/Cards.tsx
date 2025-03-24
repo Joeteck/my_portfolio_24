@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import { cn } from "@/utils/cn";
-import { useRef } from "react";
+import { useRef, useCallback } from "react";
 import { Paragraph } from "../typography/Paragraphs";
 import { Heading } from "../typography/Headings";
+import { memo } from "react";
 
 interface CardProps {
     variant?: "profile" | "project" | "testimonial" | "service" | "team" | "pricing" | "faq" | "case-study" | "blog";
@@ -20,7 +21,23 @@ interface CardProps {
     tilt?: boolean;
 }
 
-export default function Card({
+// Predefined image settings based on variant
+const imageVariants = {
+    profile: { width: 128, height: 128, className: "image-profile", priority: true },
+    testimonial: { width: 96, height: 96, className: "image-testimonial", priority: true },
+    blog: { width: 400, height: 250, className: "image-blog", priority: false },
+    project: { width: 400, height: 250, className: "image-project", priority: false },
+    service: { width: 160, height: 160, className: "image-service", priority: false },
+    pricing: { width: 160, height: 160, className: "image-pricing", priority: false },
+    team: { width: 160, height: 160, className: "image-team", priority: false },
+    caseStudy: { width: 160, height: 160, className: "image-case-study", priority: false },
+    faq: { width: 160, height: 160, className: "image-faq", priority: false },
+};
+
+// Default values if variant is not found
+const defaultVariant = { width: 400, height: 250, className: "card-image", priority: false };
+
+const Card = memo(function Card({
     variant,
     image,
     title,
@@ -34,22 +51,35 @@ export default function Card({
     tilt = false,
 }: CardProps) {
     const cardRef = useRef<HTMLDivElement>(null);
+    let animationFrameId: number | null = null;
 
-    const handleMouseMove = (event: React.MouseEvent) => {
-        if (!tilt || !cardRef.current) return;
-        const card = cardRef.current;
-        const { left, top, width, height } = card.getBoundingClientRect();
-        const x = event.clientX - left - width / 2;
-        const y = event.clientY - top - height / 2;
-        card.style.setProperty("--tiltX", `${x / 25}deg`);
-        card.style.setProperty("--tiltY", `${-y / 25}deg`);
-    };
+    const { width, height, className: imgClass, priority } = imageVariants[variant as keyof typeof imageVariants] || defaultVariant;
 
-    const handleMouseLeave = () => {
+    // Handle tilt effect
+    const handleMouseMove = useCallback((event: React.MouseEvent) => {
         if (!tilt || !cardRef.current) return;
-        cardRef.current.style.setProperty("--tiltX", "0deg");
-        cardRef.current.style.setProperty("--tiltY", "0deg");
-    };
+
+        if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+        }
+
+        animationFrameId = requestAnimationFrame(() => {
+            const card = cardRef.current!;
+            const { left, top, width, height } = card.getBoundingClientRect();
+            const x = (event.clientX - left - width / 2) / 25;
+            const y = -(event.clientY - top - height / 2) / 25;
+            card.style.transform = `rotateX(${y}deg) rotateY(${x}deg)`;
+        });
+    }, [tilt]);
+
+    // Reset tilt on mouse leave
+    const handleMouseLeave = useCallback(() => {
+        if (!tilt || !cardRef.current) return;
+        if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+        }
+        cardRef.current.style.transform = "rotateX(0deg) rotateY(0deg)";
+    }, [tilt]);
 
     return (
         <div
@@ -58,10 +88,18 @@ export default function Card({
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
         >
-            {/* Image Section - Different Styles for Different Variants */}
+            {/* Image Section */}
             {image && (
-                <div className={cn("card-image-wrapper", variant && `image-${variant}`)}>
-                    <Image src={image} alt={imageAlt} width={400} height={250} className={cn("card-image", variant && `image-${variant}`)} />
+                <div className={cn("card-image-wrapper", imgClass && `${imgClass}-wrapper`)}>
+                    <Image
+                        src={image}
+                        alt={imageAlt}
+                        width={width}
+                        height={height}
+                        className={cn("card-image", imgClass)}
+                        priority={priority}
+                        loading={priority ? "eager" : "lazy"}
+                    />
                     {variant === "blog" && <div className="card-overlay" />}
                 </div>
             )}
@@ -70,7 +108,7 @@ export default function Card({
             <div className="card-content">
                 {variant === "blog" && (
                     <>
-                        {title && <Heading className="card-title">{title}</Heading>}
+                        {title && <Heading variant="subtitle" className="card-title">{title}</Heading>}
                         {author && <Paragraph className="card-meta">By {author}</Paragraph>}
                         {description && <Paragraph className="card-description">{description}</Paragraph>}
                         {children}
@@ -79,16 +117,16 @@ export default function Card({
 
                 {variant === "profile" && (
                     <>
-                        {title && <Heading className="profile-name">{title}</Heading>}
-                        {role && <Paragraph className="profile-role">{role}</Paragraph>}
-                        {description && <Paragraph className="profile-description">{description}</Paragraph>}
+                        {title && <Heading align="center" className="profile-name">{title}</Heading>}
+                        {role && <Paragraph className="profile-role text-center">{role}</Paragraph>}
+                        {description && <Paragraph className="profile-description text-center">{description}</Paragraph>}
                         {children}
                     </>
                 )}
 
                 {variant === "project" && (
                     <>
-                        {title && <Heading className="project-title">{title}</Heading>}
+                        {title && <Heading variant="subtitle" className="project-title">{title}</Heading>}
                         {description && <Paragraph className="project-description">{description}</Paragraph>}
                         {children}
                     </>
@@ -103,7 +141,7 @@ export default function Card({
 
                 {variant === "service" && (
                     <>
-                        {title && <Heading className="service-title">{title}</Heading>}
+                        {title && <Heading variant="subtitle" className="service-title">{title}</Heading>}
                         {description && <Paragraph className="service-description">{description}</Paragraph>}
                         {children}
                     </>
@@ -144,4 +182,6 @@ export default function Card({
             </div>
         </div>
     );
-}
+});
+
+export default Card;

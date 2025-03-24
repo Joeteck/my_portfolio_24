@@ -74,6 +74,7 @@ export function Heading({
                 shadow && "shadow-md",
                 glow && "text-shadow-glow",
                 code && "font-mono",
+                "py-4 px-2",
                 className
             )}
             {...props}

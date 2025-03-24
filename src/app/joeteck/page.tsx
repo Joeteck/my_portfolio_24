@@ -88,18 +88,10 @@ const TestingPage = () => {
         <>
             <Navbar type="company" />
             <div className="min-h-screen flex flex-col justify-between p-6 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-                    <ThemeSwitch />
+                <ThemeSwitch />
 
-                    <Container className="py-10 my-10">
-                        <Heading className="mb-6">Blog Post Preview Test</Heading>
-                        <Grid cols={3}>
-                            {blogPosts.map((post, index) => (
-                            <BlogPostPreviewCard key={index} {...post} />
-                            ))}
-                        </Grid>
-                    </Container>
-
-                    <Container>
+                
+                <Container>
                         <Grid cols={2} className="mb-6">
                             <ContactInfoCard
                                     name = "Adeyoju Joel"
@@ -117,7 +109,15 @@ const TestingPage = () => {
                         </Grid>
                             <PricingTable/>
                     </Container>
-                    
+
+                <Container className="py-10 my-10">
+                    <Heading className="mb-6">Blog Post Preview Test</Heading>
+                    <Grid cols={3}>
+                        {blogPosts.map((post, index) => (
+                        <BlogPostPreviewCard key={index} {...post} />
+                        ))}
+                    </Grid>
+                </Container>
 
                 <Container maxWidth="sm" className="w-[95%] md:w-[30%]">
                     <Heading className="mt-6">Sign In Form</Heading>

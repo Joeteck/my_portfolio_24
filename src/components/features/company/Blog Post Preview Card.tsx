@@ -15,9 +15,10 @@ const BlogPostPreviewCard = ({ title, description, imageUrl, link }: BlogPostPre
             image={imageUrl}
             title={title}
             description={description}
+            tilt = {true}
         >
             {/* Call-to-Action Button */}
-            <Link href={link} className="card-link my-2 inline-block">
+            <Link href={link} className="card-link my-2">
                 Read More
             </Link>
         </Card>

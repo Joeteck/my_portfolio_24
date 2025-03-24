@@ -2,10 +2,9 @@
 
 import Image from "next/image";
 import { cn } from "@/utils/cn";
-import { useRef, useCallback } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import { Paragraph } from "../typography/Paragraphs";
 import { Heading } from "../typography/Headings";
-import { memo } from "react";
 
 interface CardProps {
     variant?: "profile" | "project" | "testimonial" | "service" | "team" | "pricing" | "faq" | "case-study" | "blog";
@@ -21,23 +20,7 @@ interface CardProps {
     tilt?: boolean;
 }
 
-// Predefined image settings based on variant
-const imageVariants = {
-    profile: { width: 128, height: 128, className: "image-profile", priority: true },
-    testimonial: { width: 96, height: 96, className: "image-testimonial", priority: true },
-    blog: { width: 400, height: 250, className: "image-blog", priority: false },
-    project: { width: 400, height: 250, className: "image-project", priority: false },
-    service: { width: 160, height: 160, className: "image-service", priority: false },
-    pricing: { width: 160, height: 160, className: "image-pricing", priority: false },
-    team: { width: 160, height: 160, className: "image-team", priority: false },
-    caseStudy: { width: 160, height: 160, className: "image-case-study", priority: false },
-    faq: { width: 160, height: 160, className: "image-faq", priority: false },
-};
-
-// Default values if variant is not found
-const defaultVariant = { width: 400, height: 250, className: "card-image", priority: false };
-
-const Card = memo(function Card({
+export default function Card({
     variant,
     image,
     title,
@@ -49,139 +32,88 @@ const Card = memo(function Card({
     className,
     imageAlt = "Card image",
     tilt = false,
-}: CardProps) {
+    }: CardProps) {
     const cardRef = useRef<HTMLDivElement>(null);
-    let animationFrameId: number | null = null;
+    const tiltX = useRef(0);
+    const tiltY = useRef(0);
+    const animationFrame = useRef<number | null>(null);
 
-    const { width, height, className: imgClass, priority } = imageVariants[variant as keyof typeof imageVariants] || defaultVariant;
+    const updateTilt = useCallback(() => {
+        if (!cardRef.current) return;
+        cardRef.current.style.transform = `perspective(1000px) rotateX(${tiltY.current}deg) rotateY(${tiltX.current}deg)`;
+        animationFrame.current = requestAnimationFrame(updateTilt);
+    }, []);
 
-    // Handle tilt effect
-    const handleMouseMove = useCallback((event: React.MouseEvent) => {
+    const handleMouseMove = (event: React.MouseEvent) => {
         if (!tilt || !cardRef.current) return;
+        const card = cardRef.current;
+        const { left, top, width, height } = card.getBoundingClientRect();
+        const x = event.clientX - left - width / 2;
+        const y = event.clientY - top - height / 2;
 
-        if (animationFrameId) {
-            cancelAnimationFrame(animationFrameId);
+        tiltX.current = (x / width) * 20;
+        tiltY.current = -(y / height) * 20;
+
+        if (!animationFrame.current) {
+        animationFrame.current = requestAnimationFrame(updateTilt);
         }
+    };
 
-        animationFrameId = requestAnimationFrame(() => {
-            const card = cardRef.current!;
-            const { left, top, width, height } = card.getBoundingClientRect();
-            const x = (event.clientX - left - width / 2) / 25;
-            const y = -(event.clientY - top - height / 2) / 25;
-            card.style.transform = `rotateX(${y}deg) rotateY(${x}deg)`;
-        });
-    }, [tilt]);
-
-    // Reset tilt on mouse leave
-    const handleMouseLeave = useCallback(() => {
+    const handleMouseLeave = () => {
         if (!tilt || !cardRef.current) return;
-        if (animationFrameId) {
-            cancelAnimationFrame(animationFrameId);
-        }
-        cardRef.current.style.transform = "rotateX(0deg) rotateY(0deg)";
-    }, [tilt]);
+        tiltX.current = 0;
+        tiltY.current = 0;
+        requestAnimationFrame(updateTilt);
+    };
+
+    useEffect(() => {
+        return () => {
+        if (animationFrame.current) cancelAnimationFrame(animationFrame.current);
+        };
+    }, []);
 
     return (
         <div
-            ref={cardRef}
-            className={cn("card", variant && `${variant}-card`, tilt && "tilt-card", className)}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
+        ref={cardRef}
+        className={cn("card", variant && `${variant}-card`, tilt && "tilt-card", className)}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
         >
-            {/* Image Section */}
-            {image && (
-                <div className={cn("card-image-wrapper", imgClass && `${imgClass}-wrapper`)}>
+        {/* Image Section */}
+        {image && (
+            <div className={cn((variant === "profile") || (variant === "testimonial") ? "justify-center items-center flex mt-4" : "")}>
+                <div className={cn(
+                    variant === "profile" ? "profile-image-wrapper" :
+                    variant === "testimonial" ? "testimonial-image-wrapper" :
+                    "card-image-wrapper"
+                )}>
                     <Image
-                        src={image}
-                        alt={imageAlt}
-                        width={width}
-                        height={height}
-                        className={cn("card-image", imgClass)}
-                        priority={priority}
-                        loading={priority ? "eager" : "lazy"}
+                    src={image}
+                    alt={imageAlt}
+                    width={variant === "profile" ? 128 : variant === "testimonial" ? 112 : 400}
+                    height={variant === "profile" ? 128 : variant === "testimonial" ? 112 : 250}
+                    className={cn("card-image", variant === "profile" ? "image-profile" : variant === "testimonial" ? "image-testimonial" : `image-${variant}`)}
+                    priority={false}
+                    loading="lazy"
                     />
                     {variant === "blog" && <div className="card-overlay" />}
                 </div>
-            )}
+                </div>
+        )}
 
-            {/* Content based on variant */}
-            <div className="card-content">
-                {variant === "blog" && (
-                    <>
-                        {title && <Heading variant="subtitle" className="card-title">{title}</Heading>}
-                        {author && <Paragraph className="card-meta">By {author}</Paragraph>}
-                        {description && <Paragraph className="card-description">{description}</Paragraph>}
-                        {children}
-                    </>
-                )}
+        {/* Content */}
+        <div className={cn((variant === "profile") || (variant === "testimonial") || (variant === "pricing") ? "card-content text-center items-center justify-center" : "card-content")}>
+            <Heading className={cn((variant === "profile") || (variant === "testimonial") ? "card-title text-center" : "card-title")} variant={variant === "profile" ? "title" : "subtitle"}>
+            {title}
+            </Heading>
 
-                {variant === "profile" && (
-                    <>
-                        {title && <Heading align="center" className="profile-name">{title}</Heading>}
-                        {role && <Paragraph className="profile-role text-center">{role}</Paragraph>}
-                        {description && <Paragraph className="profile-description text-center">{description}</Paragraph>}
-                        {children}
-                    </>
-                )}
+            {variant === "profile" && role && <Paragraph className={cn((variant === "profile") || (variant === "testimonial") ? "profile-role text-center" : "profile-role")} >{role}</Paragraph>}
+            {variant !== "profile" && author && <Paragraph className="card-meta">By {author}</Paragraph>}
+            {price && <Heading className={cn((variant === "pricing") ? "text-center" : "card-description")} gradient= {true}>{price}</Heading>}
+            {description && <Paragraph className={cn((variant === "profile") || (variant === "testimonial") || (variant === "pricing") ? "card-description text-center" : "card-description")} size={variant === "pricing" ? "lg" : "md"} weight={variant === "pricing" ? "bold" : "normal"}>{description}</Paragraph>}
 
-                {variant === "project" && (
-                    <>
-                        {title && <Heading variant="subtitle" className="project-title">{title}</Heading>}
-                        {description && <Paragraph className="project-description">{description}</Paragraph>}
-                        {children}
-                    </>
-                )}
-
-                {variant === "testimonial" && (
-                    <>
-                        {description && <Paragraph className="testimonial-text">{description}</Paragraph>}
-                        {author && <Paragraph className="testimonial-author">— {author}</Paragraph>}
-                    </>
-                )}
-
-                {variant === "service" && (
-                    <>
-                        {title && <Heading variant="subtitle" className="service-title">{title}</Heading>}
-                        {description && <Paragraph className="service-description">{description}</Paragraph>}
-                        {children}
-                    </>
-                )}
-
-                {variant === "team" && (
-                    <>
-                        {title && <Heading className="team-name">{title}</Heading>}
-                        {role && <Paragraph className="team-role">{role}</Paragraph>}
-                        {children}
-                    </>
-                )}
-
-                {variant === "pricing" && (
-                    <>
-                        {title && <Heading className="pricing-title">{title}</Heading>}
-                        {price && <Paragraph className="pricing-price">{price}</Paragraph>}
-                        {description && <Paragraph className="pricing-description">{description}</Paragraph>}
-                        {children}
-                    </>
-                )}
-
-                {variant === "faq" && (
-                    <>
-                        {title && <Heading className="faq-question">{title}</Heading>}
-                        {description && <Paragraph className="faq-answer">{description}</Paragraph>}
-                        {children}
-                    </>
-                )}
-
-                {variant === "case-study" && (
-                    <>
-                        {title && <Heading className="case-study-title">{title}</Heading>}
-                        {description && <Paragraph className="case-study-description">{description}</Paragraph>}
-                        {children}
-                    </>
-                )}
-            </div>
+            {children}
+        </div>
         </div>
     );
-});
-
-export default Card;
+}

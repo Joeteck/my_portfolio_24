@@ -180,49 +180,59 @@
   }
 }
 
-/* Card Variations */
+/* Card Variant */
 @layer components {
   /* Base Card */
   .card {
     @apply relative max-w-sm rounded-lg overflow-hidden shadow-xl 
-    bg-white bg-opacity-80 dark:bg-gray-800 dark:bg-opacity-80 backdrop-blur-lg 
-    transition-transform duration-300 hover:scale-[1.03] 
-    hover:shadow-2xl pb-2;
+            bg-white bg-opacity-80 dark:bg-gray-800 dark:bg-opacity-80 backdrop-blur-lg 
+            transition-transform duration-300 hover:scale-[1.03] 
+            hover:shadow-2xl pb-4;
+    pointer-events: auto; /* Ensure it allows interaction */
   }
 
-  /* Centered Image Wrapper */
-  .card-image-wrapper {
-    @apply flex items-center justify-center w-full;
+  /* Tilt Effect */
+  .tilt-card {
+    transition: transform 0.1s ease-out;
+    will-change: transform;
   }
+
+  /* Image Wrapper */
+  .card-image-wrapper {
+    @apply relative w-full h-56 ; /* Default for blog/project */
+  }
+  /* === Image Wrappers Based on Variants === */
+.image-wrapper {
+  @apply w-full flex h-full justify-center items-center; /* Center images for all cards */
+}
+
+/* Profile Image Wrapper */
+.profile-image-wrapper {
+  @apply flex justify-center bg-black items-center w-32 h-32 rounded-full overflow-hidden border-4 border-primary;
+}
+
+/* Testimonial Image Wrapper */
+.testimonial-image-wrapper {
+  @apply flex justify-center items-center w-28 h-28 rounded-full overflow-hidden border-4 border-gray-300;
+}
 
   /* Default Image */
   .card-image {
-    @apply object-cover transition-opacity duration-300;
+    @apply w-full h-full object-cover transition-opacity duration-300;
   }
 
-  /* Centered Image Styling */
-  .profile-image,
-  .testimonial-image {
-    @apply rounded-full border-4 border-primary shadow-lg;
+  /* Dark Overlay Effect */
+  .card-overlay {
+    @apply absolute inset-0 bg-[rgba(0,0,0,0.5)] transition-opacity duration-300 pointer-events-none;
   }
 
-  /* Blog and Project */
-  .blog-image,
-  .project-image {
-    @apply w-full h-56 rounded-none;
-  }
-
-  /* Service, Pricing, Team, Case Study */
-  .service-image,
-  .pricing-image,
-  .team-image,
-  .case-study-image {
-    @apply w-40 h-40 rounded-lg;
+  .card:hover .card-overlay {
+    background: rgba(0, 0, 0, 0.0);
   }
 
   /* Card Content */
   .card-content {
-    @apply p-4 text-gray-900 dark:text-white text-center;
+    @apply p-4 text-gray-900 dark:text-white;
   }
 
   /* Title */
@@ -235,27 +245,108 @@
     @apply text-sm text-gray-400 dark:text-gray-300 mt-2;
   }
 
-  /* Meta Info (Role/Author) */
-  .card-meta {
-    @apply text-sm text-gray-500 dark:text-gray-400;
+  /* Read More Link */
+  .card-link {
+    @apply relative z-10 items-start top-4 text-primary font-medium hover:underline;
   }
 
-  /* Pricing */
+  /* Glassy, Soft Glow Effect on Hover */
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+  }
+
+  .card:hover::before {
+    opacity: 0.1;
+  }
+
+  /* === Image Adjustments Per Variant === */
+
+  /* Blog & Project - Large Images */
+  .image-blog,
+  .image-project {
+    @apply w-full h-56 rounded-none;
+  }
+
+  /* Profile & Testimonial - Rounded & Centered */
+  .image-profile,
+  .image-testimonial {
+    @apply mx-auto flex justify-center items-center;
+  }
+
+  /* Service, Pricing, Team, Case Study - Standard */
+  .image-service,
+  .image-pricing,
+  .image-team,
+  .image-case-study {
+    @apply w-40 h-40 rounded-lg object-cover;
+  }
+
+  /* === Layout Adjustments Per Variant === */
+
+  /* Centered Content */
+  .blog-card,
+  .profile-card,
+  .team-card,
+  .service-card,
+  .testimonial-card,
+  .pricing-card {
+    @apply flex flex-col items-center text-center;
+  }
+
+  /* Standard Vertical Layout */
+  .project-card,
+  .case-study-card {
+    @apply flex flex-col;
+  }
+
+  /* FAQ - No Image, Just a Simple Card */
+  .faq-card {
+    @apply card;
+  }
+
+  .card-pricing {
+    @apply  w-full max-w-sm p-8 rounded-xl shadow-lg text-center transition-transform duration-300 
+            hover:scale-[1.03] hover:shadow-2xl bg-white dark:bg-gray-900;
+  }
+
+  .card-pricing-premium {
+    @apply bg-gray-900 text-white;
+  }
+
+  .pricing-title {
+    @apply text-lg font-semibold text-gray-900 dark:text-white;
+  }
+
   .pricing-price {
     @apply text-4xl font-bold my-4;
   }
 
-  /* Overlay Effect */
-  .card-overlay {
-    @apply absolute inset-0 bg-[rgba(0,0,0,0.5)] transition-opacity duration-300 pointer-events-none;
+  .pricing-description {
+    @apply text-sm text-gray-600 dark:text-gray-300;
   }
 
-  .card:hover .card-overlay {
-    background: rgba(0, 0, 0, 0);
+  .pricing-features {
+    @apply space-y-3 mt-6;
+  }
+
+  .pricing-feature {
+    @apply flex items-center gap-2 text-gray-700 dark:text-gray-300;
+  }
+
+  .pricing-button {
+    @apply  mt-6 py-2 px-6 rounded-full font-medium text-white bg-gray-900 dark:bg-white 
+            dark:text-gray-900 hover:bg-opacity-80 transition-all duration-300;
+  }
+
+  .card-pricing-premium .pricing-button {
+    @apply bg-white text-gray-900 hover:bg-gray-200;
   }
 }
-
-
 
 /* Modal Style*/
 @layer components {
@@ -462,7 +553,7 @@
   }
 }
 
-/* Badges */
+/* Bagdes */
 @layer components {
   .badge {
     @apply inline-flex items-center justify-center rounded-full transition-all;

@@ -65,7 +65,7 @@ export function Heading({
                 uppercase && "uppercase",
                 muted && "text-muted-foreground",
                 gradient &&
-                "bg-[linear-gradient(45deg,_#1BBB8B,_#1BBB8B,_#FFA500)] bg-clip-text text-transparent",
+                "bg-[linear-gradient(45deg,_#4b1f72,_#1BBB8B,_#FFA500)] bg-clip-text text-transparent",
                 gradient &&
                 // "bg-[linear-gradient(45deg,_var(--tw-gradient-stops))] from-primary via-secondary to-accent bg-clip-text text-transparent",
                             underline && "underline",
@@ -74,7 +74,7 @@ export function Heading({
                 shadow && "shadow-md",
                 glow && "text-shadow-glow",
                 code && "font-mono",
-                "py-4 px-2",
+                "py-2 px-2",
                 className
             )}
             {...props}

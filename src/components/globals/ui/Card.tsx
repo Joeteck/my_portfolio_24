@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { cn } from "@/utils/cn";
 import { useRef, useEffect, useCallback } from "react";
-import { Paragraph } from "../typography/Paragraphs";
-import { Heading } from "../typography/Headings";
+import { Paragraph } from "../typography/Paragraph";
+import { Heading } from "../typography/Heading";
 
 interface CardProps {
     variant?: "profile" | "project" | "testimonial" | "service" | "team" | "pricing" | "faq" | "case-study" | "blog";
@@ -103,7 +103,7 @@ export default function Card({
 
         {/* Content */}
         <div className={cn((variant === "profile") || (variant === "testimonial") || (variant === "pricing") ? "card-content text-center items-center justify-center" : "card-content")}>
-            <Heading className={cn((variant === "profile") || (variant === "testimonial") ? "card-title text-center" : "card-title")} variant={variant === "profile" ? "title" : "subtitle"}>
+            <Heading className={cn((variant === "profile") || (variant === "testimonial") ? "card-title text-center" : "card-title")} variant={(variant === "profile") || (variant === "pricing") ? "title" : "subtitle"}>
             {title}
             </Heading>
 

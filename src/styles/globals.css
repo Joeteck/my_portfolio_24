@@ -704,10 +704,7 @@
   }
 }
 
-
 /* Headings */
-
-
 
 /* Toasts Notification */
 @layer components {
@@ -757,7 +754,7 @@
   }
 
   .input, .textarea, .select {
-    @apply w-full px-5 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200 text-sm md:text-xs leading-loose;
+    @apply w-full px-5 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200 text-sm md:text-base leading-loose;
     background: rgba(255, 255, 255, 0.2);
     border-color: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8px);
@@ -817,9 +814,7 @@
   }
 }
 
-
-/* Accordion styling */
-
+/* Accordion */
 @layer components {
   .accordion {
     @apply w-full transition-all duration-300 border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden;
@@ -833,12 +828,8 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
-  .accordion-item {
-    @apply border-b last:border-b-0;
-  }
-
   .accordion-header {
-    @apply w-full flex justify-between items-center px-4 py-3 cursor-pointer;
+    @apply w-full flex justify-between items-center px-4 py-3 cursor-pointer text-left;
   }
 
   .accordion-header:hover {
@@ -859,18 +850,4 @@
   .dark .accordion-content {
     background: rgba(18, 18, 18, 0.3);
   }
-
-  .accordion-content.active {
-    max-height: 500px; /* Adjust height dynamically */
-  }
-
-  .accordion-icon {
-    @apply transition-transform duration-300;
-  }
-
-  .accordion-content.active + .accordion-icon {
-    transform: rotate(180deg);
-  }
 }
-
-

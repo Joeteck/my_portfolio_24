@@ -1,7 +1,20 @@
 import type { Metadata } from 'next';
 import '../styles/globals.css';
-import { Providers } from '../components/globals/ui/Providers';
+import { Providers } from '../components/globals/ui/Provider';
 import { ThemeProvider } from '@/components/globals/ui/ThemeContext';
+import { Roboto, Roboto_Mono } from 'next/font/google';
+
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+  variable: '--font-roboto',
+});
+
+const robotoMono = Roboto_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-roboto-mono',
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -14,19 +27,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        {/* Load Roboto and Roboto Mono from Google Fonts */}
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap"
-        />
-      </head>
+    <html lang="en" className={`${roboto.variable} ${robotoMono.variable}`}>
       <body className="font-sans bg-background text-foreground" suppressHydrationWarning>
-      <Providers>
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+        <Providers>
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
         </Providers>
       </body>
     </html>

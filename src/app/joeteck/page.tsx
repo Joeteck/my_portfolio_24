@@ -2,22 +2,23 @@
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
-import { Heading } from "@/components/globals/typography/Headings";
-import { Paragraph } from "@/components/globals/typography/Paragraphs";
+import { Heading } from "@/components/globals/typography/Heading";
+import { Paragraph } from "@/components/globals/typography/Paragraph";
 import { Container } from "@/components/globals/layout/Container";
 import { Navbar } from "@/components/globals/layout/Navbar";
-import TextInput from "@/components/globals/form/TextInputs";
+import TextInput from "@/components/globals/form/TextInput";
 import Checkbox from "@/components/globals/form/Chechkbox";
 import SelectDropdown from "@/components/globals/form/SelectDropdown";
 import Textarea from "@/components/globals/form/Textarea";
 import DatePicker from "@/components/globals/form/DatePicker";
 import ToggleSwitch from "@/components/globals/form/ToggleSwitch";
 import FileUpload from "@/components/globals/form/FileUpload";
-import BlogPostPreviewCard from "@/components/features/company/Blog Post Preview Card";
-import ContactInfoCard from "@/components/features/company/Contact Info Card";
-import Card from "@/components/globals/ui/Cards";
-import { Grid } from "@/components/globals/layout/Grid System";
-import PricingTable from "@/components/features/company/Pricing Table";
+import BlogPostPreviewCard from "@/components/features/company/BlogPostPreviewCard";
+import ContactInfoCard from "@/components/features/company/ContactInfoCard";
+import Card from "@/components/globals/ui/Card";
+import { Grid } from "@/components/globals/layout/GridSystem";
+import PricingTable from "@/components/features/company/PricingTable";
+import FAQSection from "@/components/features/company/FAQSection";
 
 // Dynamic import for ThemeSwitch to prevent SSR issues
 const ThemeSwitch = dynamic(() => import("@/components/globals/ui/ThemeSwitch"), { ssr: false });
@@ -90,6 +91,8 @@ const TestingPage = () => {
             <div className="min-h-screen flex flex-col justify-between p-6 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
                 <ThemeSwitch />
 
+                <FAQSection isPortfolio={true} />
+                <FAQSection isPortfolio={false} />
                 
                 <Container>
                         <Grid cols={2} className="mb-6">
@@ -127,13 +130,13 @@ const TestingPage = () => {
                             type = "email"
                             placeholder="Email"
                             value={signInData.email}
-                            onChange={(value) => setSignInData({ ...signInData, email: value })}
+                            onChange={(e) => setSignInData({ ...signInData, email: e.target.value })}
                         />
                         <TextInput
                             type = "password"
                             placeholder="Password"
                             value={signInData.password}
-                            onChange={(value) => setSignInData({ ...signInData, password: value })}
+                            onChange={(e) => setSignInData({ ...signInData, password: e.target.value })}
                             showToggle
                         />
                         <Checkbox
@@ -155,26 +158,26 @@ const TestingPage = () => {
                             type="text"
                             placeholder="Full Name"
                             value={signUpData.fullName}
-                            onChange={(value) => setSignUpData({ ...signUpData, fullName: value })}
+                            onChange={(e) => setSignUpData({ ...signUpData, fullName: e.target.value })}
                         />
                         <TextInput
                             type="email"
                             placeholder="Email"
                             value={signUpData.email}
-                            onChange={(value) => setSignUpData({ ...signUpData, email: value })}
+                            onChange={(e) => setSignUpData({ ...signUpData, email: e.target.value })}
                         />
                         <TextInput
                             type="password"
                             placeholder="Password"
                             value={signUpData.password}
-                            onChange={(value) => setSignUpData({ ...signUpData, password: value })}
+                            onChange={(e) => setSignUpData({ ...signUpData, password: e.target.value })}
                             showToggle
                         />
                         <TextInput
                             type="password"
                             placeholder="Confirm Password"
                             value={signUpData.confirmPassword}
-                            onChange={(value) => setSignUpData({ ...signUpData, confirmPassword: value })}
+                            onChange={(e) => setSignUpData({ ...signUpData, confirmPassword: e.target.value })}
                             showToggle
                         />
                         <SelectDropdown

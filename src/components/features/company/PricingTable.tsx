@@ -1,7 +1,7 @@
 import { Check } from "lucide-react";
-import Card from "@/components/globals/ui/Cards";
+import Card from "@/components/globals/ui/Card";
 import Button from "@/components/globals/ui/Button";
-import { Grid } from "@/components/globals/layout/Grid System";
+import { Grid } from "@/components/globals/layout/GridSystem";
 import { Container } from "@/components/globals/layout/Container";
 
 type PricingPlan = {

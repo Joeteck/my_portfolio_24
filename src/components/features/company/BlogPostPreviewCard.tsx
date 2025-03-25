@@ -1,4 +1,4 @@
-import Card from "@/components/globals/ui/Cards";
+import Card from "@/components/globals/ui/Card";
 import Link from "next/link";
 
 type BlogPostPreviewProps = {

@@ -21,7 +21,7 @@ export default function StyleGuide() {
 
   return (
     <div className="flex flex-col gap-16 min-h-screen p-12 bg-background text-foreground">
-      <ThemeSwitch setTheme={setTheme} theme={theme} />
+      <ThemeSwitch/>
       
       {/* Typography */}
       <section>

@@ -1,9 +1,8 @@
 "use client";
 
-import { Paragraph } from "@/components/globals/typography/Paragraphs";
-import Card from "@/components/globals/ui/Cards";
+import { Paragraph } from "@/components/globals/typography/Paragraph";
+import Card from "@/components/globals/ui/Card";
 import { Mail, Phone, MapPin } from "lucide-react";
-import Link from "next/link";
 
 interface ContactInfoCardProps {
     name: string;
@@ -49,9 +48,10 @@ export default function ContactInfoCard({
                 </Paragraph>
 
                 {/* Call-to-Action Button */}
-                <Link href={`mailto:${email}`} className="card-link">
+                <a href={`mailto:${email}`} className="card-link">
                     Send a Message ✉️
-                </Link>
+                </a>
+
             </div>
         </Card>
     );

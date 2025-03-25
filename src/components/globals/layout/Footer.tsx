@@ -3,7 +3,7 @@ import { Container } from "@/components/globals/layout/Container";
 import { cn } from "@/utils/cn";
 import Link from "next/link";
 import { FaFacebook, FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
-import { Heading } from "../typography/Headings";
+import { Heading } from "../typography/Heading";
 
 interface FooterProps {
     type: "portfolio" | "company";

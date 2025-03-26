@@ -9,59 +9,58 @@ import { MessageCircle } from "lucide-react";
 const portfolioFAQ = [
     { 
         question: "What technologies do you specialize in?", 
-        answer: "I primarily work with React, React Native Next.js, TypeScript, Tailwind CSS, and Node.js. For backend development, I use Django and Firebase." 
+        answer: "I specialize in modern web and mobile development technologies. My frontend stack includes React, React Native, Next.js, TypeScript, and Tailwind CSS, allowing me to build fast, scalable, and responsive applications. On the backend, I primarily use Django and Firebase, leveraging their robust features for authentication, database management, and API development. I also have experience with Node.js for backend services and server-side applications."
     },
     { 
         question: "Can I see your previous projects?", 
-        answer: "Yes! You can explore my portfolio to see my latest projects, case studies, and experiments in software development." 
+        answer: "Yes! You can explore my portfolio to view my latest projects, case studies, and experiments. I have worked on various applications, including e-commerce platforms, SaaS solutions, blockchain projects, and custom web applications. Each project showcases my ability to solve complex problems with clean, scalable, and efficient code."
     },
     { 
         question: "Do you accept freelance or contract work?", 
-        answer: "Yes, I take on select freelance projects and collaborations. Feel free to contact me with your project details." 
+        answer: "Yes, I take on select freelance and contract-based projects, depending on scope, timeline, and alignment with my expertise. I enjoy working with startups, businesses, and individuals to bring their ideas to life with high-quality software solutions. If you're interested in working with me, feel free to contact me with your project details so we can discuss how I can help."
     },
     { 
         question: "Do you contribute to open-source projects?", 
-        answer: "Yes! I actively contribute to open-source projects, build developer tools, and participate in the tech community." 
+        answer: "Absolutely! I actively contribute to open-source projects, especially in areas related to web development, automation, and developer tooling. Open-source collaboration allows me to stay engaged with the developer community, improve my skills, and help build software that benefits a wider audience."
     },
     { 
         question: "What is your approach to UI/UX design?", 
-        answer: "I focus on clean, minimal, and functional UI/UX designs, incorporating the latest design trends and accessibility standards." 
+        answer: "I believe in a user-centric design approach that balances aesthetics with functionality. My UI/UX design process involves understanding user needs, wireframing, prototyping, and implementing visually appealing interfaces that prioritize accessibility and responsiveness. I leverage tools like Figma for design prototyping and Tailwind CSS for streamlined styling."
     },
     { 
         question: "How can I contact you for collaborations?", 
-        answer: "You can reach me via email, LinkedIn, or through my website's contact page." 
+        answer: "You can reach out to me via email, LinkedIn, or through my website’s contact page. I am open to discussions about potential collaborations, mentorship opportunities, and innovative projects. Whether it's a tech-related initiative or an open-source contribution, I’d be happy to connect!"
     },
 ];
-
 
 const companyFAQ = [
     { 
         question: "What services does Joeteck IT Consult offer?", 
-        answer: "We specialize in web and mobile app development, cloud solutions, cybersecurity, and IT consulting. We also offer tailored software solutions to help businesses scale." 
+        answer: "Joeteck IT Consult provides cutting-edge technology solutions tailored to businesses and startups. Our core services include:\n\n- **Web & Mobile App Development**: We build custom applications that are scalable, secure, and user-friendly.\n- **Cloud Solutions**: We offer cloud-based services such as hosting, cloud computing, and database management.\n- **Cybersecurity**: We ensure robust security protocols to protect your digital assets.\n- **IT Consulting**: We help businesses strategize and implement the right technology solutions to improve efficiency and growth.\n\nWe tailor our services to meet the unique needs of our clients, ensuring quality and innovation in every project."
     },
     { 
         question: "What industries do you serve?", 
-        answer: "We work with startups, SMEs, and enterprises across various industries, including fintech, e-commerce, healthcare, education, and logistics." 
+        answer: "We work with businesses across multiple industries, including:\n\n- **Fintech**: Secure payment systems, financial management tools, and blockchain-based solutions.\n- **E-commerce**: Custom-built e-commerce platforms with seamless integrations and payment gateways.\n- **Healthcare**: Telemedicine apps, patient management systems, and secure health data solutions.\n- **Education**: E-learning platforms, student portals, and management systems.\n- **Logistics**: Fleet management, real-time tracking solutions, and automation tools.\n\nOur expertise extends to other industries that require scalable digital transformation."
     },
     { 
         question: "Do you provide maintenance and support?", 
-        answer: "Yes, we offer ongoing maintenance, updates, and support to ensure optimal performance for all the solutions we develop." 
+        answer: "Yes! We provide ongoing maintenance and support for all projects we develop. Our services include bug fixes, security updates, performance optimizations, and feature enhancements to ensure that your application remains up-to-date, secure, and fully functional. We offer flexible support plans, whether it's a one-time update or long-term maintenance."
     },
     { 
         question: "Can you help with an existing project?", 
-        answer: "Absolutely! Whether you need to improve, optimize, or scale an existing project, we can analyze your current setup and provide the best solutions." 
+        answer: "Absolutely! We can analyze your existing project, identify areas for improvement, and provide solutions to optimize performance, security, and scalability. Whether you need debugging, refactoring, feature additions, or complete redevelopment, our team is equipped to handle it."
     },
     { 
         question: "How does your development process work?", 
-        answer: "Our process involves discovery, planning, UI/UX design, development, testing, deployment, and ongoing support. We maintain clear communication at every stage." 
+        answer: "Our development process follows a structured and agile approach to ensure efficiency and transparency:\n\n1. **Discovery & Consultation** - We discuss your needs, define the project scope, and establish goals.\n2. **Planning & UI/UX Design** - We create wireframes, prototypes, and design guidelines to ensure a seamless user experience.\n3. **Development & Implementation** - We build the product using modern technologies, following best coding practices.\n4. **Testing & QA** - We conduct rigorous testing to ensure functionality, security, and performance.\n5. **Deployment & Support** - We launch the product and provide post-launch support, updates, and maintenance.\n\nOur approach ensures that projects are delivered on time, within budget, and aligned with client expectations."
     },
     { 
         question: "How much does a project cost?", 
-        answer: "The cost varies based on project complexity, features, and timelines. Contact us for a free consultation to get an accurate quote." 
+        answer: "The cost of a project depends on several factors, including its complexity, required features, and development timeline. We offer customized pricing based on your specific needs and budget. To get an accurate quote, we recommend scheduling a free consultation where we can assess your requirements and provide a detailed cost estimate."
     },
     { 
         question: "How can I request a consultation?", 
-        answer: "You can reach out via our website’s contact form, email, or phone to schedule a free consultation." 
+        answer: "You can request a consultation by:\n\n- **Filling out the contact form** on our website.\n- **Sending us an email** with your project details.\n- **Calling our support team** to discuss your requirements.\n\nOur team will reach out to schedule a session where we can discuss your business goals and how we can help you achieve them through technology."
     },
 ];
 

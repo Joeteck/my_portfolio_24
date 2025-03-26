@@ -817,37 +817,36 @@
 /* Accordion */
 @layer components {
   .accordion {
-    @apply w-full transition-all duration-300 border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden;
-    background: rgba(255, 255, 255, 0.2);
+    @apply w-full transition-all duration-300 border-b overflow-hidden bg-transparent;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }
 
-  .dark .accordion {
+  /* .dark .accordion {
     background: rgba(29, 40, 36, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.2);
-  }
+  } */
 
   .accordion-header {
-    @apply w-full flex justify-between items-center px-4 py-3 cursor-pointer text-left;
+    @apply w-full flex justify-between items-center px-4 py-3 cursor-pointer text-left bg-transparent;
   }
 
-  .accordion-header:hover {
+  /* .accordion-header:hover {
     background: linear-gradient(90deg, var(--primary), var(--hover));
   }
 
   .dark .accordion-header {
     background: linear-gradient(90deg, var(--black), var(--hover-dark));
-  }
+  } */
 
   .accordion-content {
     @apply p-4 bg-white dark:bg-gray-900 border-t border-gray-300 dark:border-gray-700;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(0, 254, 178, 0.013);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
   }
 
   .dark .accordion-content {
-    background: rgba(18, 18, 18, 0.3);
+    background: rgba(0, 254, 178, 0.01);
   }
 }

@@ -21,6 +21,7 @@ import PricingTable from "@/components/features/company/PricingTable";
 import FAQSection from "@/components/features/company/FAQSection";
 import { CustomSlider } from "@/components/globals/layout/Slider";
 import Image from "next/image";
+import { PartnerLogoSlider } from "@/components/features/company/PartnerLogoSlider";
 
 // Dynamic import for ThemeSwitch to prevent SSR issues
 const ThemeSwitch = dynamic(() => import("@/components/globals/ui/ThemeSwitch"), { ssr: false });
@@ -93,25 +94,10 @@ const TestingPage = () => {
             <div className="min-h-screen flex flex-col justify-between p-6 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
                 <ThemeSwitch />
 
-                <Container className="flex justify-center w-[50%] p-0">
-                    <CustomSlider continuousScroll={true} variant="minimal" slidesPerView={3} >
-                        <div className="w-24 h-24 flex justify-center items-center">
-                            <Image width={60} height={60} src="/logo/google.png" alt="Google" className="grayscale hover:grayscale-0 transition duration-300"/>
-                        </div>
-                        <div className="w-24 h-24 flex justify-center items-center">
-                            <Image width={60} height={60} src="/logo/microsoft.png" alt="Microsoft" className="grayscale hover:grayscale-0 transition duration-300"/>
-                        </div>
-                        <div className="w-24 h-24 flex justify-center items-center">
-                            <Image width={60} height={60} src="/logo/aws.png" alt="AWS" className="grayscale hover:grayscale-0 transition duration-300"/>
-                        </div>
-                        <div className="w-24 h-24 flex justify-center items-center">
-                            <Image width={60} height={60} src="/logo/meta.png" alt="Meta" className="grayscale hover:grayscale-0 transition duration-300"/>
-                        </div>
-                    </CustomSlider>
-                </Container>
+                <PartnerLogoSlider/>
 
                 <Container className="flex justify-center w-[50%] mt-4 p-0">
-                    <CustomSlider autoPlaySpeed={3000} variant="minimal" slidesPerView={3} showButtons={true} showPagination={true}>
+                    <CustomSlider slidesPerView={3} showButtons={true}>
                         <div className="w-24 h-24 flex justify-center items-center">
                             <Image width={60} height={60} src="/logo/google.png" alt="Google" className="grayscale hover:grayscale-0 transition duration-300"/>
                         </div>

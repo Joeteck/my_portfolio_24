@@ -19,7 +19,7 @@ import Card from "@/components/globals/ui/Card";
 import { Grid } from "@/components/globals/layout/GridSystem";
 import PricingTable from "@/components/features/company/PricingTable";
 import FAQSection from "@/components/features/company/FAQSection";
-import { Slider } from "@/components/globals/layout/Slider";
+import { CustomSlider } from "@/components/globals/layout/Slider";
 import Image from "next/image";
 
 // Dynamic import for ThemeSwitch to prevent SSR issues
@@ -93,16 +93,39 @@ const TestingPage = () => {
             <div className="min-h-screen flex flex-col justify-between p-6 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
                 <ThemeSwitch />
 
-                <Slider slidesPerView={4} autoPlay autoPlaySpeed={2000} showPagination={false} className="w-[60%] h-full bg-slate-500 relative justify-center items-center">
-                    <Image width={60} height={60} src="/logo/google.png" alt="Google" className="w-[60px] h-auto" />
-                    <Image width={60} height={60} src="/logo/microsoft.png" alt="Microsoft" className="w-[60px] h-auto" />
-                    <Image width={60} height={60} src="/logo/aws.png" alt="AWS" className="w-[60px] h-auto" />
-                    <Image width={60} height={60} src="/logo/meta.png" alt="Meta" className="w-[60px] h-auto" />
-                    <Image width={60} height={60} src="/logo/google.png" alt="Google" className="w-[60px] h-auto" />
-                    <Image width={60} height={60} src="/logo/microsoft.png" alt="Microsoft" className="w-[60px] h-auto" />
-                    <Image width={60} height={60} src="/logo/aws.png" alt="AWS" className="w-[60px] h-auto" />
-                    <Image width={60} height={60} src="/logo/meta.png" alt="Meta" className="w-[60px] h-auto" />
-                </Slider>
+                <Container className="flex justify-center w-[50%] p-0">
+                    <CustomSlider continuousScroll={true} variant="minimal" slidesPerView={3} >
+                        <div className="w-24 h-24 flex justify-center items-center">
+                            <Image width={60} height={60} src="/logo/google.png" alt="Google" className="grayscale hover:grayscale-0 transition duration-300"/>
+                        </div>
+                        <div className="w-24 h-24 flex justify-center items-center">
+                            <Image width={60} height={60} src="/logo/microsoft.png" alt="Microsoft" className="grayscale hover:grayscale-0 transition duration-300"/>
+                        </div>
+                        <div className="w-24 h-24 flex justify-center items-center">
+                            <Image width={60} height={60} src="/logo/aws.png" alt="AWS" className="grayscale hover:grayscale-0 transition duration-300"/>
+                        </div>
+                        <div className="w-24 h-24 flex justify-center items-center">
+                            <Image width={60} height={60} src="/logo/meta.png" alt="Meta" className="grayscale hover:grayscale-0 transition duration-300"/>
+                        </div>
+                    </CustomSlider>
+                </Container>
+
+                <Container className="flex justify-center w-[50%] mt-4 p-0">
+                    <CustomSlider autoPlaySpeed={3000} variant="minimal" slidesPerView={3} showButtons={true} showPagination={true}>
+                        <div className="w-24 h-24 flex justify-center items-center">
+                            <Image width={60} height={60} src="/logo/google.png" alt="Google" className="grayscale hover:grayscale-0 transition duration-300"/>
+                        </div>
+                        <div className="w-24 h-24 flex justify-center items-center">
+                            <Image width={60} height={60} src="/logo/microsoft.png" alt="Microsoft" className="grayscale hover:grayscale-0 transition duration-300"/>
+                        </div>
+                        <div className="w-24 h-24 flex justify-center items-center">
+                            <Image width={60} height={60} src="/logo/aws.png" alt="AWS" className="grayscale hover:grayscale-0 transition duration-300"/>
+                        </div>
+                        <div className="w-24 h-24 flex justify-center items-center">
+                            <Image width={60} height={60} src="/logo/meta.png" alt="Meta" className="grayscale hover:grayscale-0 transition duration-300"/>
+                        </div>
+                    </CustomSlider>
+                </Container>
 
 
                 <FAQSection isPortfolio={true} />

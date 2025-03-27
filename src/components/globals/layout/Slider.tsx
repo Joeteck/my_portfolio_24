@@ -1,62 +1,57 @@
 "use client";
 
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 interface SliderProps {
     children: React.ReactNode;
-    direction?: "horizontal" | "vertical";
-    autoPlay?: boolean;
     autoPlaySpeed?: number;
-    loop?: boolean;
-    showButtons?: boolean;
-    showPagination?: boolean;
+    continuousScroll?: boolean;
     slidesPerView?: number;
     spaceBetween?: number;
+    showButtons?: boolean;
+    showPagination?: boolean;
     className?: string;
+    variant?: "default" | "minimal" | "bordered";
 }
 
-export const Slider = ({
+export const CustomSlider = ({
     children,
-    direction = "horizontal",
-    autoPlay = false,
     autoPlaySpeed = 3000,
-    loop = true,
-    showButtons = true,
-    showPagination = true,
+    continuousScroll = false,
     slidesPerView = 1,
     spaceBetween = 20,
-    className,
-    }: SliderProps) => {
+    showButtons = false,
+    showPagination = false,
+    className = "",
+    variant = "default",
+}: SliderProps) => {
+    const settings = {
+        infinite: true,
+        speed: continuousScroll ? 5000 : 1000, // Smooth speed for continuous scroll
+        slidesToShow: slidesPerView,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: autoPlaySpeed,
+        arrows: showButtons, // Show navigation arrows if enabled
+        dots: showPagination, // Show pagination dots if enabled
+        pauseOnHover: true,
+        cssEase: "linear",
+    };
+
     return (
-        <div className={`relative w-full ${className}`}>
-        <Swiper
-            modules={[Navigation, Pagination, Autoplay]}
-            direction={direction}
-            loop={loop}
-            autoplay={autoPlay ? { delay: autoPlaySpeed, disableOnInteraction: false } : false}
-            navigation={showButtons}
-            pagination={showPagination ? { clickable: true } : false}
-            slidesPerView={slidesPerView}
-            spaceBetween={spaceBetween}
-            centeredSlides={true} // Ensure proper centering
-            breakpoints={{
-            640: { slidesPerView: 2 },
-            768: { slidesPerView: 3 },
-            1024: { slidesPerView: slidesPerView }, // Match prop
-            }}
-            className="w-full"
-        >
-            {React.Children.map(children, (child, index) => (
-            <SwiperSlide key={index} className="flex justify-center items-center h-full"> {/* Ensures vertical alignment */}
-                {child}
-            </SwiperSlide>
-            ))}
-        </Swiper>
+        <div className={`relative w-full flex justify-center items-center ${className}`}>
+            <Slider {...settings} className={`w-full flex justify-center items-center ${
+                    variant === "minimal" ? "bg-transparent" : "bg-primary"
+                }`}>
+                {React.Children.map(children, (child, index) => (
+                    <div key={index} className="flex justify-center items-center"> 
+                        {child}
+                    </div>
+                ))}
+            </Slider>
         </div>
     );
 };

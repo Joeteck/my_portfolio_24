@@ -1,0 +1,50 @@
+name: Deploy Joeteck App
+
+on:
+  push:
+    branches:
+      - main  # Runs on push to main
+  pull_request:
+    branches:
+      - main  # Runs on PRs to main
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.14.0  # Ensure exact version
+
+      - name: Cache Dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.npm
+            .next/cache
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Tests
+        run: npm test  # Executes Jest tests
+
+      - name: Build Project
+        run: npm run build  # Compiles Next.js app
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: "--prod"

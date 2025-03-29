@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "test": "jest",
-    "test:e2e": "cypress open"
+    "test:e2e": "cypress open",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
     "clsx": "^2.1.1",

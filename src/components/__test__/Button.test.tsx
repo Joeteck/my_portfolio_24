@@ -1,8 +1,13 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import "@testing-library/jest-dom";
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi } from "vitest"; // ✅ Import expect from vitest
 import React from "react";
 import Button from "../globals/ui/Button";
+
+// Mocking the `cn` utility
+vi.mock("@/utils/cn", () => ({
+  cn: (...classes: Array<string | undefined | null>) =>
+    classes.filter(Boolean).join(" "),
+}));
 
 describe("Button Component", () => {
   it("renders the button with default primary variant", () => {
@@ -10,7 +15,7 @@ describe("Button Component", () => {
     const button = screen.getByRole("button", { name: /click me/i });
 
     expect(button).toBeInTheDocument();
-    expect(button).toHaveClass("btn", "btn-primary");
+    expect(button).toHaveClass("btn", "btn-primary"); // Ensure default variant
   });
 
   it("applies the correct variant class", () => {
@@ -21,7 +26,7 @@ describe("Button Component", () => {
   });
 
   it("handles click events", () => {
-    const handleClick = vi.fn();
+    const handleClick = vi.fn(); // ✅ Use `vi.fn()` instead of `jest.fn()`
     render(<Button onClick={handleClick}>Click me</Button>);
 
     const button = screen.getByRole("button", { name: /click me/i });

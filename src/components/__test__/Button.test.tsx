@@ -1,13 +1,8 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import "@testing-library/jest-dom"; // Ensures Jest DOM matchers work
+import "@testing-library/jest-dom";
+import { describe, it, expect, vi } from "vitest";
 import React from "react";
 import Button from "../globals/ui/Button";
-
-// Mocking the `cn` utility
-jest.mock("@/utils/cn", () => ({
-  cn: (...classes: Array<string | undefined | null>) =>
-    classes.filter(Boolean).join(" "),
-}));
 
 describe("Button Component", () => {
   it("renders the button with default primary variant", () => {
@@ -15,7 +10,7 @@ describe("Button Component", () => {
     const button = screen.getByRole("button", { name: /click me/i });
 
     expect(button).toBeInTheDocument();
-    expect(button).toHaveClass("btn", "btn-primary"); // Ensure default variant
+    expect(button).toHaveClass("btn", "btn-primary");
   });
 
   it("applies the correct variant class", () => {
@@ -26,7 +21,7 @@ describe("Button Component", () => {
   });
 
   it("handles click events", () => {
-    const handleClick = jest.fn();
+    const handleClick = vi.fn();
     render(<Button onClick={handleClick}>Click me</Button>);
 
     const button = screen.getByRole("button", { name: /click me/i });
@@ -43,7 +38,7 @@ describe("Button Component", () => {
   });
 
   it("forwards refs correctly", () => {
-    const ref = React.createRef<HTMLButtonElement>(); // Use createRef instead of jest.fn()
+    const ref = React.createRef<HTMLButtonElement>();
     render(<Button ref={ref}>Ref Button</Button>);
 
     expect(ref.current).toBeInstanceOf(HTMLButtonElement);

@@ -2,11 +2,12 @@
   "name": "my_portfolio_24",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
+"scripts": {
   "test": "vitest",
+  "test:unit": "vitest --run",
   "test:ui": "vitest --ui",
   "test:watch": "vitest --watch",
-  "test:e2e": "cypress open",
+  "test:e2e": "playwright test",
   "dev": "next dev",
   "build": "next build",
   "start": "next start",

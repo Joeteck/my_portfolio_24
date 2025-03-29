@@ -2,18 +2,20 @@
   "name": "my_portfolio_24",
   "version": "0.1.0",
   "private": true,
-"scripts": {
-  "test": "vitest",
-  "test:unit": "vitest --run",
+  "scripts": {
+    "test": "vitest",
+    "test:unit": "vitest --run",
   "test:ui": "vitest --ui",
-  "test:watch": "vitest --watch",
-  "test:e2e": "playwright test",
-  "dev": "next dev",
-  "build": "next build",
-  "start": "next start",
-  "lint": "next lint"
-},
+    "test:watch": "vitest --watch",
+    "test:e2e": "playwright test",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
   "dependencies": {
+    "@vercel/analytics": "^1.5.0",
+    "@vercel/speed-insights": "^1.2.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.4.7",
     "glob": "^11.0.1",

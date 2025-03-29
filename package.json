@@ -4,8 +4,7 @@
   "private": true,
 "scripts": {
   "test": "vitest",
-  "test:unit": "vitest --run",
-  "test:ui": "vitest --ui",
+  "test:unit": "vitest",
   "test:watch": "vitest --watch",
   "test:e2e": "playwright test",
   "dev": "next dev",

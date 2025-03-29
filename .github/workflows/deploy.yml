@@ -25,10 +25,18 @@ jobs:
         run: npm install
 
       - name: Run Unit & Integration Tests (Vitest)
-        run: npm run test:unit
+        run: npm run test
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
 
       - name: Run E2E Tests (Playwright)
-        run: npm run test:e2e
+        run: |
+          if [ -d "e2e" ] && [ "$(ls -A e2e)" ]; then
+            npm run test:e2e
+          else
+            echo "No E2E tests found, skipping..."
+          fi
 
       - name: Build Project
         run: npm run build
@@ -53,4 +61,6 @@ jobs:
         run: npm run build
 
       - name: Deploy to Vercel
-        run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: npx vercel --prod --token=$VERCEL_TOKEN

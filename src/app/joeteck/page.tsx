@@ -96,7 +96,7 @@ const TestingPage = () => {
 
                 <PartnerLogoSlider/>
 
-                <Container className="flex justify-center w-[50%] mt-4 p-0">
+                {/* <Container className="flex justify-center w-[50%] min-md:w-[50%] mt-4 p-0">
                     <CustomSlider slidesPerView={3} showButtons={true}>
                         <div className="w-24 h-24 flex justify-center items-center">
                             <Image width={60} height={60} src="/logo/google.png" alt="Google" className="grayscale hover:grayscale-0 transition duration-300"/>
@@ -111,7 +111,7 @@ const TestingPage = () => {
                             <Image width={60} height={60} src="/logo/meta.png" alt="Meta" className="grayscale hover:grayscale-0 transition duration-300"/>
                         </div>
                     </CustomSlider>
-                </Container>
+                </Container> */}
 
 
                 <FAQSection isPortfolio={true} />

@@ -66,7 +66,7 @@ export const Navbar = ({ type }: NavbarProps) => {
 
             <div className="flex flex-row">
             <button className="hidden md:block p-2 bg-transparent text-sm font-extralight">Action</button>
-            <div className="md:block hidden justify-center items-center"> 
+            <div className="md:flex hidden justify-center items-center"> 
                 <ThemeSwitch />
             </div>
             <button

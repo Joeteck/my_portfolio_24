@@ -4,35 +4,82 @@
 
 @layer base {
   :root {
-    /* Light Mode Variables */
+    /* Light Mode Defaults */
     --background: #f4f4f4;
     --foreground: #171717;
-    --primary: #19bf88;
-    --secondary: #ff6600;
-    --accent: #f4a261;
     --hover-light: #e0e0e0;
     --hover-dark: #2c2d2c;
     --error: #e63946;
     --success: #2a9d8f;
-    --black:#1B1C1E;
-    --white:#FAFAFA;
+    --black: #1b1c1e;
+    --white: #fafafa;
+    
+    /* Default Theme (Mountain Meadow) */
+    --primary: #1bbb8b;
+    --secondary: #ebaA4c;
+    --accent: #716ea4;
 
-    /* Custom Shadows */
+    /* Shadows */
     --shadow-custom: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-custom-dark: 4px 4px 6px 1px rgba(75, 75, 75, 0.3), 4px 2px 4px 1px rgba(75, 75, 75, 0.2);
-
-    /* Fonts */
-    --font-sans: 'Circular', 'Circular Std', '-apple-system', 'BlinkMacSystemFont', 'Roboto', Arial, sans-serif;
-    --font-mono: ' Roboto Mono', 'monospace';
   }
 
+  /* Dark Mode */
   .dark {
-    /* Dark Mode Variables */
     --background: #121212;
     --foreground: #e0e0e0;
   }
 
-  /* Apply custom fonts */
+  /* Themes */
+  .theme-default {
+    --primary: #1bbb8b;
+    --secondary: #ebaA4c;
+    --accent: #716ea4;
+  }
+
+  .theme-purple {
+    --primary: #775fa6;
+    --secondary: #1c0f1e;
+    --accent: #ebaA4c;
+  }
+
+  .theme-yellow {
+    --primary: #ebaA4c;
+    --secondary: #716ea4;
+    --accent: #775fa6;
+  }
+
+  .theme-blue {
+    --primary: #0084ff;
+    --secondary: #1c1c3b;
+    --accent: #f4a261;
+  }
+
+  .theme-red {
+    --primary: #e63946;
+    --secondary: #1c0f1e;
+    --accent: #f4a261;
+  }
+
+  .theme-cyan {
+    --primary: #00bcd4;
+    --secondary: #1b1c1e;
+    --accent: #f4a261;
+  }
+
+  .theme-green {
+    --primary: #4caf50;
+    --secondary: #1c0f1e;
+    --accent: #ebaA4c;
+  }
+
+  .theme-orange {
+    --primary: #ff6600;
+    --secondary: #1c0f1e;
+    --accent: #716ea4;
+  }
+
+  /* Apply to Body */
   body {
     height: 100%;
     width: 100%;
@@ -40,10 +87,6 @@
     background-color: var(--background);
     color: var(--foreground);
     line-height: 1.7;
-  }
-
-  code {
-    font-family: var(--font-mono);
   }
 }
 

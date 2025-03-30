@@ -15,8 +15,8 @@ const partnerLogos = [
 
 export const PartnerLogoSlider = () => {
     return (
-        <Container className="flex justify-center w-[50%] mt-4 p-0">
-            <CustomSlider continuousScroll={true} slidesPerView={4}>
+        <Container className="flex justify-center w-full md:w-[50%] h-fit mt-4 p-0">
+            <CustomSlider continuousScroll={true} slidesPerView={2}>
                 {partnerLogos.map((logo, index) => (
                     <Popover key={index} position="top" hover trigger={
                         <div className="w-24 h-24 flex justify-center items-center">

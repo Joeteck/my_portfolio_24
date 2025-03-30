@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import '../styles/globals.css';
 import { Providers } from '../components/globals/ui/Provider';
-import { ThemeProvider } from '@/components/globals/ui/ThemeContext';
+import { ThemeProvider } from '@/context/ThemeContext';
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 import { Roboto, Roboto_Mono } from 'next/font/google';
 
 const roboto = Roboto({
@@ -31,6 +33,8 @@ export default function RootLayout({
       <body className="font-sans bg-background text-foreground" suppressHydrationWarning>
         <Providers>
           <ThemeProvider>
+            <SpeedInsights/>
+            <Analytics/>
             {children}
           </ThemeProvider>
         </Providers>

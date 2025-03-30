@@ -1,0 +1,105 @@
+1. Primary Color & Shades
+Primary: #1BBB8B (Mountain Meadow)
+
+Light Variants:
+
+#20DEA5 (Light 1)
+
+#43E3B3 (Light 2)
+
+#67E9C2 (Light 3)
+
+#8AEED0 (Light 4)
+
+#AEF3DE (Light 5)
+
+Dark Variants:
+
+#159770 (Dark 1)
+
+#107355 (Dark 2)
+
+#0B503B (Dark 3)
+
+#062C20 (Dark 4)
+
+#010806 (Dark 5)
+
+2. Accent Colors & Shades
+Accent 1 (Warm Yellow)
+Base: #EBAA4C
+
+Lighter Shades:
+
+#EFBB70, #F3CC95, #F7DEBA, #FBEFDE, #FFFFFF
+
+Darker Shades:
+
+#E69827, #CE8317, #A96C12, #84540E, #603D0A
+
+Accent 2 (Muted Purple)
+Base: #716EA4
+
+Lighter Shades:
+
+#8987B3, #A2A0C3, #BAB9D3, #D3D2E2, #EBEBF2
+
+Darker Shades:
+
+#5C598F, #4C4A76, #3C3A5D, #2C2A44, #1B1A2B
+
+Accent 3 (Deep Purple)
+Base: #775FA6
+
+Lighter Shades:
+
+#8D79B4, #A393C3, #B9ADD1, #D0C7E0, #E6E2EE
+
+Darker Shades:
+
+#634E8D, #514073, #3E3159, #2C223E, #191424
+
+Accent 4 (Dark Plum)
+Base: #1C0F1E
+
+Lighter Shades:
+
+#351C39, #4E2A54, #68376F, #81458A, #9A52A6
+
+Darker Shades:
+
+#020102, #000000, #000000, #000000, #000000
+
+3. Neutral Colors (Whites, Blacks, Grays)
+Best White: #F8F8F8 (Soft, not too harsh)
+
+Best Black: #0B0B0B (Rich, deep black)
+
+Grays for UI elements:
+
+#E1E1E1 (Light Gray)
+
+#B4B4B4 (Medium Gray)
+
+#707070 (Dark Gray)
+
+4. Theme Variations
+Light Mode:
+
+Background: #F8F8F8
+
+Text: #1C0F1E
+
+Primary Highlights: #1BBB8B, #EBAA4C
+
+Accents: #716EA4, #775FA6
+
+Dark Mode:
+
+Background: #0B0B0B
+
+Text: #F8F8F8
+
+Primary Highlights: #1BBB8B, #EBAA4C
+
+Accents: #716EA4, #775FA6

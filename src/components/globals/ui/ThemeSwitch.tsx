@@ -1,31 +1,57 @@
 "use client";
 
-import { Moon, Sun } from "lucide-react";
+import { useTheme } from "@/context/ThemeContext";
 import { motion } from "framer-motion";
-import { useTheme } from "./ThemeContext";
+import { Sun, Moon, Palette } from "lucide-react";
+import { themes } from "@/utils/theme";
 
 const ThemeSwitch = () => {
-    const { theme, setTheme } = useTheme();
+    const { theme, setTheme, mode, setMode } = useTheme();
 
     const toggleTheme = () => {
-        setTheme(theme === "dark" ? "light" : "dark");
+        const currentIndex = themes.indexOf(theme);
+        const nextIndex = (currentIndex + 1) % themes.length;
+        setTheme(themes[nextIndex]);
+    };
+
+    const toggleMode = () => {
+        setMode(mode === "dark" ? "light" : "dark");
     };
 
     return (
-        <button 
-        onClick={toggleTheme} 
-        className="block items-center w-fit bg-transparent dark:text-white text-black"
-        >
-        <motion.span 
-            key={theme} 
-            initial={{ opacity: 0, scale: 0.8 }} 
-            animate={{ opacity: 1, scale: 1 }} 
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.2 }}
-        >
-            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-        </motion.span>
-        </button>
+        <div className="flex gap-3">
+            {/* Theme Switch */}
+            <button 
+                onClick={toggleTheme} 
+                className="block items-center w-fit bg-transparent dark:text-white text-black"
+            >
+                <motion.span 
+                    key={theme} 
+                    initial={{ opacity: 0, scale: 0.8 }} 
+                    animate={{ opacity: 1, scale: 1 }} 
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.2 }}
+                >
+                    <Palette size={18} />
+                </motion.span>
+            </button>
+
+            {/* Mode Switch */}
+            <button 
+                onClick={toggleMode} 
+                className="block items-center w-fit bg-transparent dark:text-white text-black"
+            >
+                <motion.span 
+                    key={mode} 
+                    initial={{ opacity: 0, scale: 0.8 }} 
+                    animate={{ opacity: 1, scale: 1 }} 
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.2 }}
+                >
+                    {mode === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+                </motion.span>
+            </button>
+        </div>
     );
 };
 

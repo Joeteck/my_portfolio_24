@@ -13,15 +13,11 @@
     --success: #2a9d8f;
     --black: #1b1c1e;
     --white: #fafafa;
-    
-    /* Default Theme (Mountain Meadow) */
+
+    /* Default Theme (Premi) */
     --primary: #1bbb8b;
     --secondary: #ebaA4c;
     --accent: #716ea4;
-
-    /* Shadows */
-    --shadow-custom: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-custom-dark: 4px 4px 6px 1px rgba(75, 75, 75, 0.3), 4px 2px 4px 1px rgba(75, 75, 75, 0.2);
   }
 
   /* Dark Mode */
@@ -30,23 +26,23 @@
     --foreground: #e0e0e0;
   }
 
-  /* Themes */
-  .theme-default {
+  /* Team Themes */
+  .theme-premi {
     --primary: #1bbb8b;
     --secondary: #ebaA4c;
     --accent: #716ea4;
   }
 
-  .theme-purple {
-    --primary: #775fa6;
-    --secondary: #1c0f1e;
-    --accent: #ebaA4c;
+  .theme-green {
+    --primary: #34D399;
+    --secondary: #A3E635;
+    --accent: #10B981;
   }
 
-  .theme-yellow {
-    --primary: #ebaA4c;
-    --secondary: #716ea4;
-    --accent: #775fa6;
+  .theme-red {
+    --primary: #EF4444;
+    --secondary: #F87171;
+    --accent: #DC2626;
   }
 
   .theme-blue {
@@ -55,22 +51,10 @@
     --accent: #f4a261;
   }
 
-  .theme-red {
-    --primary: #e63946;
-    --secondary: #1c0f1e;
-    --accent: #f4a261;
-  }
-
   .theme-cyan {
     --primary: #00bcd4;
     --secondary: #1b1c1e;
     --accent: #f4a261;
-  }
-
-  .theme-green {
-    --primary: #4caf50;
-    --secondary: #1c0f1e;
-    --accent: #ebaA4c;
   }
 
   .theme-orange {

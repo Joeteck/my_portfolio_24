@@ -1,36 +1,52 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
-import { themes, setTheme, getTheme, setMode, getMode } from "@/utils/theme"; // Adjust the path if needed
+import { themes } from "@/utils/theme"; // Ensure you have a list of available themes
 
 interface ThemeContextType {
     theme: string;
     setTheme: (theme: string) => void;
-    mode: 'light' | 'dark';
-    setMode: (mode: 'light' | 'dark') => void;
+    mode: "light" | "dark";
+    setMode: (mode: "light" | "dark") => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-    const [theme, setThemeState] = useState<string>(getTheme());
-    const [mode, setModeState] = useState<'light' | 'dark'>(getMode());
+    const getStoredTheme = () => localStorage.getItem("theme") || themes[0]; // Default to first theme
+    const getStoredMode = () => {
+        const storedMode = localStorage.getItem("mode");
+        if (storedMode === "light" || storedMode === "dark") {
+            return storedMode; // Valid mode
+        }
+        return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    };
+    
+    const [theme, setThemeState] = useState<string>(getStoredTheme);
+    const [mode, setModeState] = useState<"light" | "dark">(getStoredMode());
 
+    // Apply theme & mode on mount
     useEffect(() => {
-        setThemeState(getTheme());
-        setModeState(getMode());
-    }, []);
+        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.classList.toggle("dark", mode === "dark");
+    }, [theme, mode]);
+
+    // Save theme & mode in localStorage when they change
+    useEffect(() => {
+        localStorage.setItem("theme", theme);
+        localStorage.setItem("mode", mode);
+    }, [theme, mode]);
 
     const handleThemeChange = (newTheme: string) => {
         if (themes.includes(newTheme)) {
-            setTheme(newTheme);
             setThemeState(newTheme);
+            document.documentElement.setAttribute("data-theme", newTheme);
         }
     };
 
-    const handleModeChange = (newMode: 'light' | 'dark') => {
-        setMode(newMode);
+    const handleModeChange = (newMode: "light" | "dark") => {
         setModeState(newMode);
+        document.documentElement.classList.toggle("dark", newMode === "dark");
     };
 
     return (

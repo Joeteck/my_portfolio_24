@@ -4,6 +4,7 @@ import { EyeOff, Eye } from "lucide-react";
 
 type TextInputProps = {
     placeholder?: string;
+    className?: string;
     value: string;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void; // ✅ Accepts event instead of string
     type?: "text" | "email" | "password" | "number" | "tel" | "url" | "search";
@@ -12,6 +13,7 @@ type TextInputProps = {
 
 const TextInput = ({
     placeholder,
+    className = "",
     value,
     onChange,
     type = "text",
@@ -32,7 +34,7 @@ const TextInput = ({
                 placeholder={placeholder}
                 value={value}
                 onChange={onChange} // ✅ Directly passing event
-                className="input w-full p-2 border rounded-md"
+                className={`input rounded-md w-full p-2 border  ${className}`}
             />
             {isPasswordType && showToggle && (
                 <button

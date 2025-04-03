@@ -29,7 +29,7 @@ const Sidebar = ({ isOpen, setIsOpen, links }: SidebarProps) => {
         {isOpen && (
             <motion.ul
             ref={menuRef}
-            className="md:hidden flex flex-col gap-6 mt-0 p-4 bg-white dark:bg-gray-900 fixed top-14 left-0 w-40 z-50 cursor-pointer"
+            className="md:hidden flex flex-col gap-6 mt-0 p-4 bg-white dark:bg-gray-900 fixed top-14 left-0 w-40 z-50 cursor-pointer drop-shadow-xl"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}

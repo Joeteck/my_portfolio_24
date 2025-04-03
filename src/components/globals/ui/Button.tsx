@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef, ButtonHTMLAttributes } from "react";
+import React, { forwardRef, ButtonHTMLAttributes } from "react";
 import { cn } from "@/utils/cn"; // Utility for conditional class merging
 
 type ButtonVariant =
@@ -19,26 +19,27 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 // Forwarding ref to allow external components to use `useRef`
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-    ({ variant = "primary", children, className, ...props }, ref) => {
+    ({ variant = "primary", children, className, disabled, ...props }, ref) => {
         return (
-        <button
-            ref={ref} // ✅ Assign the forwarded ref here
-            className={cn(
-            "btn",
-            variant === "primary" && "btn-primary",
-            variant === "secondary" && "btn-secondary",
-            variant === "accent" && "btn-accent",
-            variant === "error" && "btn-error",
-            variant === "success" && "btn-success",
-            variant === "outline" && "btn-outline",
-            variant === "ghost" && "btn-ghost",
-            variant === "disabled" && "btn-disabled",
-            className
-            )}
-            {...props}
-        >
-            {children}
-        </button>
+            <button
+                ref={ref} // ✅ Assign the forwarded ref here
+                disabled={disabled} // ✅ Properly disable button
+                className={cn(
+                    "btn",
+                    variant === "primary" && "btn-primary",
+                    variant === "secondary" && "btn-secondary",
+                    variant === "accent" && "btn-accent",
+                    variant === "error" && "btn-error",
+                    variant === "success" && "btn-success",
+                    variant === "outline" && "btn-outline",
+                    variant === "ghost" && "btn-ghost",
+                    (variant === "disabled" || disabled) && "btn-disabled", // ✅ Apply "btn-disabled" correctly
+                    className
+                )}
+                {...props}
+            >
+                {children}
+            </button>
         );
     }
 );

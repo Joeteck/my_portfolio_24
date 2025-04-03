@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollToPlugin, ScrollTrigger } from "gsap/all";
-import Tilt from "react-parallax-tilt";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import SmoothScroll from "smooth-scroll";
@@ -24,7 +23,7 @@ const RotatingTorus = () => {
   useEffect(() => {
     if (meshRef.current) {
       meshRef.current.rotation.x = Math.PI / 4; // 45 degrees in radians
-      meshRef.current.rotation.y = Math.PI /8; // 22.5 degrees in radians
+      meshRef.current.rotation.y = Math.PI / 8; // 22.5 degrees in radians
     }
   }, []);
 
@@ -123,7 +122,6 @@ const LeadingPage = () => {
 
   return (
     <div className={`relative w-full flex flex-col justify-center items-center h-screen overflow-hidden ${mode === "dark" ? "dark" : "light"}`}>
-
       <CodeSnippet /> {/* Add this line */}
 
       {/* Custom Cursor */}
@@ -147,7 +145,7 @@ const LeadingPage = () => {
 
       {/* 3D Background */}
       <div className="threeD-container absolute inset-0 flex items-center justify-center">
-        <Canvas>
+        <Canvas role="presentation">
           <ambientLight intensity={0.5} />
           <pointLight position={[5, 5, 5]} intensity={1.5} color="cyan" />
           <RotatingTorus />
@@ -216,7 +214,6 @@ const LeadingPage = () => {
       >
         {mode === "dark" ? "🌞" : "🌙"}
       </div>
-
     </div>
   );
 };

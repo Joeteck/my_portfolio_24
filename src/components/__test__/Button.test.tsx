@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import "@testing-library/jest-dom";
+import "@testing-library/jest-dom/vitest"; // ✅ Use the Vitest-compatible version
 import { describe, it, expect, vi } from "vitest";
-import React from "react";
+import React from "react"; // ✅ Ensures React is properly recognized
 import Button from "../globals/ui/Button";
 
 describe("Button Component", () => {
@@ -53,6 +53,15 @@ describe("Button Component", () => {
     render(<Button disabled>Disabled</Button>);
     const button = screen.getByRole("button", { name: /disabled/i });
 
-    expect(button).toBeDisabled();
+    expect(button).toBeDisabled(); // ✅ Check if button is actually disabled
+    expect(button).toHaveClass("btn-disabled"); // ✅ Check if class is applied
+  });
+
+  it("does not apply `btn-disabled` when only the `variant` is set to `disabled`", () => {
+    render(<Button variant="disabled">Disabled Variant</Button>);
+    const button = screen.getByRole("button", { name: /disabled variant/i });
+
+    expect(button).not.toBeDisabled(); // ✅ Should not be disabled if only `variant="disabled"`
+    expect(button).toHaveClass("btn-disabled"); // ✅ Should still have class
   });
 });

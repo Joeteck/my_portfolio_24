@@ -22,6 +22,8 @@ import FAQSection from "@/components/features/company/FAQSection";
 import { CustomSlider } from "@/components/globals/layout/Slider";
 import Image from "next/image";
 import { PartnerLogoSlider } from "@/components/features/company/PartnerLogoSlider";
+import { ServiceCard } from "@/components/features/company/ServiceCard";
+import { TeamMemberCard } from "@/components/features/company/TeamMemberCard";
 
 // Dynamic import for ThemeSwitch to prevent SSR issues
 const ThemeSwitch = dynamic(() => import("@/components/globals/ui/ThemeSwitch"), { ssr: false });
@@ -96,23 +98,21 @@ const TestingPage = () => {
 
                 <PartnerLogoSlider/>
 
-                {/* <Container className="flex justify-center w-[50%] min-md:w-[50%] mt-4 p-0">
-                    <CustomSlider slidesPerView={3} showButtons={true}>
-                        <div className="w-24 h-24 flex justify-center items-center">
-                            <Image width={60} height={60} src="/logo/google.png" alt="Google" className="grayscale hover:grayscale-0 transition duration-300"/>
-                        </div>
-                        <div className="w-24 h-24 flex justify-center items-center">
-                            <Image width={60} height={60} src="/logo/microsoft.png" alt="Microsoft" className="grayscale hover:grayscale-0 transition duration-300"/>
-                        </div>
-                        <div className="w-24 h-24 flex justify-center items-center">
-                            <Image width={60} height={60} src="/logo/aws.png" alt="AWS" className="grayscale hover:grayscale-0 transition duration-300"/>
-                        </div>
-                        <div className="w-24 h-24 flex justify-center items-center">
-                            <Image width={60} height={60} src="/logo/meta.png" alt="Meta" className="grayscale hover:grayscale-0 transition duration-300"/>
-                        </div>
-                    </CustomSlider>
-                </Container> */}
+                <Container className="flex flex-row gap-5 w-full">
+                    <ServiceCard
+                        title="Web Development"
+                        description="We create modern, scalable, and high-performing web applications tailored to your needs."
+                        image="/images/service/web-dev.jpg"
+                        />
 
+                    <TeamMemberCard
+                        name="Adeyoju Joel"
+                        role="Lead Frontend Engineer"
+                        image="/images/team/joel.jpg"
+                        className="w-full"
+                    />
+
+                </Container>
 
                 <FAQSection isPortfolio={true} />
                 <FAQSection isPortfolio={false} />

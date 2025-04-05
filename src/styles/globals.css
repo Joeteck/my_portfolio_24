@@ -308,9 +308,12 @@
   /* Service, Pricing, Team, Case Study - Standard */
   .image-service,
   .image-pricing,
-  .image-team,
   .image-case-study {
     @apply w-40 h-40 rounded-lg object-cover;
+  }
+  
+  .image-team{
+    @apply w-40 h-50 rounded-lg object-cover;
   }
 
   /* === Layout Adjustments Per Variant === */

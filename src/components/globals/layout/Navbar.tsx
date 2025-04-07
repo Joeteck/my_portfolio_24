@@ -1,3 +1,5 @@
+"use client"
+
 import { useState } from "react";
 import { cn } from "@/utils/cn";
 import Image from "next/image";
@@ -19,9 +21,9 @@ const navLinks = {
     ],
     portfolio: [
         { name: "About", path: "/portfolio/about" },
-        { name: "Blog", path: "/portfolio/blog" },
         { name: "Projects", path: "/portfolio/project" },
         { name: "Contact", path: "/portfolio/contact" },
+        { name: "Blog", path: "/portfolio/blog" },
     ],
 };
 
@@ -41,7 +43,7 @@ export const Navbar = ({ type }: NavbarProps) => {
     };
 
     return (
-        <nav className={cn("sticky top-0 z-50 backdrop-blur-xl bg-opacity-90 p-2 md:px-10")}>
+        <nav className={cn("sticky bg-[#1bbb8b17] top-1 rounded-full z-50 backdrop-blur-xl p-1 md:px-10")}>
             <div className="container mx-auto flex items-center justify-between">
                 <div className="font-bold">
                     {type === "company" ? (

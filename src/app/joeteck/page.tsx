@@ -120,7 +120,7 @@ const TestingPage = () => {
                 <Container>
                         <Grid cols={2} className="mb-6">
                             <ContactInfoCard
-                                    name = "Adeyoju Joel"
+                                    name = "Adeyoju Ibukunoluwa Joel"
                                     role = "Software Engineer"
                                     email = "joelitserver@gmail.com"
                                     phone = "+2348058509717"

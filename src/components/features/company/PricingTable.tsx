@@ -1,8 +1,10 @@
-import { Check } from "lucide-react";
+import { CheckCircle2Icon, CircleCheck, LucideCircleCheckBig } from "lucide-react";
 import Card from "@/components/globals/ui/Card";
 import Button from "@/components/globals/ui/Button";
 import { Grid } from "@/components/globals/layout/GridSystem";
 import { Container } from "@/components/globals/layout/Container";
+import { FiCheckCircle } from "react-icons/fi";
+import { FaCheckCircle } from "react-icons/fa";
 
 type PricingPlan = {
     title: string;
@@ -44,7 +46,7 @@ export default function PricingTable() {
                         <ul className="pricing-features">
                             {plan.features.map((feature, i) => (
                                 <li key={i} className="pricing-feature">
-                                    <Check size={16} /> {feature}
+                                    <FaCheckCircle size={18} /> {feature}
                                 </li>
                             ))}
                         </ul>

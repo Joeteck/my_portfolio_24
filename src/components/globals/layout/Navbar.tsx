@@ -1,12 +1,14 @@
 "use client"
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { cn } from "@/utils/cn";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Sidebar from "./SIdebar"; // Assuming the Sidebar is in the same folder
 import ThemeSwitch from "../ui/ThemeSwitch";
 import { Menu, X } from "lucide-react"; // Import lucide icons
+import { Heading } from "../typography/Heading";
+import Link from "next/link";
 
 interface NavbarProps {
     type: "company" | "portfolio";
@@ -43,7 +45,7 @@ export const Navbar = ({ type }: NavbarProps) => {
     };
 
     return (
-        <nav className={cn("sticky bg-[#1bbb8b17] top-1 rounded-full z-50 backdrop-blur-xl p-1 md:px-10")}>
+        <nav className={cn("fixed top-0 left-0 w-full z-50 backdrop-blur-xl p-1")}>
             <div className="container mx-auto flex items-center justify-between">
                 <div className="font-bold">
                     {type === "company" ? (
@@ -55,7 +57,11 @@ export const Navbar = ({ type }: NavbarProps) => {
                             className="object-fill h-8 w-16"
                         />
                     ) : (
-                        "Portfolio"
+                        <Link href="/portfolio">
+                            <Heading variant="subtitle" className="font-alex-brush font-thin text-sm">
+                                Joeteck
+                            </Heading>
+                        </Link>
                     )}
                 </div>
 

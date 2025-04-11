@@ -11,7 +11,7 @@
     --hover-dark: #2c2d2c;
     --error: #e63946;
     --success: #2a9d8f;
-    --black: #1b1c1e;
+    --black: hsl(220, 5%, 11%);
     --white: #fafafa;
 
     /* Default Theme (Premi) */
@@ -62,7 +62,9 @@
     --secondary: #1c0f1e;
     --accent: #716ea4;
   }
-
+  .font-alex-brush {
+    font-family: 'Alex Brush', cursive;
+  }
   /* Apply to Body */
   body {
     height: 100%;
@@ -72,6 +74,36 @@
     color: var(--foreground);
     line-height: 1.7;
   }
+
+  .clip-triangle-top {
+    clip-path: polygon(100% 0, 100% 100%, 0 0);
+  }
+  
+  .clip-triangle-bottom {
+    clip-path: polygon(0 100%, 100% 100%, 100% 0);
+  }
+  .noise-texture {
+    background-image: url('/images/pattern/topography.svg'); /* Add a subtle noise SVG or PNG */
+    background-blend-mode: overlay;
+    background-size: cover;
+    mix-blend-mode: overlay;
+    opacity: 0.95;
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px); /* Optional: adds slight upward movement */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fadeIn {
+    animation: fadeIn 2s ease-out forwards; /* Adjust the duration as needed */
+  }
+  
 }
 
 /* Custom Utilities */

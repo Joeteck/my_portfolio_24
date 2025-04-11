@@ -16,6 +16,10 @@
   "dependencies": {
     "@react-three/drei": "^10.0.5",
     "@react-three/fiber": "^9.1.1",
+    "@tsparticles/basic": "^3.8.1",
+    "@tsparticles/engine": "^3.8.1",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.8.1",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
     "animejs": "^3.2.2",
@@ -33,6 +37,7 @@
     "react-icons": "^5.4.0",
     "react-parallax-tilt": "^1.7.288",
     "react-slick": "^0.30.3",
+    "react-texture": "^0.0.1",
     "react-tsparticles": "^2.12.2",
     "scrollmagic": "^2.0.8",
     "scrollmagic-plugin-gsap": "^1.0.4",
@@ -41,7 +46,8 @@
     "swiper": "^11.2.6",
     "tailwind-merge": "^3.0.1",
     "three": "^0.175.0",
-    "tilt.js": "^1.2.1"
+    "tilt.js": "^1.2.1",
+    "tsparticles": "^3.8.1"
   },
   "devDependencies": {
     "@babel/plugin-transform-react-jsx": "^7.25.9",

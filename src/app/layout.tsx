@@ -4,13 +4,19 @@ import { Providers } from '../components/globals/ui/Provider';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
-import { Roboto, Roboto_Mono, Alex_Brush } from 'next/font/google';
+import { Roboto, Roboto_Mono, Playfair_Display, Allura } from 'next/font/google';
 
 // Import Alex Brush font
-const alexBrush = Alex_Brush({
+const alexBrush = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['800'], // You can adjust the weights if needed
+  variable: '--font-playfair-display', // Optional: to use as a variable font if you want
+});
+
+const allura = Allura({
   subsets: ['latin'],
   weight: ['400'], // You can adjust the weights if needed
-  variable: '--font-alex-brush', // Optional: to use as a variable font if you want
+  variable: '--font-allura', // Optional: to use as a variable font if you want
 });
 
 const roboto = Roboto({

@@ -62,8 +62,11 @@
     --secondary: #1c0f1e;
     --accent: #716ea4;
   }
-  .font-alex-brush {
-    font-family: 'Alex Brush', cursive;
+  .font-playfair-display {
+    font-family: 'Playfair Display', cursive;
+  }
+  .font-allura {
+    font-family: 'Allura';
   }
   /* Apply to Body */
   body {

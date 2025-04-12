@@ -20,10 +20,10 @@ export const Header = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2, duration: 0.6 }}
                 >
-                    <span className="text-sm tracking-wide uppercase text-[#EBAA4C] bg-[#EBAA4C]/10 px-2 py-1 rounded-md w-max mb-4">
+                    <span className="text-sm tracking-wide uppercase text-[#EBAA4C] bg-[#EBAA4C]/30 px-2 py-1 rounded-md w-max mb-4">
                         Frontend Engineer
                     </span>
-                    <Heading className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
+                    <Heading variant="title" className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
                         I'm Adeyoju Joel
                     </Heading>
                     <Paragraph className="text-lg text-gray-600 dark:text-gray-300 max-w-xl">

@@ -58,7 +58,7 @@ export const Navbar = ({ type }: NavbarProps) => {
                         />
                     ) : (
                         <Link href="/portfolio">
-                            <Heading variant="subtitle" className="font-alex-brush font-thin text-sm">
+                            <Heading variant="subtitle" className="font-allura font-thin text-sm">
                                 Joeteck
                             </Heading>
                         </Link>

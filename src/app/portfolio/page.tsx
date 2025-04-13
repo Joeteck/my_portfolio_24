@@ -25,7 +25,7 @@ const PortfolioPage = () => {
                 >
                 </div>
                 <div
-                    className="absolute inset-0 bg-cover bg-center opacity-[0.02] dark:opacity-[0.1]"
+                    className="absolute inset-0 bg-cover bg-center opacity-[0.02] dark:opacity-[0.05]"
                     style={{
                         backgroundImage: `url('/images/pattern/topography-light.svg')`,
                     }}

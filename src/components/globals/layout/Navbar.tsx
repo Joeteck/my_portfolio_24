@@ -65,7 +65,7 @@ export const Navbar = ({ type }: NavbarProps) => {
                     )}
                 </div>
 
-                <ul className="hidden md:flex gap-20">
+                <ul className="hidden md:flex gap-10">
                     {links.map((link) => (
                         <li
                             key={link.name}

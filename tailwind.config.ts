@@ -14,6 +14,9 @@ export default {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
         primary: 'var(--primary)',
+        primaryLight: 'var(--primaryLight)',
+        primaryDark: 'var(--primaryDark)',
+        primaryDarklight: 'var(--primaryDarklight)',
         secondary: 'var(--secondary)',
         accent: 'var(--accent)',
         hover_light: 'var(--hover-light)',
@@ -36,6 +39,9 @@ export default {
         'slide-in-bottom': 'slideInBottom 1.2s ease-out forwards',
         'fade-in': 'fade-in 1s ease-out forwards',
       },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
       keyframes: {
         slideInTop: {
           '0%': { transform: 'translateY(-100%)', opacity: "0" },
@@ -52,5 +58,7 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    
+  ],
 } satisfies Config;

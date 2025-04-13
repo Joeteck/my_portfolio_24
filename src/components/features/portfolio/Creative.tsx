@@ -9,20 +9,8 @@ export const Creative = () => {
         {
             text: 'Creativity',
             isSlideshow: true,
-            font: 'great-vibes',
-            backgroundColor: 'linear-gradient(105deg, #fafafa, #fafafa)' // for "Creativity"
-        },
-        {
-            text: 'Performance',
-            image: 'creative-6.jpg',
-            useAsBackground: true,
-            font: 'sans',
-        },
-        {
-            text: 'Interface',
-            image: 'creative-1.jpg',
-            backgroundColor: 'linear-gradient(105deg, #2e2e2e, #323232)', // soft, clean gray gradient
-            font: 'mono'
+            font: 'playfair-display',
+            backgroundColor: 'linear-gradient(105deg, #ffffff, #ffffff)' // for "Creativity"
         },
     ];
 
@@ -34,12 +22,12 @@ export const Creative = () => {
     }, []);
 
     return (
-        <div className="w-full min-h-screen flex flex-col justify-center items-center">
+        <div className="w-full h-fit flex flex-col justify-center items-center">
             {headings.map((heading, index) => {
                 const isSlideshow = heading.isSlideshow;
                 const useAsBackground = heading.useAsBackground;
                 const fontClass =
-                    heading.font === 'great-vibes'
+                    heading.font === 'playfair-display'
                         ? 'font-playfair-display'
                         : heading.font === 'mono'
                         ? 'font-mono'
@@ -68,8 +56,8 @@ export const Creative = () => {
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     textShadow: useAsBackground
-                        ? '0 2px 10px rgba(0, 0, 0, 0.4)'
-                        : '0 1px 2px rgba(94, 94, 94, 0.3)',
+                        ? '0 2px 10px rgba(0, 0, 0, 0.212)'
+                        : '0 1px 1px rgba(0, 0, 0, 0.42)',
                     transition: 'all 0.6s ease-in-out',
                 };
 
@@ -86,7 +74,7 @@ export const Creative = () => {
                         <h1
                             className={`z-10 text-center ${fontClass} ${
                                 !useAsBackground ? 'text-transparent bg-clip-text' : 'text-white'
-                            } text-[clamp(40px,10vw,160px)] font-extrabold`}
+                            } text-[clamp(40px,15vw,250px)] font-extrabold`}
                             style={textStyle}
                         >
                             {heading.text.toUpperCase()}
@@ -97,3 +85,17 @@ export const Creative = () => {
         </div>
     );
 };
+
+
+// {
+//     text: 'Performance',
+//     image: 'creative-6.jpg',
+//     useAsBackground: true,
+//     font: 'sans',
+// },
+// {
+//     text: 'Interface',
+//     image: 'creative-1.jpg',
+//     backgroundColor: 'linear-gradient(105deg, #000000, #000000)', // soft, clean gray gradient
+//     font: 'mono'
+// },

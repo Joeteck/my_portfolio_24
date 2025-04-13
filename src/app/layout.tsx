@@ -1,10 +1,13 @@
 import type { Metadata } from 'next';
 import '../styles/globals.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import { Providers } from '../components/globals/ui/Provider';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { Roboto, Roboto_Mono, Playfair_Display, Allura } from 'next/font/google';
+
 
 // Import Alex Brush font
 const alexBrush = Playfair_Display({

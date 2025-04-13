@@ -16,6 +16,9 @@
 
     /* Default Theme (Premi) */
     --primary: #1bbb8b;
+    --primaryLight: #ecfffa;
+    --primaryDark: #061f18;
+    --primaryDarklight: #143028;
     --secondary: #ebaA4c;
     --accent: #716ea4;
   }
@@ -92,6 +95,7 @@
     mix-blend-mode: overlay;
     opacity: 0.95;
   }
+
   @keyframes fadeIn {
     0% {
       opacity: 0;

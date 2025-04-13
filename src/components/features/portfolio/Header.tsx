@@ -9,8 +9,7 @@ export const Header = () => {
     return (
         <section
             className={clsx(
-                "relative h-screen w-full overflow-hidden grid grid-cols-1 md:grid-cols-2",
-                "bg-gradient-radial from-[#1BBB8B]/10 via-transparent to-transparent dark:from-[#1BBB8B]/30"
+                "relative h-screen w-full overflow-hidden grid grid-cols-1 md:grid-cols-2"
             )}
         >
             {/* Left: Intro */}
@@ -21,7 +20,7 @@ export const Header = () => {
                     transition={{ delay: 0.2, duration: 0.6 }}
                 >
                     <span className="text-sm tracking-wide uppercase text-[#EBAA4C] bg-[#EBAA4C]/30 px-2 py-1 rounded-md w-max mb-4">
-                        Frontend Engineer
+                        Software Engineer
                     </span>
                     <Heading variant="title" className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
                         I'm Adeyoju Joel

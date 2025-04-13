@@ -1,16 +1,21 @@
 "use client";
 
-import { usePathname } from "next/navigation"; // Use for checking current route
+import { usePathname } from "next/navigation";
 import { useTheme } from "@/context/ThemeContext";
 import { motion } from "framer-motion";
 import { Sun, Moon, Palette } from "lucide-react";
 import { themes } from "@/utils/theme";
+import { useEffect, useState } from "react";
 
 const ThemeSwitch = () => {
     const { theme, setTheme, mode, setMode } = useTheme();
-    const pathname = usePathname(); // Get current route
+    const pathname = usePathname();
+    const isPlayground = pathname === "/";
+    const [mounted, setMounted] = useState(false); // <-- fix hydration issue
 
-    const isPlayground = pathname === "/"; // Playground is the homepage (`/`)
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     const toggleTheme = () => {
         if (isPlayground) {
@@ -24,18 +29,20 @@ const ThemeSwitch = () => {
         setMode(mode === "dark" ? "light" : "dark");
     };
 
+    if (!mounted) return null; // prevent mismatch before hydration
+
     return (
         <div className="flex gap-3">
             {/* Theme Switch - only on Playground */}
             {isPlayground && (
-                <button 
-                    onClick={toggleTheme} 
+                <button
+                    onClick={toggleTheme}
                     className="block items-center w-fit bg-transparent dark:text-white text-black"
                 >
-                    <motion.span 
-                        key={theme} 
-                        initial={{ opacity: 0, scale: 0.8 }} 
-                        animate={{ opacity: 1, scale: 1 }} 
+                    <motion.span
+                        key={theme}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.8 }}
                         transition={{ duration: 0.2 }}
                     >
@@ -45,14 +52,14 @@ const ThemeSwitch = () => {
             )}
 
             {/* Mode Switch - available everywhere */}
-            <button 
-                onClick={toggleMode} 
+            <button
+                onClick={toggleMode}
                 className="block items-center w-fit bg-transparent dark:text-white text-black"
             >
-                <motion.span 
-                    key={mode} 
-                    initial={{ opacity: 0, scale: 0.8 }} 
-                    animate={{ opacity: 1, scale: 1 }} 
+                <motion.span
+                    key={mode}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8 }}
                     transition={{ duration: 0.2 }}
                 >

@@ -2,6 +2,7 @@ import { Navbar } from "@/components/globals/layout/Navbar";
 import { Header } from "@/components/features/portfolio/Header";
 import { Creative } from "@/components/features/portfolio/Creative";
 import FeaturedProjects from "@/components/features/portfolio/Featured_Projects";
+import { Footer } from "@/components/globals/layout/Footer";
 // import { FeaturedProjects } from "@/components/features/portfolio/FeaturedProjects";
 
 const PortfolioPage = () => {
@@ -51,8 +52,10 @@ const PortfolioPage = () => {
                     />
                 </div>
             </div>
-            <Creative/>
+            <Creative type="creative"/>
             <FeaturedProjects/>
+            <Creative type="performance"/>
+            <Footer type="portfolio"  />
         </div>
     );
 };

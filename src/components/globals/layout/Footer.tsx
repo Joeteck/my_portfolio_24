@@ -14,7 +14,7 @@ interface FooterProps {
 
 export function Footer({ type }: FooterProps) {
     return (
-        <footer className={clsx("relative py-20 bg-background text-foreground")}>
+        <footer className={clsx("relative  h-screen w-full overflow-hidden flex items-center py-20 md:px-8 bg-background text-foreground")}>
             {/* Background with Low Opacity (for parent div) */}
             <div
                 className="absolute inset-0 bg-cover bg-center opacity-[0.03]"
@@ -143,7 +143,7 @@ export function Footer({ type }: FooterProps) {
             </Container>
 
             {/* Footer Bottom Section */}
-            <div className="absolute w-full bg-[#000] mt-8 border-t justify-center items-center border-gray-700 text-center py-4 bottom-0 text-gray-500 text-sm z-50">
+            <div className="absolute w-full left-0 right-0 bg-[#000] border-t justify-center items-center border-gray-700 text-center py-2 bottom-0 text-gray-500 text-sm z-50">
                 © {new Date().getFullYear()} {type === "company" ? "Joeteck IT Consult" : "Joel Adeyoju Ibukunoluwa"}. All rights reserved.
             </div>
         </footer>

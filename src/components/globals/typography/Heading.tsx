@@ -35,8 +35,8 @@ export function Heading({
 
     const variantStyles = {
         title: "text-4xl md:text-5xl",
-        subtitle: "text-2xl md:text-3xl",
-        sectionTitle: "text-xl md:text-2xl",
+        subtitle: "text-3xl md:text-4xl",
+        sectionTitle: "text-xl md:text-3xl",
         caption: "text-sm md:text-base",
         label: "text-xs md:text-sm uppercase font-medium",
     };

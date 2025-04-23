@@ -1,3 +1,4 @@
+import { AboutMe } from '@/components/features/portfolio/AboutMe'
 import { ButtomBar } from '@/components/features/portfolio/ButtomBar'
 import { ExampleComponent } from '@/components/features/portfolio/ExampleComponent'
 import { Header } from '@/components/features/portfolio/Header'
@@ -25,14 +26,14 @@ const About = () => {
                     </div>
                     <div className="w-fit flex flex-col justify-center items-center">
                         <div className='w-80'>
-                            <Heading variant='title' className='text-[36px] text-center'>Keep it going with Joeteck</Heading>
+                            <Heading variant='title' className='text-[36px] text-center'>Keep it going with JoetecK</Heading>
                         </div>
                         <div className='w-72'>
                             <Paragraph className='text-center text-lg font-[550] text-neutral-500 dark:text-neutral-400'>Joeteck offers the tools to create visually rich and functional web experiences.</Paragraph>
                         </div>
                     </div>
                     <div className="w-80 flex md:flex-row flex-col justify-between items-center">
-                        <div className='w-fit px-4 py-1 border border-primary dark:border-white rounded-lg bg-neutral-100'>
+                        <div className='w-fit px-4 py-1 border border-primary dark:border-neutral-400 rounded-lg bg-neutral-100'>
                             <span className='font-mono text-sm font-thin dark:text-black'> joeteck build vision</span>
                         </div>
                         <div className='flex flex-col'>
@@ -43,12 +44,15 @@ const About = () => {
                     </div>
 
                 </div>
-                <div className='absolute bottom-8 pt-20'>
+                <div className='absolute bottom-9 pt-20'>
                     <ButtomBar/>
                 </div>
             </div>
             <div>
                 <ExampleComponent/>
+            </div>
+            <div>
+                <AboutMe/>
             </div>
             <Footer type='portfolio'/>
         </div>    )

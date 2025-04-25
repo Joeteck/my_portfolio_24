@@ -5,7 +5,7 @@ import { SiAnalogue, SiExpo, SiExpress, SiNextdotjs, SiPython, SiPythonanywhere,
 
 export const ButtomBar = () => {
     return (
-        <div className='w-fit flex flex-row gap-5 bg-transparent'>
+        <div className='md:w-fit w-full max-sm:px-4 flex flex-row md:gap-5 gap-3  bg-transparent items-center justify-center max-sm:justify-between'>
             <div className='w-[72px] flex flex-col gap-3 item-center justify-center'>
                 <FaReact size={16}  className="w-full flex text-[14px] font-thin item-center justify-center" />
                 <span className="text-center dark:text-neutral-400 text-[13px] font-medium leading-none">

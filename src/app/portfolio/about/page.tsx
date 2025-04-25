@@ -33,7 +33,7 @@ const About = () => {
                         </div>
                     </div>
                     <div className="w-80 flex md:flex-row flex-col justify-between items-center">
-                        <div className='w-fit px-4 py-1 border border-primary dark:border-neutral-400 rounded-lg bg-neutral-100'>
+                        <div className='w-fit px-4 py-1 border border-primary dark:border-neutral-400 rounded-lg bg-neutral-100 max-sm:mb-5'>
                             <span className='font-mono text-sm font-thin dark:text-black'> joeteck build vision</span>
                         </div>
                         <div className='flex flex-col'>

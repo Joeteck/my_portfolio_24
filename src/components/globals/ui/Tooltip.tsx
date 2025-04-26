@@ -17,7 +17,7 @@ const Tooltip: React.FC<TooltipProps> = ({ content, children, position = 'top', 
 
     return (
         <div
-            className="tooltip-container"
+            className="tooltip-container z-50"
             onMouseEnter={showTooltip}
             onMouseLeave={hideTooltip}
             style={{ position: 'relative', display: 'inline-block' }}
@@ -26,17 +26,17 @@ const Tooltip: React.FC<TooltipProps> = ({ content, children, position = 'top', 
             {isVisible && (
                 <div
                 className={cn(
-                    `tooltip font-thin rounded-2xl px-3 py-1 
+                    `tooltip font-semibold rounded-2xl px-3 py-1 
                     dark:bg-neutral-600/70 bg-neutral-950/70 text-white dark:text-black 
                     tooltip-${position} 
-                    max-w-xs break-words whitespace-pre-line`
+                    max-w-xs break-words whitespace-pre-line z-30`
                     )}
                     style={{
-                        width: '320px',
-                        maxWidth: '350px',
+                        width: '260px',
+                        maxWidth: '300px',
                         position: 'absolute',
                         padding: '8px',
-                        fontSize: '11px',
+                        fontSize: '12px',
                         backgroundColor: '#00000097',
                         borderRadius: '4px',
                         zIndex: 1000,
@@ -55,7 +55,7 @@ const Tooltip: React.FC<TooltipProps> = ({ content, children, position = 'top', 
 const getTooltipPosition = (position: 'top' | 'bottom' | 'left' | 'right', sideOffset: number) => {
     switch (position) {
         case 'top':
-            return { bottom: `calc(100% + ${sideOffset}px)`, left: '50%', transform: 'translateX(10%)' };
+            return { bottom: `calc(100% + ${sideOffset}px)`, left: '50%', transform: 'translateX(-50%)' };
         case 'bottom':
             return { top: `calc(100% + ${sideOffset}px)`, left: '50%', transform: 'translateX(-50%)' };
         case 'left':

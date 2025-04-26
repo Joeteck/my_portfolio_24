@@ -11,7 +11,7 @@ export default function Reordering({ children }: ReorderProps) {
     const [order, setOrder] = useState(initialOrder);
 
     useEffect(() => {
-        const timeout = setTimeout(() => setOrder(shuffle(order)), 1000);
+        const timeout = setTimeout(() => setOrder(shuffle(order)), 3000);
         return () => clearTimeout(timeout);
     }, [order]);
 

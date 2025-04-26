@@ -7,7 +7,7 @@ function LoadingThreeDotsJumping() {
         jump: {
             y: -30,
             transition: {
-                duration: 0.8,
+                duration: 2,
                 repeat: Infinity,
                 repeatType: "mirror",
                 ease: "easeInOut",
@@ -19,11 +19,11 @@ function LoadingThreeDotsJumping() {
         <motion.div
             animate="jump"
             transition={{ staggerChildren: -0.2, staggerDirection: -1 }}
-            className="container"
+            className="container "
         >
-            <motion.div className="dot" variants={dotVariants} />
-            <motion.div className="dot" variants={dotVariants} />
-            <motion.div className="dot" variants={dotVariants} />
+            <motion.div className="dot shadow-2xl" variants={dotVariants} />
+            <motion.div className="dot shadow-2xl" variants={dotVariants} />
+            <motion.div className="dot shadow-2xl" variants={dotVariants} />
             <StyleSheet />
         </motion.div>
     )

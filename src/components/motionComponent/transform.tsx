@@ -9,7 +9,7 @@ export default function TransitionOptions({ children, loop = false }: Transition
     return (
         <motion.div
             style={ball}
-            className="shadow-[0_5px_10px_0px_rgba(0, 0, 0, 0.598)]"
+            className="shadow-[0_5px_10px_0px_rgba(0, 0, 0, 0.598)] relative z-40 flex flex-col justify-center items-center bg-transparent dark:bg-none"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{

@@ -17,8 +17,8 @@ const About = () => {
             <Navbar type="portfolio" />
             
             {/* Noise Background */}
-            <div className="absolute inset-0 pointer-events-none z-0">
-                <div className="w-full h-full bg-noise-dark opacity-50 dark:opacity-100 mix-blend-multiply z-10"></div>
+            <div className="absolute inset-0 pointer-events-none z-0 ">
+                <div className="w-full h-full bg-noise-dark opacity-60 dark:opacity-100 mix-blend-multiply z-10"></div>
             </div>
             
             {/* Gradient Overlay */}

@@ -19,7 +19,7 @@ function LoadingThreeDotsJumping() {
         <motion.div
             animate="jump"
             transition={{ staggerChildren: -0.2, staggerDirection: -1 }}
-            className="container "
+            className="flex justify-center items-center gap-[10px]"
         >
             <motion.div className="dot shadow-2xl" variants={dotVariants} />
             <motion.div className="dot shadow-2xl" variants={dotVariants} />
@@ -36,13 +36,6 @@ function StyleSheet() {
     return (
         <style>
             {`
-            .container {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 10px;
-            }
-
             .dot {
                 width: 40px;
                 height: 40px;

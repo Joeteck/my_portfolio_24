@@ -98,7 +98,7 @@
   /* Add noise background */
 .bg-noise {
   background-image: url('/images/pattern/noise.png'); /* A soft noise texture */
-  background-size: cover;
+  background-size:auto;
   background-repeat: repeat;
 }
   .bg-noise-dark {

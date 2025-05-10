@@ -14,6 +14,8 @@ import Modal from '@/components/globals/ui/Modal';
 import Tooltip from '@/components/globals/ui/Tooltip';
 import ScrollLinked from '@/components/motionComponent/ScrollLinked';
 import TransitionOptions from '@/components/motionComponent/transform';
+import { Timeline } from '@/components/motionComponent/timeline';
+import { UiCard } from './UiCard';
 
 export const ExampleComponent = () => {
     return (
@@ -131,42 +133,30 @@ export const ExampleComponent = () => {
                 </ComponentCard>
 
                 {/* Component 7 */}
-                <ComponentCard name="Gestures" spanCols={2} spanRows={1} className="col-start-1"
-                    motionProps={{
-                    animate: {
-                        opacity: [0, 1, 0],
-                        rotate: [90, 0, 90],
-                    },
-                    transition: {
-                        duration: 2,
-                        repeat: Infinity,
-                        repeatType: 'loop',
-                        ease: 'easeInOut',
-                    }
-                    }}>
-                    <div className="h-full bg-transparent border-none dark:bg-transparent rounded-lg col-span-1 row-span-1 flex justify-center items-center shadow-none">
-                        Component 7
+                <ComponentCard name="Gestures" spanCols={2} spanRows={1} className="col-start-1">
+                    <div className="w-[220px] h-full bg-transparent border-none dark:bg-transparent rounded-lg col-span-1 row-span-1 flex justify-center items-center shadow-none">
+                        <Timeline/>
                     </div>
                 </ComponentCard>
 
                 {/* Component 8 */}
-                <ComponentCard name="Sequencing" spanCols={2} spanRows={2} className="row-start-3 col-start-3"
-                    motionProps={{
-                    animate: {
-                        opacity: [0, 1, 0],
-                        rotate: [90, 0, 90],
-                    },
-                    transition: {
-                        duration: 3,
-                        repeat: Infinity,
-                        repeatType: 'loop',
-                        ease: 'easeInOut',
-                    }
-                    }}>
-                    <div className="h-full bg-transparent border-none dark:bg-transparent rounded-lg col-span-1 row-span-1 flex justify-center items-center shadow-none">
-                    Component 8
+                <ComponentCard name="Sequencing" spanCols={2} spanRows={2} className="row-start-3 col-start-3">
+                    <div className="h-full w-full bg-transparent border-none dark:bg-transparent rounded-lg grid grid-cols-2 grid-rows-2 gap-2">
+                        <div className="relative col-span-1 row-span-1 w-full h-full">
+                        <UiCard className="bottom-0 right-0" />
+                        </div>
+                        <div className="relative col-span-1 row-span-1 w-full h-full">
+                        <UiCard className="bottom-0 left-0" />
+                        </div>
+                        <div className="relative col-span-1 row-span-1 w-full h-full">
+                        <UiCard className="top-0 right-0" />
+                        </div>
+                        <div className="relative col-span-1 row-span-1 w-full h-full">
+                        <UiCard className="top-0 left-0" />
+                        </div>
                     </div>
-                </ComponentCard>
+                    </ComponentCard>
+
 
                 </div>
 

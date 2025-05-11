@@ -16,6 +16,7 @@ import ScrollLinked from '@/components/motionComponent/ScrollLinked';
 import TransitionOptions from '@/components/motionComponent/transform';
 import { Timeline } from '@/components/motionComponent/timeline';
 import { UiCard } from './UiCard';
+import ScrollFillCard from '@/components/motionComponent/scrollFillCard';
 
 export const ExampleComponent = () => {
     return (
@@ -51,14 +52,14 @@ export const ExampleComponent = () => {
                 <div className="max-w-[80%] w-full grid gap-6 auto-rows-fr grid-cols-1 sm:grid-cols-4 sm:grid-rows-4">
                 
                 {/* Component 1 */}
-                <ComponentCard name="Simple Button" spanCols={1} spanRows={1} className='h-80 relative '>
+                <ComponentCard name="Simple Transition" spanCols={1} spanRows={1} className='h-72 relative '>
                     <div className="relative z-30 border-none bg-none dark:bg-none t rounded-lg col-span-1 row-span-1 flex justify-center items-center shadow-none">
                     <TransitionOptions loop={true} />
                     </div>
                 </ComponentCard>
 
                 {/* Component 2 */}
-                <ComponentCard name="Transforms" spanCols={2} spanRows={1}
+                <ComponentCard name="Loading" spanCols={2} spanRows={1}
                     motionProps={{
                     initial: { y: 20 },
                     animate: { y: 0 },
@@ -71,36 +72,24 @@ export const ExampleComponent = () => {
                 </ComponentCard>
 
                 {/* Component 3 */}
-                <ComponentCard name="Loading" spanCols={1} spanRows={2}>
-                    <div className="h-full bg-transparent border-none dark:bg-transparent rounded-lg col-span-2 row-span-1 flex justify-center items-center shadow-none">
-                        <Reordering>
-                            <Button className='rounded-full p-2 px-4'>
-                                
-                            </Button>
-                            <Button className='rounded-full p-2 px-4 bg-error'>
-                                
-                            </Button>
-                            <Button className='rounded-full p-2 px-4 bg-accent'>
-
-                            </Button>
-                            <Button className='rounded-full p-2 px-4 bg-secondary'>
-                                
-                            </Button>
-                        </Reordering>
+                <ComponentCard name="Scroll Fill" spanCols={1} spanRows={2}>
+                    <div className="h-full py-10  bg-transparent border-none dark:bg-transparent rounded-lg col-span-2 row-span-1 flex justify-center items-center shadow-none">
+                        <ScrollFillCard/>
                     </div>
                 </ComponentCard>
 
                 {/* Component 4 */}
-                <ComponentCard name="Drag" spanCols={2} spanRows={1} className='h-80'>
+                <ComponentCard name="Drag" spanCols={2} spanRows={1} className='h-72'>
                     <div className="h-full bg-transparent border-none dark:bg-transparent rounded-lg col-span-1 row-span-2 flex justify-center items-center shadow-none">
                         <Drag>
-                            <div className="h-24 w-24 bg-cyan-700 rounded-lg shadow-lg z-20" />
+                            <div className="h-24 w-24 bg-primary rounded-lg shadow-lg z-20" />
                         </Drag>
+                        {/* [#2b2bff] */}
                     </div>
                 </ComponentCard>
 
                 {/* Component 5 */}
-                <ComponentCard name="Exit" spanCols={1} spanRows={1} className='h-80'>
+                <ComponentCard name="Tooltip" spanCols={1} spanRows={1} className='h-72'>
                     <div className="bg-transparent border-none dark:bg-transparent rounded-lg col-span-1 row-span-1 flex justify-center items-center shadow-none">
                         <Tooltip
                             content='Tooltip is typically a UI component used to display additional information when a user hovers over or focuses on an element.'
@@ -108,8 +97,8 @@ export const ExampleComponent = () => {
                             sideOffset={2}
                             duration={100}
                         >
-                            <Button className='rounded-full p-2 px-4'>
-                                Tooltip
+                            <Button className='rounded-full p-4 px-6 bg-purple-700 text-white hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50'>
+                                <span className="text-sm font-semibold">Hover me</span>
                             </Button>
                         </Tooltip>
                     </div>
@@ -124,8 +113,8 @@ export const ExampleComponent = () => {
                         listClassName="h-full flex flex-col gap-4"
                     >
                         {Array.from({ length: 3 }).map((_, index) => (
-                        <div key={index} className="h-10 w-56 bg-cyan-700 rounded-lg flex items-center justify-start p-2 dark:bg-cyan-700 shadow-none border-none">
-                            <div className="w-5 h-5 rounded-full bg-primary"></div>
+                        <div key={index} className="h-10 w-56 bg-neutral-500 rounded-lg flex items-center justify-start p-2 dark:bg-neutral-700 shadow-none border-none">
+                            <div className="w-3 h-3 rounded-full bg-primary"></div>
                         </div>
                         ))}
                     </ScrollLinked>

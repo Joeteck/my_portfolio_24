@@ -33,10 +33,10 @@ export default function Reordering({ children }: ReorderProps) {
 }
 
 const initialOrder = [
-    "#e639473a",
-    "#ebaA4c3a",
-    "#625f923a",
-    "#1bbb8b3a",
+    "#ff2e3f",
+    "#ffe30c",
+    "#392bff",
+    "#1bbb8b",
 ];
 
 /**

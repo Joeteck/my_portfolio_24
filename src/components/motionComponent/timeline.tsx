@@ -47,7 +47,7 @@ export const Timeline: React.FC<TimelineProps> = ({ items }) => {
     <AnimatePresence mode="wait">
       <motion.div
         key={loopKey}
-        className="relative p-4 w-full rounded-xl bg-neutral-600 dark:bg-neutral-600 z-30"
+        className="relative p-4 w-full rounded-xl bg-neutral-500 dark:bg-neutral-700 z-30"
         variants={fadeVariants}
         initial="initial"
         animate="animate"
@@ -72,8 +72,8 @@ export const Timeline: React.FC<TimelineProps> = ({ items }) => {
               className="flex items-center bg-transparent space-x-2 p-0.5"
               variants={itemVariants}
             >
-              <span className=" p-2 rounded-full bg-accent"></span>
-              <div className="w-full p-1.5 rounded-full shadow flex items-center bg-neutral-600 dark:bg-neutral-700 text-neutral-900 dark:text-white">
+              <span className=" p-1.5 rounded-full bg-[#F64DB4]"></span>
+              <div className="w-full p-1.5 rounded-full shadow flex items-center bg-neutral-600 dark:bg-neutral-600 text-neutral-800 dark:text-white">
                 {/* {item} */}
               </div>
             </motion.li>

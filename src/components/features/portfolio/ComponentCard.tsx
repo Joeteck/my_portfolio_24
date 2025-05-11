@@ -43,7 +43,7 @@ export const ComponentCard = ({
             </div>
 
             {/* Gradient Overlay */}
-            <div className="absolute  inset-0 bg-gradient-to-b dark:from-neutral-800/30 from-neutral-500/50 via-neutral-500/50 to-neutral-600/50 dark:via-neutral-800/50 dark:to-neutral-900/50 pointer-events-none z-0 rounded-3xl"></div>
+            <div className="absolute  inset-0 bg-gradient-to-b dark:from-neutral-800/30 from-neutral-200/50 via-neutral-300/50 to-neutral-400/50 dark:via-neutral-800/50 dark:to-neutral-900/50 pointer-events-none z-0 rounded-3xl"></div>
             {/* Top right icon */}
             <div className="relative z-30 w-full h-fit mt-6 px-6 rounded-lg flex justify-end items-center">
                 <ShieldQuestion size={16} />

@@ -2,6 +2,7 @@ import { AboutMe } from '@/components/features/portfolio/AboutMe'
 import { ButtomBar } from '@/components/features/portfolio/ButtomBar'
 import { ExampleComponent } from '@/components/features/portfolio/ExampleComponent'
 import { Header } from '@/components/features/portfolio/Header'
+import ProjectsSection from '@/components/features/portfolio/ProjectSection'
 import TextInput from '@/components/globals/form/TextInput'
 import { Footer } from '@/components/globals/layout/Footer'
 import { Navbar } from '@/components/globals/layout/Navbar'
@@ -60,7 +61,7 @@ const About = () => {
                 <ExampleComponent/>
             </div>
             <div>
-                <AboutMe/>
+                <ProjectsSection/>
             </div>
             <Footer type='portfolio'/>
         </div>    )

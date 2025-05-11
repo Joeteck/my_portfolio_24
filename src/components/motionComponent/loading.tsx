@@ -40,7 +40,7 @@ function StyleSheet() {
                 width: 40px;
                 height: 40px;
                 border-radius: 50%;
-                background-color: #1bbb8b;
+                background-color:#F64DB4;
                 will-change: transform;
             }
             `}

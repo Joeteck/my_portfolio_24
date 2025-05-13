@@ -1,6 +1,7 @@
 import { Heading } from "@/components/globals/typography/Heading";
 import { cn } from "@/utils/cn";
 import React from "react";
+import { FaFacebook, FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 
 type Tool = {
     name: string;
@@ -34,7 +35,7 @@ export default function Projects({ projects, className }: ProjectsProps) {
                 <div key={index} className="w-full relative z-30 text-center">
                     {/* Divider with Label */}
                     <div className="relative w-full flex items-center justify-center">
-                        <div className="flex items-center justify-center max-w-4xl w-full">
+                        <div className="flex items-center justify-center max-w-3xl w-full">
                             <div className="w-full border-t-2 border-dashed border-neutral-700 "></div>
                             <span className="max-w-sm min-w-fit relative z-10 bg-transparent px-3 uppercase text-xs font-medium tracking-wide text-neutral-400">
                                 {project.label}
@@ -48,22 +49,56 @@ export default function Projects({ projects, className }: ProjectsProps) {
                         {project.tools.map((tool, i) => (
                             <div
                                 key={i}
-                                className="flex flex-row items-center space-y-1 text-black dark:text-white hover:text-primary dark:hover:text-primary transition-colors duration-200"
+                                className="flex flex-row items-center space-y-1 text-black dark:text-[#fff] hover:text-primary dark:hover:text-primary transition-colors duration-200"
                             >
-                                {tool.icon && <div className="text-4xl pr-2">{tool.icon}</div>}
-                                <span className="text-xl  font-semibold">{tool.name}</span>
+                                {tool.icon && <div className="text-2xl pr-2">{tool.icon}</div>}
+                                <span className="text-xl  font-normal">{tool.name}</span>
                             </div>
                         ))}
                     </div>
                 </div>
             ))}
-            <div className="max-w-4xl w-full mb-3 border-t-2 border-dashed border-neutral-700"></div>
+            <div className="max-w-3xl w-full mb-3 border-t-2 border-dashed border-neutral-700"></div>
 
-            <div className="max-w-4xl w-full flex flex-col items-center gap-4 mt-10">
-                <div className="w-full border-t border-dashed border-neutral-700"></div>
+            <div className=" w-full flex flex-row max-md:flex-col justify-center items-center gap-2 mt-10">
 
-                <div className="flex flex-row items-center justify-center text-neutral-600 dark:text-neutral-400 text-sm">
-                    <span>🚀 Feel free to explore more of my work and reach out!</span>
+                <div className="text-neutral-600 dark:text-neutral-400 text-md font-medium">
+                    <a
+                        href="https://github.com/joeteck"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 hover:text-primary transition-colors"
+                        >
+                        <span>Check out my project on my repo</span>
+                        <FaGithub className="text-xl" />
+                    </a>
+                </div>
+                <div className="flex items-center justify-center gap-2 pl-0  text-neutral-600 dark:text-neutral-400 text-md font-medium">
+                    <span>or Connect with me though my socials</span>
+                    <a
+                        href="https://wa.me/message/K7GO54BWVAWYG1"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-primary transition-colors"
+                        >
+                        <FaWhatsapp className="text-xl" />
+                    </a>
+                    <a
+                        href="https://www.linkedin.com/in/adeyoju-ibukunoluwa-375018209/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-blue-600 transition-colors"
+                        >
+                        <FaLinkedin className="text-xl" />
+                    </a>
+                    <a
+                        href="https://web.facebook.com/joel.adeyoju"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-blue-700 transition-colors"
+                        >
+                        <FaFacebook className="text-xl" />
+                    </a>
                 </div>
             </div>
 

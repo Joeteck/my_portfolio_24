@@ -1,10 +1,10 @@
 import { AboutMe } from '@/components/features/portfolio/AboutMe'
 import { ButtomBar } from '@/components/features/portfolio/ButtomBar'
 import { ExampleComponent } from '@/components/features/portfolio/ExampleComponent'
+import Footer from '@/components/features/portfolio/Footer'
 import { Header } from '@/components/features/portfolio/Header'
 import ProjectsSection from '@/components/features/portfolio/ProjectSection'
 import TextInput from '@/components/globals/form/TextInput'
-import { Footer } from '@/components/globals/layout/Footer'
 import { Navbar } from '@/components/globals/layout/Navbar'
 import { Heading } from '@/components/globals/typography/Heading'
 import { Paragraph } from '@/components/globals/typography/Paragraph'
@@ -57,14 +57,17 @@ const About = () => {
                     <ButtomBar/>
                 </div>
             </div>
-            <div>
+            <div id='example'>
                 <ExampleComponent/>
             </div>
-            <div>
+            <div id='projects'>
                 <ProjectsSection/>
             </div>
-            <Footer type='portfolio'/>
-        </div>    )
+            <div id='footer'>
+                <Footer/>
+            </div>
+        </div>
+        )
 }
 
 export default About

@@ -30,7 +30,7 @@ const About = () => {
 
                     <div className="flex bg-black rounded-[10px] w-12 h-12 items-center justify-center">
                         <div>
-                            <Image src="/logo/ip.png" alt='Joeteck Logo' width={30} height={30}  className=''/>
+                            <Image src="/logo/joeteckBlack.png" alt='Joeteck Logo' width={30} height={30}  className=''/>
                         </div>
                     </div>
                     <div className="w-fit flex flex-col justify-center items-center">
@@ -56,12 +56,6 @@ const About = () => {
                 <div className='absolute bottom-9 pt-20'>
                     <ButtomBar/>
                 </div>
-            </div>
-            <div id='example'>
-                <ExampleComponent/>
-            </div>
-            <div id='projects'>
-                <ProjectsSection/>
             </div>
             <div id='footer'>
                 <Footer/>

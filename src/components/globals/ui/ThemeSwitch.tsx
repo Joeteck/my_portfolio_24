@@ -1,42 +1,42 @@
 "use client";
 
+import { useTheme } from "next-themes";
 import { usePathname } from "next/navigation";
-import { useTheme } from "@/context/ThemeContext";
 import { motion } from "framer-motion";
 import { Sun, Moon, Palette } from "lucide-react";
 import { themes } from "@/utils/theme";
 import { useEffect, useState } from "react";
 
 const ThemeSwitch = () => {
-    const { theme, setTheme, mode, setMode } = useTheme();
+    const { theme, setTheme, resolvedTheme } = useTheme();
     const pathname = usePathname();
     const isPlayground = pathname === "/";
-    const [mounted, setMounted] = useState(false); // <-- fix hydration issue
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
         setMounted(true);
     }, []);
 
-    const toggleTheme = () => {
+    if (!mounted) return null;
+
+    const toggleThemePalette = () => {
         if (isPlayground) {
-            const currentIndex = themes.indexOf(theme);
+            const currentIndex = themes.indexOf(theme || themes[0]);
             const nextIndex = (currentIndex + 1) % themes.length;
             setTheme(themes[nextIndex]);
         }
     };
 
     const toggleMode = () => {
-        setMode(mode === "dark" ? "light" : "dark");
+        setTheme(resolvedTheme === "dark" ? "light" : "dark");
     };
-
-    if (!mounted) return null; // prevent mismatch before hydration
 
     return (
         <div className="flex gap-3">
-            {/* Theme Switch - only on Playground */}
+            {/* Theme Palette Switch (e.g., color themes) */}
             {isPlayground && (
                 <button
-                    onClick={toggleTheme}
+                    onClick={toggleThemePalette}
                     className="block items-center w-fit bg-transparent dark:text-white text-black"
                 >
                     <motion.span
@@ -51,19 +51,19 @@ const ThemeSwitch = () => {
                 </button>
             )}
 
-            {/* Mode Switch - available everywhere */}
+            {/* Mode Switch (light/dark) */}
             <button
                 onClick={toggleMode}
                 className="block items-center w-fit bg-transparent dark:text-white text-black"
             >
                 <motion.span
-                    key={mode}
+                    key={resolvedTheme}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8 }}
                     transition={{ duration: 0.2 }}
                 >
-                    {mode === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+                    {resolvedTheme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
                 </motion.span>
             </button>
         </div>

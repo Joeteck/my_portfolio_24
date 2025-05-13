@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
 import { FaGithub, FaDiscord, FaTwitter, FaLinkedinIn } from "react-icons/fa";
-import { BsFillArrowRightCircleFill } from "react-icons/bs";
+import Image from "next/image";
 
 export default function Footer() {
     const [email, setEmail] = useState("");
@@ -21,26 +21,26 @@ export default function Footer() {
         { label: "Joeteck Consult", href: "/joeteck" },
     ];
 
-    const handleSearch = (e: React.FormEvent) => {
-        e.preventDefault();
-        const match = pages.find(p => p.label.toLowerCase() === search.toLowerCase());
-        if (match) {
-        if (match.href.startsWith("#")) {
-            const el = document.querySelector(match.href);
-            if (el) el.scrollIntoView({ behavior: "smooth" });
-        } else {
-            router.push(match.href);
-        }
-        } else {
-        alert("Page or section not found");
-        }
-    };
+    // const handleSearch = (e: React.FormEvent) => {
+    //     e.preventDefault();
+    //     const match = pages.find(p => p.label.toLowerCase() === search.toLowerCase());
+    //     if (match) {
+    //     if (match.href.startsWith("#")) {
+    //         const el = document.querySelector(match.href);
+    //         if (el) el.scrollIntoView({ behavior: "smooth" });
+    //     } else {
+    //         router.push(match.href);
+    //     }
+    //     } else {
+    //     alert("Page or section not found");
+    //     }
+    // };
 
     return (
         <footer className="w-full relative bg-white dark:bg-black text-black dark:text-gray-300 flex flex-col px-6 md:px-20  py-14 pb-28 z-50">
             {/* Noise Background */}
             <div className="absolute inset-0 pointer-events-none z-0 ">
-                <div className="w-full h-full bg-noise-dark opacity-60 dark:opacity-100 mix-blend-multiply z-10"></div>
+                <div className="w-full h-full bg-noise-dark opacity-70 dark:opacity-100 mix-blend-multiply z-10"></div>
             </div>
             
             {/* Gradient Overlay */}
@@ -78,12 +78,11 @@ export default function Footer() {
 
         {/* Bottom: Logo + copyright */}
         <div className="relative mt-10 border-t border-gray-800 dark:border-gray-300 pt-6  md:px-6 flex max-md:flex-col max-md:gap-10 justify-between items-center z-40">
-            
             {/* Left: Copyright */}
             <div className="flex flex-col self-start md:self-end items-start  gap-2">
-                <div className="bg-primary rounded-lg p-2">
+                <div className="">
                     {/* Replace with your own logo */}
-                    <span className="block w-4 h-4 bg-black rounded-full"></span>
+                    <Image alt="Logo" src="/logo/joeteckBlack.jpg" width={100} height={100} className="w-14 h-14 rounded-lg" />
                 </div>
                 <p className="text-sm">&copy;2025 Joeteck Inc.</p>
             </div>

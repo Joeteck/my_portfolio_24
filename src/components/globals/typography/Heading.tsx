@@ -65,7 +65,7 @@ export function Heading({
                 uppercase && "uppercase",
                 muted && "text-muted-foreground",
                 gradient &&
-                "bg-[linear-gradient(45deg,_#4b1f72,_#1BBB8B,_#FFA500)] bg-clip-text text-transparent",
+                "bg-[linear-gradient(45deg,_#1f7268,_#1BBB8B,_#00ff88)] bg-clip-text text-transparent",
                 gradient &&
                 // "bg-[linear-gradient(45deg,_var(--tw-gradient-stops))] from-primary via-secondary to-accent bg-clip-text text-transparent",
                             underline && "underline",

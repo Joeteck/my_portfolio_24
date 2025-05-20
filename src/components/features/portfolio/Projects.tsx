@@ -20,11 +20,12 @@ type ProjectsProps = {
 
 export default function Projects({ projects, className }: ProjectsProps) {
     return (
-        <div className={cn("relative w-full flex flex-col items-center text-white text-center bg-transparent", className)}>
+        <div className={cn("relative w-full flex flex-col py-20 items-center text-white text-center bg-transparent", className)}>
             {/* Section Title */}
-            <span className="relative text-[10px] font-bold px-3 py-1 rounded-full bg-neutral-300 dark:bg-neutral-700 text-neutral-500 dark:text-neutral-400 backdrop-blur-sm border border-neutral-300/50 dark:border-neutral-700/50 z-30">
+            <span className="relative text-[10px] font-bold px-3 py-1 rounded-full bg-gray-400 dark:bg-neutral-700 text-gray-600 dark:text-neutral-400 backdrop-blur-sm border border-neutral-300/50 dark:border-neutral-700/50 z-30">
                 PROJECTS
             </span>
+            
             {/* Project Title */}
             <Heading variant="sectionTitle" className="py-10 max-w-sm text-center text-neutral-800 dark:text-neutral-100">
                 Hey Welcome to Joeteck's Project

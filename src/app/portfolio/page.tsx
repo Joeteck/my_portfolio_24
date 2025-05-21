@@ -52,10 +52,37 @@ const PortfolioPage = () => {
                     />
                 </div>
             </div>
+<<<<<<< Updated upstream
             <Creative type="creative"/>
             <FeaturedProjects/>
             <Creative type="performance"/>
             <Footer type="portfolio"  />
+=======
+            
+            <section className="relative min-h-screen w-full flex flex-col items-center py-20 md:py-30 px-4 bg-neutral-100 dark:bg-neutral-950">
+                    
+                {/* Noise Background */}
+                <div className="absolute inset-0 pointer-events-none z-20">
+                    <div className="w-full h-full bg-noise-dark opacity-30 dark:opacity-40 mix-blend-multiply z-20"></div>
+                </div>
+
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-neutral-100/60 to-neutral-50 dark:via-neutral-800/60 dark:to-neutral-950 pointer-events-none z-20"></div>
+
+                {/* Components */}
+                <div id='example' className='relative z-30 w-full flex flex-col items-center justify-center'>
+                    <ExampleComponent/>
+                </div>
+                <div id='projects' className='w-full flex flex-col items-center justify-center'>
+                    <ProjectsSection/>
+                </div>
+            </section>
+
+            <div id='footer'>
+                <Footer/>
+                {/* <Footer type="portfolio"/> */}
+            </div>
+>>>>>>> Stashed changes
         </div>
     );
 };

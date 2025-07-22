@@ -1,22 +1,13 @@
-import { AboutMe } from '@/components/features/portfolio/AboutMe'
-import { ButtomBar } from '@/components/features/portfolio/ButtomBar'
-import { ExampleComponent } from '@/components/features/portfolio/ExampleComponent'
-import Footer from '@/components/features/portfolio/Footer'
-import { Header } from '@/components/features/portfolio/Header'
-import ProjectsSection from '@/components/features/portfolio/ProjectSection'
-import TextInput from '@/components/globals/form/TextInput'
-import { Navbar } from '@/components/globals/layout/Navbar'
 import { Heading } from '@/components/globals/typography/Heading'
 import { Paragraph } from '@/components/globals/typography/Paragraph'
 import Button from '@/components/globals/ui/Button'
+import { ButtomBar } from '@/components/features/portfolio/ButtomBar'
 import Image from 'next/image'
 import React from 'react'
 
-const Blog = () => {
+export const Hero = () => {
     return (
-        <div className="relative flex flex-col bg-neutral-100 dark:bg-[#00110a] text-neutral-900 dark:text-neutral-100 overflow-hidden">
-            <Navbar type="portfolio" />
-            
+        <div>
             {/* Noise Background */}
             <div className="absolute inset-0 pointer-events-none z-0 ">
                 <div className="w-full h-full bg-noise-dark opacity-60 dark:opacity-100 mix-blend-multiply z-10"></div>
@@ -57,11 +48,7 @@ const Blog = () => {
                     <ButtomBar/>
                 </div>
             </div>
-            <div id='footer'>
-                <Footer/>
-            </div>
-        </div>
-        )
-}
 
-export default Blog
+    </div>
+    )
+}

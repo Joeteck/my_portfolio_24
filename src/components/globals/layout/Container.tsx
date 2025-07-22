@@ -6,6 +6,7 @@ interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
     fluid?: boolean; // If true, container takes full width
     padding?: "none" | "sm" | "md" | "lg";
     maxWidth?: "sm" | "md" | "lg" | "xl" | "2xl" | "full";
+    className?: string;
 }
 
 const paddingStyles = {
@@ -39,7 +40,7 @@ export function Container({
                 "bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border border-gray-200 dark:border-gray-800 z-0",
                 !fluid && maxWidthStyles[maxWidth],
                 paddingStyles[padding],
-                className || "" // Ensures className is always a string
+                className
             )}
             {...props}
         >

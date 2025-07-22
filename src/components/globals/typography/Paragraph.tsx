@@ -57,7 +57,7 @@ export function Paragraph({
                 toneStyles[tone],
                 alignStyles[align],
                 truncate && "truncate",
-                "p-0.5",
+                "p-0.5 z-30",
                 className
             )}
             {...props}

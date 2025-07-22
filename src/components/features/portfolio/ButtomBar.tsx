@@ -1,0 +1,41 @@
+import { Book, Globe, Globe2, GlobeIcon } from 'lucide-react'
+import React from 'react'
+import { FaGlobe, FaMobile, FaMobileAlt, FaReact } from 'react-icons/fa'
+import { SiAnalogue, SiExpo, SiExpress, SiNextdotjs, SiPython, SiPythonanywhere, SiPytorch } from "react-icons/si";
+
+export const ButtomBar = () => {
+    return (
+        <div className='md:w-fit w-full max-sm:px-4 flex flex-row md:gap-5 gap-3  bg-transparent items-center justify-center max-sm:justify-between'>
+            <div className='w-[72px] flex flex-col gap-3 item-center justify-center'>
+                <FaReact size={16}  className="w-full flex text-[14px] font-thin item-center justify-center" />
+                <span className="text-center dark:text-neutral-400 text-[12px] font-medium leading-none">
+                    React and javaScript
+                </span>
+            </div>
+            <div className='w-[72px] flex flex-col gap-3 item-center justify-center'>
+                <GlobeIcon size={16} className="w-full flex text-[14px] font-thin item-center justify-center" />
+                <span className="text-center dark:text-neutral-400 text-[12px] font-medium leading-none">
+                    Nextjs and typeScript
+                </span>
+            </div>
+            <div className='w-[72px] flex flex-col gap-3 item-center justify-center'>
+                <FaMobileAlt size={16} className="w-full flex text-[14px] font-thin item-center justify-center" />
+                <span className="text-center dark:text-neutral-400 text-[12px] font-medium leading-none">
+                    React native and expo
+                </span>
+            </div>
+            <div className='w-[72px] flex flex-col gap-3 item-center justify-center'>
+                <SiPytorch size={16} className="w-full flex text-[14px] font-thin item-center justify-center" />
+                <span className="text-center dark:text-neutral-400 text-[12px] font-medium leading-none">
+                    DataScience and python
+                </span>
+            </div>
+            <div className='w-[72px] flex flex-col gap-3 item-center justify-center'>
+                <SiExpress size={16} className="w-full flex text-[14px] font-thin item-center justify-center" />
+                <span className="text-center dark:text-neutral-400 text-[12px] font-medium leading-none">
+                    Express and nodejs
+                </span>
+            </div>
+        </div>
+    )
+}

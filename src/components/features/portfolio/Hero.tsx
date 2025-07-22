@@ -49,6 +49,18 @@ export const Hero = () => {
                 </div>
             </div>
 
+            <div className=" self-end justify-self-end w-full ">
+                <div className="flex flex-row justify-self-end gap-4 w-1/2 ">
+                    <div className="w-1/6 h-screen flex items-center justify-center ">
+                        <Image src="/images/image1.jpg" alt="Image 1" width={100} height={100} className="object-cover rounded w-full h-full rounded-t-full rounded-b-full"                             style={{ transform: 'rotate(45deg)' }}
+/>
+                    </div>
+                    <div className="flex-1 flex items-center justify-center">
+                        <Image src="/images/image2.jpg" alt="Image 2" width={200} height={100} className="object-cover rounded w-full  h-full"                             style={{ transform: 'rotate(45deg)' }}
+/>
+                    </div>
+                </div>
+            </div>
     </div>
     )
 }

@@ -49,9 +49,6 @@ export const Hero = () => {
                 </div>
             </div>
 
-            <div className='flex '>
-                
-            </div>
     </div>
     )
 }

@@ -54,7 +54,7 @@ const ThemeSwitch = () => {
             {/* Mode Switch (light/dark) */}
             <button
                 onClick={toggleMode}
-                className="block items-center w-fit bg-transparent dark:text-white text-black"
+                className="block items-center w-fit"
             >
                 <motion.span
                     key={resolvedTheme}

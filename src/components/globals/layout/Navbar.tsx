@@ -45,7 +45,7 @@ export const Navbar = ({ type }: NavbarProps) => {
     };
 
     return (
-        <nav className={cn("fixed top-0 left-0 w-full z-50 backdrop-blur-xl p-1")}>
+        <nav className={cn("fixed top-2 w-[75%] justify-center self-center z-50 backdrop-blur-md bg-white dark:bg-[#07130e87] p-2.5 mx-6 md:mx-12 lg:mx-32 xl:mx-4 2xl:px-48 rounded-lg shadow-md transition-all duration-300")}>
             <div className="container mx-auto flex items-center justify-between">
                 <div className="font-bold">
                     {type === "company" ? (
@@ -58,18 +58,19 @@ export const Navbar = ({ type }: NavbarProps) => {
                         />
                     ) : (
                         <Link href="/portfolio">
-                            <Heading variant="subtitle" className="font-allura font-thin text-sm">
+                            <Image src="/logo/joeteckBlack.jpg" alt="Joeteck Logo" width={36} height={36} className="rounded-[10px]" />
+                            {/* <Heading variant="subtitle" className="font-allura font-thin text-xs">
                                 Joeteck
-                            </Heading>
+                            </Heading> */}
                         </Link>
                     )}
                 </div>
 
-                <ul className="hidden md:flex gap-10">
+                <ul className="hidden md:flex gap-4">
                     {links.map((link) => (
                         <li
                             key={link.name}
-                            className="hover:text-gray-400 transition-colors text-sm font-extralight cursor-pointer hover:border-b-2 border-b-primary px-4"
+                            className="hover:text-gray-400 transition-colors text-sm font-extralight cursor-pointer hover:border-b-2 border-b-primary px-2"
                             onClick={() => handleNavigation(link.path)}
                         >
                             {link.name}
@@ -77,8 +78,7 @@ export const Navbar = ({ type }: NavbarProps) => {
                     ))}
                 </ul>
 
-                <div className="flex flex-row">
-                    <button className="hidden md:block p-2 bg-transparent text-sm font-extralight">Action</button>
+                <div className="flex flex-row justify-center items-center gap-4">
                     <div className="md:flex hidden justify-center items-center">
                         <ThemeSwitch />
                     </div>

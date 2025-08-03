@@ -45,7 +45,7 @@ export const Navbar = ({ type }: NavbarProps) => {
     };
 
     return (
-        <nav className={cn("fixed top-2 w-[75%] justify-center self-center z-50 backdrop-blur-md bg-white dark:bg-[#07130e87] p-2.5 mx-6 md:mx-12 lg:mx-32 xl:mx-4 2xl:px-48 rounded-lg shadow-md transition-all duration-300")}>
+        <nav className={cn("fixed top-2 md:w-[75%] w-[95%] justify-center self-center z-50 backdrop-blur-md bg-[#e8fff72d] dark:bg-[#07130e87] p-2.5 mx-2 md:mx-12 lg:mx-32 xl:mx-4 2xl:px-48 rounded-lg shadow-md transition-all duration-300")}>
             <div className="container mx-auto flex items-center justify-between">
                 <div className="font-bold">
                     {type === "company" ? (

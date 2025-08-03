@@ -29,6 +29,7 @@ const About = () => {
                 <div className="bg-gradient-to-b from-transparent via-white/40 to-[#e0f7f0] dark:via-[#010604]/50 dark:to-[#03100b] w-full h-full" />
             </div>
             <Hero/>
+            <AboutMe/>
             
             <div id='footer'>
                 <Footer/>

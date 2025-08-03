@@ -16,7 +16,7 @@ export const Hero = () => {
     const livesetControls = useAnimation()
 
     return (
-    <div className="relative w-full h-screen overflow-hidden bg-[#fafffd] dark:bg-[#04130d] text-neutral-900 dark:text-neutral-100">
+    <div className="relative w-full min-h-screen pt-10 overflow-hidden bg-[#fafffd] dark:bg-[#04130d] text-neutral-900 dark:text-neutral-100">
             {/* Backgrounds */}
             <div className="absolute inset-0 pointer-events-none z-0">
                 <div className="w-full h-full bg-noise-dark opacity-20 dark:opacity-60 mix-blend-multiply z-10" />
@@ -24,7 +24,7 @@ export const Hero = () => {
             </div>
 
             {/* Main Content */}
-            <div className="relative z-30 flex h-full items-center justify-between px-6 md:px-12 lg:px-32 xl:px-40 2xl:px-48">
+            <div className="md:relative z-30 flex max-sm:flex-col max-sm:py-32 h-full items-center justify-between px-6 md:px-12 lg:px-32 xl:px-40 2xl:px-48">
                 {/* Left Section */}
                 <div className="flex flex-col gap-5 max-w-xl">
                 {/* Logo */}
@@ -47,7 +47,7 @@ export const Hero = () => {
                 </Heading>
 
                 <Paragraph className="text-neutral-500 dark:text-neutral-400 max-w-md">
-                    With a passion for design systems, intuitive UIs, and clean architecture, I create delightful digital experiences.
+                    Results-driven Software Engineer;  Skilled in building user-friendly applications, integrating payment gateways, and improving efficiency through data-driven decisions.
                 </Paragraph>
 
                 {/* CTA */}
@@ -66,7 +66,7 @@ export const Hero = () => {
                 <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                className="relative w-[500px] h-[500px] hidden md:block"
+                className="relative w-[500px] h-[500px] md:block"
                 >
                     {/* Dashboard Card */}
                     <motion.div
@@ -156,7 +156,7 @@ export const Hero = () => {
 
             {/* Bottom Bar */}
             <div className="absolute bottom-6 w-full flex justify-center z-40">
-                <ButtomBar />
+                <ButtomBar page='about' />
             </div>
         </div>
     )

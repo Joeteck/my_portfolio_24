@@ -23,7 +23,14 @@ export const AboutMe = () => {
 
                 {/* resume */}
                 <div className='bg-black max-sm:w-[95%] w-[75%] h-full'>
-
+                    <div className='flex  items-center justify-center'>
+                        <div className='w-full h-full bg-neutral-800 flex items-center justify-center'>
+                            hey
+                        </div>
+                        <div className='w-full h-full bg-neutral-300 flex items-center justify-center'>
+                            hey
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

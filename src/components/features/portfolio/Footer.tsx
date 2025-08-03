@@ -13,10 +13,10 @@ export default function Footer() {
     const router = useRouter();
 
     const pages = [
-        { label: "About", href: "/about" },
-        { label: "Projects", href: "/projects" },
-        { label: "Contact", href: "/contact" },
-        { label: "Blog", href: "/blog" },
+        // { label: "About", href: "/about" },
+        // { label: "Projects", href: "/projects" },
+        // { label: "Contact", href: "/contact" },
+        // { label: "Blog", href: "/blog" },
         { label: "Playground", href: "/" },
         { label: "Joeteck Consult", href: "/joeteck" },
     ];

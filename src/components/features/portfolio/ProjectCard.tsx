@@ -22,7 +22,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
     return (
         <div
             className={cn(
-                "bg-white dark:bg-neutral-800 rounded-xl shadow-lg overflow-hidden transition-transform hover:-translate-y-1 hover:shadow-2xl w-full max-w-md",
+                "bg-[#f9fffd] dark:bg-[#161b19] rounded-xl shadow-lg overflow-hidden transition-transform hover:-translate-y-1 hover:shadow-2xl w-full max-w-md",
                 project.className
             )}
         >
@@ -87,7 +87,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
                     {project.tools.map((tool, i) => (
                         <span
                             key={i}
-                            className="flex items-center bg-neutral-100 dark:bg-neutral-800 rounded-full px-3 py-1 text-sm font-medium text-neutral-700 dark:text-neutral-200 shadow-sm"
+                            className="flex items-center bg-[#e6efeb] dark:bg-[#272e2b] rounded-full px-3 py-1 text-sm font-medium text-[#272e2b] dark:text-[#e6efeb] shadow-sm"
                         >
                             {tool.icon && <span className="mr-2 text-lg">{tool.icon}</span>}
                             {tool.name}

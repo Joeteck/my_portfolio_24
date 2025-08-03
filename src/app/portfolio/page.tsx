@@ -20,11 +20,13 @@ const PortfolioPage = () => {
             
             {/* Noise Background */}
             <div className="absolute inset-0 pointer-events-none z-0">
-                <div className="w-full h-full bg-noise-dark dark:bg-noise opacity-30 dark:opacity-20 mix-blend-multiply z-10"></div>
+                <div className="w-full h-full bg-noise-dark opacity-30 dark:opacity-100 mix-blend-multiply z-10"></div>
             </div>
-            
+
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-neutral-100/60 to-neutral-100 dark:via-neutral-800/60 dark:to-neutral-900 pointer-events-none z-0"></div>
+            <div className="absolute inset-0 pointer-events-none z-0">
+                <div className="bg-gradient-to-b from-transparent via-white/40 to-[#e8faf5] dark:via-[#010604]/50 dark:to-[#03100b] w-full h-full" />
+            </div>
 
             <div className="relative h-[100vh] w-full flex flex-col items-center justify-center">
                 <div className='w-full flex flex-col gap-3 items-center justify-center'>
@@ -36,10 +38,10 @@ const PortfolioPage = () => {
                     </div>
                     <div className="w-fit flex flex-col justify-center items-center">
                         <div className='w-80'>
-                            <Heading variant='title' className='text-[36px] text-center  dark:text-primary-300' gradient>Keep it going with JoetecK</Heading>
+                            <Heading variant='title' className='px-0 text-[28px] sm:text-[32px] leading-snug font-medium  dark:text-primary-300' gradient>Keep it going with JoetecK</Heading>
                         </div>
                         <div className='w-[300px]'>
-                            <Paragraph className='text-center text-lg font-[550] text-neutral-600 dark:text-neutral-300'>Joeteck offers the tools to create visually rich and functional web experiences.</Paragraph>
+                            <Paragraph className='text-center text-neutral-500 dark:text-neutral-400'>Joeteck offers the tools to create visually rich and functional web experiences.</Paragraph>
                         </div>
                     </div>
                     <div className="w-80 flex md:flex-row flex-col justify-between items-center">
@@ -66,16 +68,16 @@ const PortfolioPage = () => {
                 </div>
 
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-neutral-100/60 to-neutral-50 dark:via-neutral-800/60 dark:to-neutral-950 pointer-events-none z-20"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#e0ebe8]/30 to-[#e0ebe8]/60 dark:via-[#010604]/50 dark:to-[#03100b] pointer-events-none z-20"></div>
 
                 {/* Components */}
                 <div id='example' className='relative z-30 w-full flex flex-col items-center justify-center'>
                     <ExampleComponent/>
                 </div>
+            </section>
                 <div id='projects' className='w-full flex flex-col items-center justify-center'>
                     <ProjectsSection/>
                 </div>
-            </section>
 
             <div id='footer'>
                 <Footer/>

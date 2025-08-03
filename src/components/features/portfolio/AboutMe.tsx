@@ -7,7 +7,7 @@ export const AboutMe = () => {
         <div className='w-full min-h-screen flex mt-40 justify-center'>
             <div className="relative w-full flex flex-col items-center">
                 {/* Label */}
-                <span className="relative text-[10px] font-medium px-3 py-1 rounded-full bg-[#0e2f25]/20 dark:bg-primaryDarklight text-[#0e2f25] backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50 z-30">
+                <span className="relative text-[10px] font-medium px-4 py-1 rounded-full bg-[#0e2f25]/20 dark:bg-primaryDarklight text-[#0e2f25] dark:text-[#e0ebe8] backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50 z-30">
                     Profile
                 </span>
 

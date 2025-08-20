@@ -35,7 +35,7 @@ export default function MeetJoel() {
   }, [mouseX, mouseY])
 
   return (
-    <div className="relative pt-10 md:min-h-screen h-full w-full flex flex-col items-center bg-[#fcfffe] dark:bg-[#04130d] px-0">
+    <div className="relative pt-20 max-sm:pb-10 md:min-h-screen h-full w-full flex flex-col items-center bg-[#fcfffe] dark:bg-[#04130d] px-0">
       {/* Tag */}
       <span className="relative text-[10px] font-medium px-3 py-1 rounded-full bg-[#0e2f25]/20 dark:bg-primaryDarklight text-[#0e2f25] dark:text-primaryLight backdrop-blur-sm z-30">
         Profile
@@ -69,7 +69,7 @@ export default function MeetJoel() {
             </p>
 
             {/* Social links */}
-            <div className="flex justify-center md:justify-start gap-3 text-sm">
+            <div className="flex justify-center md:justify-start gap-3 text-sm z-50">
               <a href="mailto:adeyojuibukunoluwa1@gmail.com" className="hover:text-[#1BBB8B] transition">
                 <FaEnvelope />
               </a>
@@ -79,7 +79,7 @@ export default function MeetJoel() {
               <a href="https://linkedin.com/in/joeteck" target="_blank" rel="noopener noreferrer" className="hover:text-[#1BBB8B] transition">
                 <FaLinkedin />
               </a>
-              <a href="https://myportfolio24-drab.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-[#1BBB8B] transition">
+              <a href="https://myportfolio24-drab.vercel.app/portfolio" target="_blank" rel="noopener noreferrer" className="hover:text-[#1BBB8B] transition">
                 <FaGlobe />
               </a>
             </div>

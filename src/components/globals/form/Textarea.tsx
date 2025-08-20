@@ -1,19 +1,36 @@
 type TextareaProps = {
-    placeholder?: string;
-    value: string;
-    onChange: (value: string) => void;
-};
+    id?: string
+    name?: string
+    placeholder?: string
+    value: string
+    onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
+    className?: string
+    rows?: number
+    required?: boolean
+}
 
-const Textarea = ({ placeholder, value, onChange }: TextareaProps) => {
+const Textarea = ({
+    id,
+    name,
+    placeholder,
+    value,
+    onChange,
+    className = "",
+    rows = 3,
+    required = false,
+    }: TextareaProps) => {
     return (
-    <textarea
+        <textarea
+        id={id}
+        name={name}
         placeholder={placeholder}
         value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="textarea text-md font-light"
-        rows={3}
-    />
-    );
-};
+        onChange={onChange}
+        required={required}
+        rows={rows}
+        className={`rounded-md p-2 border border-gray-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm focus:ring-2 focus:ring-[#1BBB8B] focus:outline-none w-full ${className}`}
+        />
+    )
+}
 
-export default Textarea;
+export default Textarea

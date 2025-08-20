@@ -6,26 +6,13 @@ import MeetJoel from './MeetJoel'
 
 export const AboutMe = () => {
     return (
-        <div className='w-full min-h-screen flex mt-40 justify-center'>
+        <div className='w-full min-h-screen flex mt-0 justify-center'>
             <div className="relative w-full flex flex-col items-center">
                 {/* Label */}
-                <span className="relative text-[10px] font-medium px-3 py-1 rounded-full bg-[#0e2f25]/20 dark:bg-primaryDarklight text-[#0e2f25] dark:text-primaryLight backdrop-blur-sm z-30">
-                    Profile
-                </span>
-
-                {/* Heading + Paragraph */}
-                <div className="relative z-30 text-center my-6 mb-14 ">
-                    <Heading variant="sectionTitle" className="pb-2 font-medium text-center text-primary dark:text-primary-300">
-                        Meet Joel
-                    </Heading>
                     <MeetJoel/>
-                    {/* <Paragraph className="text-neutral-500 dark:text-neutral-300 font-medium text-center">
-                        Results-driven Frontend Engineer with a BSc in Information Technology and hands-on experience delivering tech solutions that drive business success. Skilled in building user-friendly applications, integrating payment gateways, and improving efficiency through data-driven decisions.
-                    </Paragraph> */}
-                </div>
 
                 {/* resume */}
-                <div className='bg-transparent max-sm:w-[95%] w-[75%] h-full'>
+                <div className='pt-40 bg-transparent max-sm:w-[95%] w-[75%] h-full'>
                     <ResumeSection />
                 </div>
             </div>

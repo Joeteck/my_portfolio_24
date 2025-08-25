@@ -54,8 +54,14 @@ export default function MeetJoel() {
     const gainNode = audioContextRef.current.createGain()
     const panner = audioContextRef.current.createStereoPanner()
 
+    // start muted for autoplay compliance
+    gainNode.gain.value = 0
+
     source.connect(gainNode).connect(panner).connect(audioContextRef.current.destination)
     source.start()
+
+    // fade in volume
+    gainNode.gain.linearRampToValueAtTime(0.5, audioContextRef.current.currentTime + 1)
 
     sourceRef.current = source
     gainNodeRef.current = gainNode
@@ -95,6 +101,25 @@ export default function MeetJoel() {
 
     observer.observe(el)
     return () => observer.disconnect()
+  }, [])
+
+  // ---- RESUME ON USER INTERACTION (desktop autoplay fix) ----
+  useEffect(() => {
+    const resumeAudio = () => {
+      if (audioContextRef.current && audioContextRef.current.state === "suspended") {
+        audioContextRef.current.resume()
+      }
+    }
+
+    window.addEventListener("click", resumeAudio)
+    window.addEventListener("keydown", resumeAudio)
+    window.addEventListener("scroll", resumeAudio)
+
+    return () => {
+      window.removeEventListener("click", resumeAudio)
+      window.removeEventListener("keydown", resumeAudio)
+      window.removeEventListener("scroll", resumeAudio)
+    }
   }, [])
 
   // ---- CURSOR EFFECT ----

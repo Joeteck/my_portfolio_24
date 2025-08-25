@@ -150,12 +150,14 @@ const TestingPage = () => {
                     <Paragraph>Test the sign-in form below.</Paragraph>
                     <form onSubmit={handleSignInSubmit} className="flex flex-col gap-4 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
                         <TextInput
+                            name="email"
                             type = "email"
                             placeholder="Email"
                             value={signInData.email}
                             onChange={(e) => setSignInData({ ...signInData, email: e.target.value })}
                         />
                         <TextInput
+                            name="password"
                             type = "password"
                             placeholder="Password"
                             value={signInData.password}
@@ -178,18 +180,21 @@ const TestingPage = () => {
                     <Paragraph>Test the sign-up form below.</Paragraph>
                     <form onSubmit={handleSignUpSubmit} className="flex flex-col gap-4 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
                         <TextInput
+                            name="fullName"
                             type="text"
                             placeholder="Full Name"
                             value={signUpData.fullName}
                             onChange={(e) => setSignUpData({ ...signUpData, fullName: e.target.value })}
                         />
                         <TextInput
+                            name="email"
                             type="email"
                             placeholder="Email"
                             value={signUpData.email}
                             onChange={(e) => setSignUpData({ ...signUpData, email: e.target.value })}
                         />
                         <TextInput
+                            name="password"
                             type="password"
                             placeholder="Password"
                             value={signUpData.password}
@@ -197,6 +202,7 @@ const TestingPage = () => {
                             showToggle
                         />
                         <TextInput
+                            name="confirmPassword"
                             type="password"
                             placeholder="Confirm Password"
                             value={signUpData.confirmPassword}
@@ -222,7 +228,7 @@ const TestingPage = () => {
                         <Textarea
                             placeholder="Short Bio"
                             value={signUpData.bio}
-                            onChange={(value) => setSignUpData({ ...signUpData, bio: value })}
+                            onChange={(e) => setSignUpData({ ...signUpData, bio: e.target.value })}
                         />
                         <Checkbox
                             label="Accept Terms and Conditions"

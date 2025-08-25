@@ -90,6 +90,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({ isPortfolio = false }) => {
             <div className="w-full pb-3">
                 <div className="relative w-full max-w-lg mx-auto">
                     <TextInput
+                        name="faq-search"
                         type="text"
                         placeholder="What are you looking for?"
                         value={search}

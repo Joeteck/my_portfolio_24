@@ -40,7 +40,7 @@ export default function Footer() {
         <footer className="w-full relative bg-transparent text-black dark:text-gray-300 flex flex-col px-6 md:px-20  md:py-14 md:pb-28 b-1 z-50">
         
             {/* Top: Subscribe */}
-            <div className="relative flex max-md:flex-col justify-between items-center z-40">
+            <div className="relative flex max-md:flex-col justify-between items-center z-40 max-sm:pt-10">
                 <div className="flex flex-col w-fit items-center md:items-start justify-center ">
                     <h3 className="text-lg font-semibold">Stay in the loop</h3>
                     <p className="text-sm mb-4">Subscribe for the latest news & updates.</p>

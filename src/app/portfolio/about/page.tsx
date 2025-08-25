@@ -26,7 +26,7 @@ const About = () => {
 
             {/* Gradient Overlay */}
             <div className="absolute inset-0 pointer-events-none z-0">
-                <div className="bg-gradient-to-b from-transparent via-white/40 to-[#e0f7f0] dark:via-[#010604]/50 dark:to-[#03100b] w-full h-full" />
+                <div className="bg-gradient-to-b from-transparent via-white/40 to-[#CCE8E0] dark:via-[#010604]/50 dark:to-[#03100b] w-full h-full" />
             </div>
             <Hero/>
             <AboutMe/>

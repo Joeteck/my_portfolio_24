@@ -79,7 +79,7 @@ const projects = [
 
 export default function ProjectsSection() {
     return (
-        <section className="relative flex flex-col justify-center items-center z-30 w-full md:w-[75%]  py-20 bg-transparent ">
+        <section className="flex flex-col justify-center items-center z-30 w-full  py-20 bg-transparent ">
                 {/* Section Title */}
             <span className="relative text-[10px] font-bold px-3 py-1 rounded-full bg-neutral-300 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50 z-30 shadow-lg">
                 PROJECTS
@@ -95,7 +95,7 @@ export default function ProjectsSection() {
                     </Paragraph>
                 </div>
 
-            <div className="flex flex-wrap justify-center gap-12 mt-10">
+            <div className=" w-full h-fit flex flex-wrap justify-center gap-12 mt-10">
                 {projects.map((project, idx) => (
                 <ProjectCard key={idx} project={project} />
                 ))}

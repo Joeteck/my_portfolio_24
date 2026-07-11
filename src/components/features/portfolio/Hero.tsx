@@ -94,7 +94,7 @@ export const Hero = () => {
               </span>
             </motion.div>
 
-            <motion.button
+            {/* <motion.button
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0px 0px 12px rgba(27,187,139,0.5)",
@@ -106,7 +106,7 @@ export const Hero = () => {
             >
               Explore
               <FiArrowRight className="inline" />
-            </motion.button>
+            </motion.button> */}
           </div>
         </motion.div>
 

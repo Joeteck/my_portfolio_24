@@ -46,12 +46,13 @@ const PortfolioPage = () => {
                     </div>
                     <div className="w-80 flex md:flex-row flex-col justify-between items-center">
                         <div className='w-fit px-4 py-1 border border-primary dark:border-primary-300 rounded-lg bg-neutral-100 dark:bg-neutral-800 max-sm:mb-5'>
-                            <span className='font-mono text-sm font-thin text-primary dark:text-primary-200'> joeteck build vision</span>
+                            <span className='font-mono text-sm font-thin text-primary dark:text-primary-200'> joeteck builds vision</span>
                         </div>
                         <div className='flex flex-col'>
-                            <form className=''>
+                                <span className='px-4 py-2 text-sm bg-primary text-white dark:bg-primary-400 dark:text-neutral-900 rounded-lg '>that last</span>
+                            {/* <form className=''>
                                 <Button type='submit' className='px-4 py-2 text-sm bg-primary text-white dark:bg-primary-400 dark:text-neutral-900'>Explore</Button>
-                            </form>
+                            </form> */}
                         </div>
                     </div>
 

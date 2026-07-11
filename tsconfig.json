@@ -12,10 +12,9 @@
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
       {
@@ -26,14 +25,16 @@
       "@/*": [
         "./src/*"
       ]
-    }
+    },
+    "moduleResolution": "bundler"
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/utils/cn.ts"
+    "src/utils/cn.ts",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

@@ -46,8 +46,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${roboto.variable} ${robotoMono.variable} ${alexBrush.variable}`}>
-      <body className="font-sans bg-background text-foreground" suppressHydrationWarning>
+    /* Moved suppressHydrationWarning here to cover font classes and dynamic theme injections */
+    <html lang="en" className={`${roboto.variable} ${robotoMono.variable} ${alexBrush.variable}`} suppressHydrationWarning>
+      <body className="font-sans bg-background text-foreground">
         <Providers>
           <ThemeProvider>
             <SpeedInsights />

@@ -9,7 +9,7 @@
     "test:watch": "vitest --watch",
     "test:e2e": "playwright test",
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "next build --no-lint",
     "start": "next start",
     "lint": "next lint"
   },

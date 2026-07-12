@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useTheme } from '@/context/ThemeContext'; // ✅ using your custom hook
+import { useTheme } from 'next-themes'; // ✅ dark/light mode now lives here, not in the custom context
 
 type CreativeType = 'creative' | 'performance' | 'interface';
 
@@ -9,7 +9,24 @@ interface CreativeProps {
   type: CreativeType;
 }
 
-const creativeConfig: Record<CreativeType, any> = {
+interface Heading {
+  text: string;
+  isSlideshow?: boolean;
+  useAsBackground?: boolean;
+  backgroundColor?: string;
+  darkBackgroundColor?: string;
+  font: 'playfair-display' | 'sans' | 'mono';
+  image?: string;
+  darkImage?: string;
+}
+
+interface CreativeConfig {
+  headings: Heading[];
+  images: string[];
+  darkOverlay: boolean;
+}
+
+const creativeConfig: Record<CreativeType, CreativeConfig> = {
   creative: {
     headings: [
       {
@@ -29,7 +46,7 @@ const creativeConfig: Record<CreativeType, any> = {
       {
         text: 'Performance',
         image: 'creative-6.jpg',
-        darkImage: 'creative-10.jpg', // use a darker variant
+        darkImage: 'creative-10.jpg',
         useAsBackground: true,
         font: 'sans',
       },
@@ -55,8 +72,8 @@ const creativeConfig: Record<CreativeType, any> = {
 
 export const Creative = ({ type }: CreativeProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const { mode } = useTheme(); // ✅ grab mode (light | dark)
-  const isDark = mode === 'dark';
+  const { resolvedTheme } = useTheme(); // ✅ grab mode (light | dark)
+  const isDark = resolvedTheme === 'dark';
 
   const { headings, images, darkOverlay } = creativeConfig[type];
   const currentImage = images[currentImageIndex];
@@ -72,7 +89,7 @@ export const Creative = ({ type }: CreativeProps) => {
 
   return (
     <div className="w-full h-fit flex flex-col justify-center items-center">
-      {headings.map((heading: any, index: number) => {
+      {headings.map((heading: Heading, index: number) => {
         const {
           text,
           isSlideshow,

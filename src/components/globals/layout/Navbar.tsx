@@ -58,7 +58,7 @@ export const Navbar = ({ type }: NavbarProps) => {
                         />
                     ) : (
                         <Link href="/portfolio">
-                            <Image src="/logo/joeteckBlack.jpg" alt="Joeteck Logo" width={36} height={36} className="rounded-[10px]" />
+                            <Image src="/logo/joeteckBlack.jpg" alt="Joeteck Logo" width={36} height={36} className="w-9 h-9 rounded-[10px]" />
                             {/* <Heading variant="subtitle" className="font-allura font-thin text-xs">
                                 Joeteck
                             </Heading> */}

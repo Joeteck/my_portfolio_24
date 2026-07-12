@@ -197,7 +197,7 @@ export const Hero = () => {
               alt="Avatar"
               width={40}
               height={40}
-              className="rounded-full"
+              className="rounded-full w-10 h-10"
             />
           </motion.div>
 
@@ -247,3 +247,4 @@ export const Hero = () => {
     </motion.div>
   )
 }
+

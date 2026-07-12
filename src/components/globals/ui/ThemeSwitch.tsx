@@ -1,6 +1,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
+import { useTheme as useAccentTheme } from "@/context/ThemeContext";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { Sun, Moon, Palette } from "lucide-react";
@@ -8,7 +9,8 @@ import { themes } from "@/utils/theme";
 import { useEffect, useState } from "react";
 
 const ThemeSwitch = () => {
-    const { theme, setTheme, resolvedTheme } = useTheme();
+    const { resolvedTheme, setTheme } = useTheme();
+    const { theme: accentTheme, setTheme: setAccentTheme } = useAccentTheme();
     const pathname = usePathname();
     const isPlayground = pathname === "/";
     const [mounted, setMounted] = useState(false);
@@ -21,9 +23,9 @@ const ThemeSwitch = () => {
 
     const toggleThemePalette = () => {
         if (isPlayground) {
-            const currentIndex = themes.indexOf(theme || themes[0]);
+            const currentIndex = themes.indexOf(accentTheme || themes[0]);
             const nextIndex = (currentIndex + 1) % themes.length;
-            setTheme(themes[nextIndex]);
+            setAccentTheme(themes[nextIndex]);
         }
     };
 
@@ -33,14 +35,13 @@ const ThemeSwitch = () => {
 
     return (
         <div className="flex gap-3">
-            {/* Theme Palette Switch (e.g., color themes) */}
-            {isPlayground && (
+            {/* {isPlayground && (
                 <button
                     onClick={toggleThemePalette}
                     className="block items-center w-fit bg-transparent dark:text-white text-black"
                 >
                     <motion.span
-                        key={theme}
+                        key={accentTheme}
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.8 }}
@@ -49,13 +50,9 @@ const ThemeSwitch = () => {
                         <Palette size={18} />
                     </motion.span>
                 </button>
-            )}
+            )} */}
 
-            {/* Mode Switch (light/dark) */}
-            <button
-                onClick={toggleMode}
-                className="block items-center w-fit"
-            >
+            <button onClick={toggleMode} className="block items-center w-fit">
                 <motion.span
                     key={resolvedTheme}
                     initial={{ opacity: 0, scale: 0.8 }}

@@ -25,7 +25,7 @@ export const PartnerLogoSlider = () => {
                                 height={60}
                                 src={logo.src}
                                 alt={logo.name}
-                                className="grayscale hover:grayscale-0 transition duration-300"
+                                className="grayscale hover:grayscale-0 transition duration-300 w-[60px] h-[60px]"
                             />
                         </div>
                     }>
@@ -36,3 +36,4 @@ export const PartnerLogoSlider = () => {
         </Container>
     );
 };
+

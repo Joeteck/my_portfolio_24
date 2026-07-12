@@ -95,7 +95,7 @@ export const ProjectHero = () => {
               alt="Project One"
               width={400}
               height={300}
-              className="rounded-lg object-cover"
+              className="rounded-lg object-cover w-[400px] h-[300px]"
             />
             <div className="mt-4 space-y-2">
                 <div className="font-bold text-base">Internal Management System</div>
@@ -152,3 +152,4 @@ export const ProjectHero = () => {
     </div>
   )
 }
+

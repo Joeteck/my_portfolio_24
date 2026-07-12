@@ -31,7 +31,7 @@ const Contact = () => {
         <div className="w-full flex flex-col gap-3 items-center justify-center">
           {/* Logo */}
           <div className="flex bg-black rounded-[10px] w-12 h-12 items-center justify-center">
-            <Image src="/logo/joeteckBlack.jpg" alt="Joeteck Logo" width={30} height={30} />
+            <Image src="/logo/joeteckBlack.jpg" alt="Joeteck Logo" width={30} height={30} className='w-[30px] h-[30px]'/>
           </div>
 
           {/* Headline + Subtext */}

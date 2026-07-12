@@ -30,7 +30,7 @@ const Blog = () => {
 
                     <div className="flex bg-black rounded-[10px] w-12 h-12 items-center justify-center">
                         <div>
-                            <Image src="/logo/joeteckBlack.jpg" alt='Joeteck Logo' width={30} height={30}  className=''/>
+                            <Image src="/logo/joeteckBlack.jpg" alt='Joeteck Logo' width={30} height={30}  className='w-[30px] h-[30px]'/>
                         </div>
                     </div>
                     <div className="w-fit flex flex-col justify-center items-center">

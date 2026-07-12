@@ -23,7 +23,7 @@ export const Header = () => {
                         Software Engineer
                     </span>
                     <Heading variant="title" className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
-                        I'm Adeyoju Joel
+                        I&apos;m Adeyoju Joel
                     </Heading>
                     <Paragraph className="text-lg text-gray-600 dark:text-gray-300 max-w-xl">
                         I craft beautiful, fast, and meaningful user experiences on the web and mobile. Let’s build something extraordinary.

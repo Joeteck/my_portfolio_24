@@ -1,0 +1,34 @@
+/* Base slide styles */
+.slick-slide {
+    transform: scale(0.88) translateY(30px);
+    transition: all 0.4s ease-in-out;
+    opacity: 0.5;
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  /* Center slide - popped forward */
+  .slick-center {
+    transform: scale(1.05) translateY(0px) !important;
+    opacity: 1 !important;
+    z-index: 10 !important;
+    pointer-events: auto;
+  }
+  
+  /* This collapses the gap between slides, making them overlap */
+  .slick-slide > div {
+    margin: 0 -80px;
+  }
+  
+  /* Apply blur to non-center cards */
+  .slick-slide-card {
+    filter: blur(1px);
+    transition: all 0.3s ease;
+  }
+  
+  /* Remove blur and add shadow to center */
+  .slick-center .slick-slide-card {
+    filter: none;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  }
+  

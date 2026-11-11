@@ -43,5 +43,8 @@ next-env.d.ts
 # test 
 .vitest
 .playwright
+<<<<<<< HEAD
 my_portfolio
 my_portfolio.zip
+=======
+>>>>>>> 326fd5fec368cf9d466f90b80495c89305070a29

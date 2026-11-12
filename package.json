@@ -26,7 +26,7 @@
     "animejs": "^3.2.2",
     "clsx": "^2.1.1",
     "framer-motion": "^12.6.5",
-    "glob": "^11.0.1",
+    "glob": "^14.0.5",
     "gsap": "^3.12.7",
     "lru-cache": "^11.1.0",
     "lucide-react": "^0.475.0",

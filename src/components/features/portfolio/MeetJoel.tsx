@@ -236,8 +236,8 @@ export default function MeetJoel() {
             <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-white">
               Joel <br /> Adeyoju
             </h2>
-            <p className="text-neutral-500 dark:text-neutral-400 text-xs">
-              (yes, that’s me 👋)
+            <p className="text-[#1BBB8B] text-xs">
+              (Click In For Some Meditation. )
             </p>
           </motion.div>
         </motion.div>

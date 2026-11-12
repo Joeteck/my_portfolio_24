@@ -49,7 +49,7 @@ const ResumeBlock = ({ children }: { children: ReactNode }) => {
 
 export default function ResumeSection() {
   return (
-    <section       className="min-h-screen px-0 py-0 bg-white dark:bg-[#04130d] text-neutral-900 dark:text-white">
+    <section      className="min-h-screen px-0 py-0 bg-white dark:bg-[#04130d] text-neutral-900 dark:text-white">
       <div className="max-w-5xl mx-0 sm:mx-auto grid md:grid-cols-2 gap-0">
 
         {/* LEFT PANEL */}
@@ -58,7 +58,7 @@ export default function ResumeSection() {
           <ResumeBlock>
             <div className="flex flex-col items-left">
               <h2 className='text-4xl font-medium leading-relaxed text-left pb-0 mb-0'>Joel Adeyoju</h2>
-              <h3 className="text-2xl font-light text-left pt-0 mt-0">Frontend Developer</h3>
+              <h3 className="text-2xl font-light text-left pt-0 mt-0">Software Engineer | Full-Stack | Cloud & AWS</h3>
               <Image src="/images/team/joel.jpg" alt="Joel Adeyoju" width={500} height={500} className=" mt-3 rounded-full w-32 h-32 object-cover" />
             </div>
           </ResumeBlock>
@@ -67,8 +67,8 @@ export default function ResumeSection() {
           <ResumeBlock>
             <div className="mt-4 mb-10 space-y-3 text-sm tracking-wider">
               {[
-                { icon: <FaEnvelope />, text: "adeyojuibukunoluwa1@gmail.com" },
-                { icon: <FaPhone />, text: "08058509717" },
+                { icon: <FaEnvelope />, text: "joe58509717@gmail.com" },
+                { icon: <FaPhone />, text: "+234 805 850 9717" },
                 { icon: <FaMapMarkerAlt />, text: "Nigeria" },
                 { icon: <FaLink />, text: "My Portfolio", link: "https://myportfolio24-drab.vercel.app/portfolio" },
                 { icon: <FaLinkedin />, text: "Linkedin", link: "https://linkedin.com/in/joeteck" },
@@ -104,9 +104,9 @@ export default function ResumeSection() {
                 <FaIdCard className="inline mr-2" />
                 Profile</h3>
               <p className="text-sm leading-relaxed ">
-                <strong>Results-driven Frontend Engineer</strong> with a BSc in IT and hands-on experience delivering tech solutions that drive business success. Skilled in building user-friendly apps, integrating payment gateways, and improving efficiency through data-driven decisions.
+                Full-stack software engineer with 3+ years of experience delivering scalable web, mobile and cloud solutions across the full SDLC. Led development of a multi-vendor e-commerce platform and architected a serverless AWS platform with 50+ data collectors across 100+ Nigerian languages.
                 <br /><br />
-                Continuously learning and staying up to date with industry trends through tech communities and workshops. Known for strong problem-solving, project management, and collaboration skills.
+                Pursuing a Master&apos;s in Project Management; Google PM Certificate in progress. Skilled in React, Next.js, TypeScript, Node.js, PostgreSQL, and AWS with strong cross-functional leadership.
               </p>
             </div>
           </ResumeBlock>
@@ -118,12 +118,12 @@ export default function ResumeSection() {
                 <FaTools className="inline mr-2" />
                 Skill</h3>
                 <div className="grid grid-cols-1 gap-4 mt-4">
-                <SkillRating title="Programming Languages" items={["JavaScript", "TypeScript", "Python", "Java"]} rating={4} />
-                <SkillRating title="Web/App Development" items={["React", "Next.js", "Django", "React Native", "TailwindCSS"]} rating={4} />
-                <SkillRating title="Database & Backend" items={["MySQL", "Oracle DB", "REST API", "GraphQL"]} rating={3} />
-                <SkillRating title="Software & Tools" items={["Git/GitHub", "CMS", "VS Code", "Figma"]} rating={3} />
-                <SkillRating title="Concepts & Methodologies" items={["OOP", "DSA", "Agile", "UX/UI", "API Integration"]} rating={4} />
-                <SkillRating title="Soft Skills" items={["Project Management", "Communication", "Teamwork"]} rating={4} />
+                <SkillRating title="Languages" items={["JavaScript", "TypeScript", "Python", "SQL"]} rating={4} />
+                <SkillRating title="Frontend" items={["React", "Next.js", "React Native", "Angular", "Tailwind CSS"]} rating={4} />
+                <SkillRating title="Backend & Data" items={["Node.js", "REST APIs", "PostgreSQL", "DynamoDB", "Prisma ORM"]} rating={4} />
+                <SkillRating title="Cloud & DevOps" items={["AWS (Lambda, S3, CloudFront, API Gateway, DynamoDB, IAM, VPC)", "Git/GitHub", "EAS Build", "CI/CD"]} rating={4} />
+                <SkillRating title="Payments & Auth" items={["Flutterwave v3", "Clerk", "OAuth 2.0", "Supabase"]} rating={3} />
+                <SkillRating title="AI Tools & Practices" items={["Claude", "GitHub Copilot", "Cursor", "Sentry", "Jest", "SDLC", "Agile/Scrum"]} rating={4} />
               </div>
 
             </div>
@@ -144,24 +144,40 @@ export default function ResumeSection() {
             <div className="space-y-4 text-sm">
               {[
                 {
+                  degree: "Master's in Project Management",
+                  institution: "Rome Business School Nigeria",
+                  period: "Oct 2026 – Oct 2027",
+                  location: "Nigeria",
+                  details: "In progress.",
+                },
+                {
                   degree: "Bachelor of Science in Information Technology",
                   institution: "Methodist University Ghana",
                   period: "2019 – 2023",
                   location: "Accra, Ghana",
                   link: "https://mug.edu.gh/",
                   details:
-                    "Gained a strong foundation in software engineering, algorithms, networking, and databases. Built practical skills through projects, MUITSA leadership, and hackathon participation.",
+                    "Gained a strong foundation in software engineering, algorithms, networking, and databases. Served as Academic Head, MUITSA (2022/2023): organised programmes and tutored peers in Python, Java, C++ and data structures.",
                 },
               ].map((edu, i) => (
                 <div key={i}>
-                  <a href={edu.link} target="_blank" rel="noopener noreferrer" className="text-[#143028] hover:text-[#154e3c] dark:hover:text-[#205d4a] transition">
+                  {edu.link ? (
+                    <a href={edu.link} target="_blank" rel="noopener noreferrer" className="text-[#143028] hover:text-[#154e3c] dark:hover:text-[#205d4a] transition">
+                      <h4 className="text-base font-semibold">
+                        {edu.degree}{" "}
+                        <span className="font-normal">
+                          — {edu.institution} <span className="text-xs text-neutral-500">({edu.period})</span>
+                        </span>
+                      </h4>
+                    </a>
+                  ) : (
                     <h4 className="text-base font-semibold">
                       {edu.degree}{" "}
                       <span className="font-normal">
                         — {edu.institution} <span className="text-xs text-neutral-500">({edu.period})</span>
                       </span>
                     </h4>
-                  </a>
+                  )}
                   <p className="text-xs italic text-neutral-600 dark:text-neutral-400 ml-1">{edu.location}</p>
                   <p className="text-sm leading-relaxed mt-1 ml-2">{edu.details}</p>
                 </div>
@@ -182,25 +198,25 @@ export default function ResumeSection() {
               <div className="space-y-5 text-sm">
                 {[
                   {
-                    company: "RCCG Glorious Ambassadors",
-                    role: "Media Team Director",
-                    period: "2021 – 2024",
+                    company: "St Stephen Schools",
+                    role: "Computer Studies & Robotics Teacher (NYSC)",
+                    period: "Aug 2025 – Jun 2026",
                     details:
-                      "Led the media team in managing live-streaming, audiovisual production, and multimedia content for services and events. Streamlined media operations, trained team members, and enhanced visual communication through high-quality video production and graphic design.",
+                      "Planned and delivered programming and robotics instruction to 80+ pupils, tracking progress and adapting delivery; authored NERDC-aligned lesson notes for Primary 4 and JSS 2 that the school adopted into its curriculum.",
+                  },
+                  {
+                    company: "Inansbay",
+                    role: "Digital Marketing & Technical Lead",
+                    period: "Sep 2025 – Feb 2026",
+                    details:
+                      "Designed and built multi-stage sales funnels, lead-capture forms and landing pages on WordPress with integrated analytics, delivering product-specific features for 10+ products and contributing to 15% company growth. Translated business requirements into technical roadmaps and specifications and managed deliverables against agreed milestones.",
                   },
                   {
                     company: "Fasyl Technology Ghana",
-                    role: "Frontend Consultant",
-                    period: "2023 – 2024",
+                    role: "Frontend Engineer (Consultant)",
+                    period: "Aug 2023 – Feb 2024",
                     details:
-                      "Developed and optimized frontend features for internal and client-facing support systems using React, Next.js, Angular, and Python. Collaborated with cross-functional teams to improve user experience, ensure code quality, and deliver project goals.",
-                  },
-                  {
-                    company: "MUITSA",
-                    role: "Academic Head",
-                    period: "2022 – 2023",
-                    details:
-                      "Organized academic programs and study sessions for IT students, provided tutoring in Python, C++, and data structures, and promoted collaborative learning. Supported peers in project development and fostered a strong academic community within the department.",
+                      "Developed and shipped frontend features using React, Next.js, and Angular across 4+ core business modules, including HR, sales, marketing, and departmental management. Contributed to a centralized enterprise management system improving operational coordination and workflow visibility.",
                   },
                 ].map((exp, i) => (
                   <div key={i}>
@@ -226,41 +242,29 @@ export default function ResumeSection() {
               <div className="space-y-5 text-sm">
                 {[
                   {
-                    title: "Portfolio Website",
-                    stack: "Next.js, TypeScript, Tailwind CSS, Framer Motion",
+                    title: "KANSGP Store | Multi-vendor farm e-commerce",
+                    stack: "Next.js 14, TypeScript, Prisma, PostgreSQL, Flutterwave v3",
                     details:
-                      "Showcases projects and skills with a clean, responsive UI and smooth animations.",
+                      "Led and coordinated end-to-end development of a multi-vendor e-commerce marketplace. Led Flutterwave v3 payment integration (OAuth 2.0 token exchange, direct card charging, webhook handling) and delivered multi-vendor dashboards, a dynamic ad/banner system, and mobile-responsive buyer experiences.",
                     link: "https://myportfolio24-drab.vercel.app/",
                   },
                   {
-                    title: "Home Service Mobile App",
-                    stack: "React Native, Firebase",
+                    title: "Nigerian Language Data Bank (Covenant University)",
+                    stack: "AWS, Python, Lambda, S3, DynamoDB, CloudFront, API Gateway",
                     details:
-                      "Mobile platform for booking and managing home services efficiently.",
+                      "Architected a scalable serverless AWS pipeline that has onboarded 50+ registered data collectors and gathered data in 100+ Nigerian languages toward a target of 700+ for AI training.",
+                  },
+                  {
+                    title: "Scripture Memorization App",
+                    stack: "React Native, TypeScript, Expo SDK 56, Supabase, expo-sqlite",
+                    details:
+                      "Built a cross-platform mobile app (iOS and Android) with Bible verse memorization features and push notifications, resolving EAS cloud build failures, SQLite transaction race conditions, and Expo SDK mismatches.",
                   },
                   {
                     title: "Blockchain-Based Land Registration System",
-                    stack: "React Vite, Tailwind CSS, Solidity",
+                    stack: "React, Tailwind CSS, Solidity",
                     details:
-                      "Secure land record management system using Ghana as a case study.",
-                  },
-                  {
-                    title: "Face Recognition Program",
-                    stack: "Python, OpenCV",
-                    details:
-                      "Facial identification system implemented with computer vision techniques.",
-                  },
-                  {
-                    title: "Online Salon Booking System",
-                    stack: "React, Node.js, MongoDB",
-                    details:
-                      "Multi-salon application enabling online bookings, scheduling, and management.",
-                  },
-                  {
-                    title: "Snake Game",
-                    stack: "Java, OOP",
-                    details:
-                      "Classic snake game built with object-oriented programming principles.",
+                      "Led a team of 4 members in building a decentralised land-record system using Ghana as a case study on smart contracts for transparent property title management.",
                   },
                 ].map((proj, i) => (
                   <div key={i}>
@@ -299,38 +303,23 @@ export default function ResumeSection() {
               <div className="space-y-5 text-sm">
                 {[
                   {
-                    title: "Fundamentals of Java",
-                    provider: "Digital Skills Bootcamp '21 – Springboard Ghana",
-                    date: "Oct 2021",
+                    title: "Google Project Management Professional Certificate",
+                    provider: "Google",
+                    date: "In Progress",
                   },
                   {
-                    title: "CARES Youth Dialogues",
+                    title: " (PMI)",
+                    provider: "PMI",
+                    date: "In Progress",
+                  },
+                  {
+                    title: "IBM Data Science (6 Certificates)",
+                    provider: "IBM / Cognitive Class.ai",
+                  },
+                  {
+                    title: "Fundamentals of Java & Digital Skills Bootcamp",
                     provider: "Springboard Ghana",
                     date: "Oct 2021",
-                  },
-                  {
-                    title: "Data Science Methodology",
-                    provider: "IBM / Cognitive Class.ai",
-                  },
-                  {
-                    title: "Introduction to Data Science",
-                    provider: "IBM / Cognitive Class.ai",
-                  },
-                  {
-                    title: "Data Science Tools",
-                    provider: "IBM / Cognitive Class.ai",
-                  },
-                  {
-                    title: "Data Analysis with Python",
-                    provider: "IBM / Cognitive Class.ai",
-                  },
-                  {
-                    title: "Python 101 for Data Science",
-                    provider: "IBM / Cognitive Class.ai",
-                  },
-                  {
-                    title: "Data Visualization with Python",
-                    provider: "IBM / Cognitive Class.ai",
                   },
                 ].map((cert, i) => (
                   <div key={i}>

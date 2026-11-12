@@ -8,7 +8,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { Roboto, Roboto_Mono, Playfair_Display, Allura } from 'next/font/google';
 
-
 // Import Alex Brush font
 const alexBrush = Playfair_Display({
   subsets: ['latin'],

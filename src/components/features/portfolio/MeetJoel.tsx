@@ -30,8 +30,13 @@ export default function MeetJoel() {
   // ---- INIT AUDIO CONTEXT ----
   const initAudioContext = async () => {
     if (!audioContextRef.current) {
-      const audioContext = new (window.AudioContext ||
-        (window as any).webkitAudioContext)()
+      const AudioContextConstructor =
+        window.AudioContext ||
+        (window as Window & { webkitAudioContext?: typeof AudioContext })
+          .webkitAudioContext
+      if (!AudioContextConstructor) return
+
+      const audioContext = new AudioContextConstructor()
 
       audioContextRef.current = audioContext
 

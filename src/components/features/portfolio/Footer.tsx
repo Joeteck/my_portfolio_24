@@ -112,7 +112,7 @@ export default function Footer() {
                         <li><a href="https://discord.gg/NM38pPDG" target="_blank" className="hover:text-primary flex items-center gap-2"><FaDiscord /> Discord</a></li>
                         <li><a href="https://github.com/joeteck" target="_blank" className="hover:text-primary flex items-center gap-2"><FaGithub /> GitHub</a></li>
                         <li><a href="https://twitter.com" target="_blank" className="hover:text-primary flex items-center gap-2"><FaTwitter /> X/Twitter</a></li>
-                        <li><a href="https://www.linkedin.com/in/adeyoju-ibukunoluwa-375018209/" target="_blank" className="hover:text-primary flex items-center gap-2"><FaLinkedinIn /> LinkedIn</a></li>
+                        <li><a href="https://www.linkedin.com/in/joeteck/" target="_blank" className="hover:text-primary flex items-center gap-2"><FaLinkedinIn /> LinkedIn</a></li>
                         </ul>
                     </div>
                 </div>

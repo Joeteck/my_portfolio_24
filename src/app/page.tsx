@@ -1,55 +1,42 @@
+// app/page.tsx
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
-import { Oswald, IBM_Plex_Mono, Inter } from "next/font/google";
-import ThemeSwitch from "@/components/globals/ui/ThemeSwitch"; 
 import Image from "next/image";
-import Button  from "@/components/globals/ui/Button";
+import { motion, useReducedMotion } from "framer-motion";
+import { Inter } from "next/font/google";
+import ThemeSwitch from "@/components/globals/ui/ThemeSwitch";
+import JoeteckPlayground from "@/components/features/company/JoeteckPlayground";
 
-const display = Oswald({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-display",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--lp-font-sans",
+  display: "swap",
 });
 
-const techMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-tech",
-});
-
-const body = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-body",
-});
-
-type Artifact = {
-  id: string;
-  label: string;
-  category: string;
-  code: string;
-  top: string;
-  left: string;
-  rotate: number;
-  color: string;
-};
-
-const ARTIFACTS: Artifact[] = [
-  { id: "btn", label: "<Button />", category: "Interactive", code: 'variant="solid" size="lg" onClick={fire}', top: "14%", left: "6%", rotate: -4, color: "#10b981" },
-  { id: "nav", label: "<Navbar />", category: "Layout", code: 'sticky={true} blur={20} theme="auto"', top: "8%", left: "54%", rotate: 3, color: "#3b82f6" },
-  { id: "card", label: "<Card />", category: "Surface", code: 'elevation="xl" interactive border', top: "44%", left: "68%", rotate: -3, color: "#f59e0b" },
-  { id: "mod", label: "<Modal />", category: "Overlay", code: 'backdrop="blur" isOpen={state}', top: "66%", left: "10%", rotate: 4, color: "#8b5cf6" },
-  { id: "tst", label: "<Toast />", category: "Feedback", code: 'duration={3000} icon="⚡" action={undo}', top: "62%", left: "46%", rotate: -2, color: "#ec4899" },
+const PLAYGROUND_FEATURES = [
+  {
+    icon: "✳",
+    title: "Drag & drop",
+    desc: "Assemble layouts from a curated library of 22+ production-ready blocks.",
+  },
+  {
+    icon: "◈",
+    title: "Make it yours",
+    desc: "Tune content, colour, spacing, and Framer Motion animation — live on the canvas.",
+  },
+  {
+    icon: "↗",
+    title: "Take it with you",
+    desc: "Export any artboard as a crisp PNG or PDF, ready to share or ship.",
+  },
 ];
 
 export default function LeadingPage() {
-  const yardRef = useRef<HTMLDivElement>(null);
   const systemReduceMotion = useReducedMotion();
   const [mounted, setMounted] = useState(false);
-  const [activeArtifact, setActiveArtifact] = useState<Artifact | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -58,289 +45,244 @@ export default function LeadingPage() {
   const reduceMotion = mounted ? systemReduceMotion : false;
 
   return (
-    <div className={`${display.variable} ${techMono.variable} ${body.variable} page-wrapper`}>
-      <div className="ambient-glow" aria-hidden="true" />
-      
-      <h1 className="sr-only">Joeteck Portfolio — Software Engineer, UI Specialist & Product Builder</h1>
+    <div className={`${inter.variable} page-wrapper relative flex flex-col bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 overflow-hidden`}>
+      <h1 className="sr-only">Joeteck — Software Engineer, UI Specialist & Product Builder</h1>
 
-      {/* ================= FLOATING HEADER ================= */}
-      <header className="header-bar">
-        <div className="branding">
-          <Link href="/" className="logo-link" aria-label="Joeteck Home">
-            <Image src="/images/joeteck_logo.png" alt="Joeteck Logo" width={48} height={48} className="logo-mark" />
+      {/* Noise Background */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="w-full h-full bg-noise-dark opacity-30 dark:opacity-100 mix-blend-multiply z-10"></div>
+      </div>
+
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="bg-gradient-to-b from-transparent via-white/40 to-[#e8faf5] dark:via-[#010604]/50 dark:to-[#03100b] w-full h-full" />
+      </div>
+
+      {/* ================= HEADER ================= */}
+      <header className="lp-header relative z-10">
+        <div className="lp-brand">
+          <Link href="/" className="lp-logo-link" aria-label="Joeteck Home">
+            <span className="lp-logo flex items-center justify-center">
+              <Image 
+                src="/logo/joeteckBlack.jpg" 
+                alt="Joeteck Logo" 
+                width={30} 
+                height={30} 
+                className="w-[30px] h-[30px] rounded-[10px] object-cover"
+              />
+            </span>
+            <span className="lp-wordmark">Joeteck</span>
           </Link>
-          <span className="tagline">Software Engineer · UI Specialist · Product Builder</span>
+          <span className="lp-brand-divider" aria-hidden="true" />
+          <span className="lp-brand-tag">Playground</span>
         </div>
 
-            <ThemeSwitch />
+        <nav className="lp-nav" aria-label="Primary">
+          <a href="#playground" className="lp-nav-link">Playground</a>
+          <Link href="/portfolio" className="lp-nav-link">Portfolio</Link>
+          <a href="#playground" className="lp-btn-primary lp-btn-sm">
+            <span>Try it</span>
+            <span className="lp-btn-arrow" aria-hidden="true">→</span>
+          </a>
+          <ThemeSwitch />
+        </nav>
       </header>
 
-      {/* ================= MAIN STAGE ================= */}
-      <main className="stage">
-        
-        {/* ---- Left: Pitch Section ---- */}
+      {/* ================= HERO ================= */}
+      <main className="lp-hero relative z-10">
         <motion.div
-          className="pitch"
-          initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+          className="lp-hero-inner"
+          initial={reduceMotion ? false : { opacity: 0, y: 14 }}
           animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="status-pill">
-            <span className="pulse-indicator" />
-            <span className="status-text">Available for new opportunities</span>
+          <div className="lp-chip">
+            <span className="lp-chip-dot" />
+            <span>Available for new opportunities</span>
           </div>
 
-          <h2>
-            Engineering interfaces that feel <span className="highlight-gradient">alive.</span>
-          </h2>
-          
-          <p className="description">
-            I bridge complex engineering with pixel-perfect design. Explore my production applications, interactive design systems, and technical case studies.
+          <p className="lp-eyebrow">
+            Software Engineering · Product Design · Creative Technology
           </p>
 
-          <div className="action-row">
-            <Link href="/portfolio" className="btn-primary rounded-lg">
-              <Button className="btn-primary">
-                  Enter Portfolio
-                <span className="btn-icon" aria-hidden="true">→</span>
-              </Button>
-            </Link>
-            
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="btn-secondary">
-              <span>GitHub Profile</span>
-              <span className="sr-only">(opens in new tab)</span>
+          <h2 className="lp-hero-title">
+            Engineering interfaces
+            <br />
+            that feel <span className="lp-highlight">alive.</span>
+          </h2>
+
+          <p className="lp-hero-desc">
+            I turn complex ideas into thoughtful digital experiences. Explore the products I
+            build, the systems behind them, and the details that make technology feel effortless.
+          </p>
+
+          <div className="lp-hero-actions">
+            <a href="#playground" className="lp-btn-primary">
+              <span>Enter the playground</span>
+              <span className="lp-btn-arrow" aria-hidden="true">→</span>
             </a>
+            <Link href="/portfolio" className="lp-btn-ghost">
+              <span>Explore my work</span>
+              <span className="lp-btn-arrow" aria-hidden="true">↗</span>
+            </Link>
+          </div>
+
+          <div className="lp-proof" aria-label="Areas of focus">
+            <span className="lp-proof-chip"><i /> Frontend engineering</span>
+            <span className="lp-proof-chip"><i /> UI systems</span>
+            <span className="lp-proof-chip"><i /> Product building</span>
           </div>
         </motion.div>
-
-        {/* ---- Right: Interactive Workbench Canvas ---- */}
-        <section className="workbench-wrap" aria-label="Interactive component playground">
-          <div className="workbench-header">
-            <div className="window-dots" aria-hidden="true">
-              <span className="dot dot-close" />
-              <span className="dot dot-min" />
-              <span className="dot dot-max" />
-            </div>
-            <span className="workbench-title">CANVAS // COMPONENT PLAYGROUND</span>
-            <span className="workbench-badge">INTERACTIVE</span>
-          </div>
-
-          <div ref={yardRef} className="workbench-canvas">
-            {/* Corner Crosshairs */}
-            <span className="crosshair top-left" aria-hidden="true">+</span>
-            <span className="crosshair top-right" aria-hidden="true">+</span>
-            <span className="crosshair bottom-left" aria-hidden="true">+</span>
-            <span className="crosshair bottom-right" aria-hidden="true">+</span>
-
-            {/* Center Background Watermark */}
-            <div className="canvas-watermark" aria-hidden="true">
-              <div className="watermark-icon">
-                <Image src="/images/joeteck_logo.png" alt="Watermark" width={32} height={32} />
-                </div>
-              <span>DRAG & INSPECT COMPONENTS</span>
-            </div>
-
-            {/* Draggable Component Artifacts */}
-            <div className="artifact-field" aria-hidden="true">
-              {ARTIFACTS.map((item, index) => (
-                <div
-                  key={item.id}
-                  className="artifact-slot"
-                  style={{ top: item.top, left: item.left }}
-                >
-                  <motion.div
-                    className={`artifact-card ${activeArtifact?.id === item.id ? "is-active" : ""}`}
-                    style={{ "--accent-color": item.color } as React.CSSProperties}
-                    drag={!reduceMotion}
-                    dragConstraints={yardRef}
-                    dragElastic={0.1}
-                    dragMomentum={false}
-                    onDragStart={() => setActiveArtifact(item)}
-                    onHoverStart={() => setActiveArtifact(item)}
-                    whileHover={{ scale: 1.05, zIndex: 50 }}
-                    whileDrag={{ scale: 1.08, zIndex: 60, cursor: "grabbing" }}
-                    initial={reduceMotion ? false : { opacity: 0, scale: 0.9 }}
-                    animate={
-                      reduceMotion
-                        ? undefined
-                        : {
-                            opacity: 1,
-                            scale: 1,
-                            y: [0, -4, 0],
-                            rotate: item.rotate,
-                          }
-                    }
-                    transition={{
-                      opacity: { duration: 0.3, delay: 0.15 + index * 0.06 },
-                      y: {
-                        repeat: Infinity,
-                        duration: 3.5 + index * 0.4,
-                        ease: "easeInOut",
-                        repeatType: "reverse",
-                      },
-                      rotate: { type: "spring", stiffness: 260, damping: 20 },
-                    }}
-                  >
-                    <span className="artifact-dot" />
-                    <span className="artifact-label">{item.label}</span>
-                  </motion.div>
-                </div>
-              ))}
-            </div>
-
-            {/* Live Telemetry HUD Bottom Inspector */}
-            <div className="telemetry-hud" aria-live="polite">
-              <AnimatePresence mode="wait">
-                {activeArtifact ? (
-                  <motion.div
-                    key={activeArtifact.id}
-                    className="hud-data"
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -6 }}
-                    transition={{ duration: 0.15 }}
-                  >
-                    <span className="hud-category" style={{ color: activeArtifact.color }}>
-                      [{activeArtifact.category}]
-                    </span>
-                    <span className="hud-name">{activeArtifact.label}</span>
-                    <code className="hud-code">{activeArtifact.code}</code>
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="idle"
-                    className="hud-data idle-state"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                  >
-                    <span>✦ System Ready — Hover or drag any component artifact above to inspect props</span>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          </div>
-        </section>
       </main>
 
-      {/* ================= FOOTER ================= */}
-      <footer className="footer-bar">
-        <div className="footer-meta">
-          <span>© {new Date().getFullYear()} Joeteck</span>
-          <span className="divider" aria-hidden="true">/</span>
-          <span>Engineered with Next.js & Framer Motion</span>
+      {/* ================= PLAYGROUND SHOWCASE ================= */}
+      <section className="lp-playground relative z-10" id="playground" aria-labelledby="playground-title">
+        <div className="lp-playground-grid">
+          <div className="lp-playground-copy">
+            <span className="lp-kicker">
+              <i className="lp-kicker-dot" /> A creative space to build
+            </span>
+            <h2 id="playground-title" className="lp-playground-title">
+              Ideas become interfaces.
+              <br />
+              <span>One block at a time.</span>
+            </h2>
+            <p>
+              Meet <strong>Joeteck Playground</strong> — a visual studio for experimenting with
+              layouts, components, colours and motion. Drag blocks onto the artboard, tune the
+              details, then export what you create.
+            </p>
+          </div>
+
+          <div className="lp-features" aria-label="Playground features">
+            {PLAYGROUND_FEATURES.map((f, i) => (
+              <motion.div
+                key={f.title}
+                className="lp-feature-card"
+                initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+                whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.4, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <span className="lp-feature-icon" aria-hidden="true">{f.icon}</span>
+                <div className="lp-feature-copy">
+                  <b>{f.title}</b>
+                  <small>{f.desc}</small>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
-        <div className="footer-status">
-          <span className="status-dot" aria-hidden="true">●</span>
-          <span>All Systems Operational</span>
+
+        {/* Browser window wrapping the playground */}
+        <motion.div
+          className="lp-browser"
+          initial={reduceMotion ? false : { opacity: 0, y: 22 }}
+          whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="lp-chrome">
+            <div className="lp-chrome-dots" aria-hidden="true">
+              <span className="lp-dot lp-dot-close" />
+              <span className="lp-dot lp-dot-min" />
+              <span className="lp-dot lp-dot-max" />
+            </div>
+            <div className="lp-chrome-url">
+              <span className="lp-url-text">
+                joeteck.app<span className="lp-url-path">/playground</span>
+              </span>
+            </div>
+            <div className="lp-chrome-tools" aria-hidden="true">
+              <span className="lp-live">
+                <i />
+                Live
+              </span>
+            </div>
+          </div>
+          <div className="lp-browser-stage">
+            <JoeteckPlayground />
+          </div>
+        </motion.div>
+      </section>
+
+      {/* ================= FOOTER ================= */}
+      <footer className="lp-footer relative z-10">
+        <div className="lp-footer-left">
+          <span>© {new Date().getFullYear()} Joeteck</span>
+          <span className="lp-divider" aria-hidden="true">·</span>
+          <span>Engineered with Next.js &amp; Framer Motion</span>
+        </div>
+        <div className="lp-footer-right">
+          <span className="lp-footer-dot" aria-hidden="true" />
+          <span>All systems operational</span>
         </div>
       </footer>
 
       <style jsx>{`
-        /* ================= THEME & COLOR SYSTEM ================= */
-        :global(:root), :global(.light), :global([data-theme="light"]) {
-          --bg-main: #f8fafc;
-          --bg-surface: rgba(255, 255, 255, 0.85);
-          --bg-surface-hover: rgba(255, 255, 255, 1);
-          --border-subtle: rgba(15, 23, 42, 0.08);
-          --border-strong: rgba(15, 23, 42, 0.18);
-          --text-primary: #0f172a;
-          --text-secondary: #334155;
-          --text-dim: #64748b;
-          --accent: #10b981;
-          --accent-glow: rgba(16, 185, 129, 0.15);
-          --canvas-bg: #ffffff;
-          --canvas-grid: rgba(15, 23, 42, 0.04);
-          --card-bg: rgba(255, 255, 255, 0.95);
-          --card-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 0 1px 1px rgba(15, 23, 42, 0.06);
-          --hud-bg: rgba(241, 245, 249, 0.9);
+        /* ====================== DESIGN TOKENS (Portfolio Integrated) ====================== */
+        .page-wrapper {
+          --lp-ink: #07080b;
+          --lp-ink-2: #141629;
+          --lp-text: #2a2d34;
+          --lp-muted: #8a8e96;
+          --lp-faint: #b4b8be;
+          --lp-line: rgba(1, 172, 129, 0.15);
+          --lp-line-2: rgba(233, 161, 33, 0.2);
+          --lp-bg: #f8faf9;
+          --lp-fill: rgba(1, 172, 129, 0.04);
+          --lp-fill-2: rgba(233, 161, 33, 0.04);
+          --lp-surface: #ffffff;
+
+          --lp-accent: #01ac81;
+          --lp-accent-hover: #019670;
+          --lp-accent-soft: rgba(1, 172, 129, 0.1);
+          --lp-accent-line: rgba(1, 172, 129, 0.3);
+
+          --lp-gold: #e9a121;
+          --lp-green: #01ac81;
+          --lp-green-soft: rgba(1, 172, 129, 0.12);
+          --lp-green-line: rgba(1, 172, 129, 0.35);
+
+          --lp-shadow-card: 0 2px 6px rgba(1, 172, 129, 0.04);
+          --lp-shadow-lift: 0 8px 24px rgba(1, 172, 129, 0.08);
+          --lp-shadow-lg: 0 30px 70px rgba(1, 8, 6, 0.12);
         }
 
-        :global(.dark), :global([data-theme="dark"]), :global(body.dark) {
-          --bg-main: #060a08;
-          --bg-surface: rgba(18, 26, 22, 0.75);
-          --bg-surface-hover: rgba(26, 38, 32, 0.9);
-          --border-subtle: rgba(255, 255, 255, 0.08);
-          --border-strong: rgba(255, 255, 255, 0.18);
-          --text-primary: #f8fafc;
-          --text-secondary: #cbd5e1;
-          --text-dim: #94a3b8;
-          --accent: #10b981;
-          --accent-glow: rgba(16, 185, 129, 0.25);
-          --canvas-bg: rgba(10, 16, 13, 0.6);
-          --canvas-grid: rgba(255, 255, 255, 0.04);
-          --card-bg: rgba(18, 26, 22, 0.9);
-          --card-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.6), 0 0 1px 1px rgba(255, 255, 255, 0.12);
-          --hud-bg: rgba(6, 10, 8, 0.85);
-        }
+        :global(.dark) .page-wrapper,
+        :global([data-theme="dark"]) .page-wrapper {
+          --lp-ink: #f3f4f4;
+          --lp-ink-2: #e1e4e4;
+          --lp-text: #c8cad4;
+          --lp-muted: #8a8e96;
+          --lp-faint: #6b6f78;
+          --lp-line: rgba(1, 172, 129, 0.15);
+          --lp-line-2: rgba(233, 161, 33, 0.2);
+          --lp-bg: #030d09;
+          --lp-fill: rgba(1, 172, 129, 0.06);
+          --lp-fill-2: rgba(233, 161, 33, 0.06);
+          --lp-surface: #071610;
 
-        /* Fallback auto-detection if no class is set */
-        @media (prefers-color-scheme: dark) {
-          :global(:root:not(.light):not([data-theme="light"])) {
-            --bg-main: #060a08;
-            --bg-surface: rgba(18, 26, 22, 0.75);
-            --bg-surface-hover: rgba(26, 38, 32, 0.9);
-            --border-subtle: rgba(255, 255, 255, 0.08);
-            --border-strong: rgba(255, 255, 255, 0.18);
-            --text-primary: #f8fafc;
-            --text-secondary: #cbd5e1;
-            --text-dim: #94a3b8;
-            --accent: #10b981;
-            --accent-glow: rgba(16, 185, 129, 0.25);
-            --canvas-bg: rgba(10, 16, 13, 0.6);
-            --canvas-grid: rgba(255, 255, 255, 0.04);
-            --card-bg: rgba(18, 26, 22, 0.9);
-            --card-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.6), 0 0 1px 1px rgba(255, 255, 255, 0.12);
-            --hud-bg: rgba(6, 10, 8, 0.85);
-          }
-        }
+          --lp-accent: #01ac81;
+          --lp-accent-hover: #02c493;
+          --lp-accent-soft: rgba(1, 172, 129, 0.15);
+          --lp-accent-line: rgba(1, 172, 129, 0.35);
 
-        /* ================= BASE LAYOUT ================= */
-        :global(html), :global(body) {
-          height: 100%;
-          margin: 0;
-          padding: 0;
-          overflow: hidden;
-          background-color: var(--bg-main);
+          --lp-gold: #e9a121;
+          --lp-green: #01ac81;
+          --lp-green-soft: rgba(1, 172, 129, 0.18);
+          --lp-green-line: rgba(1, 172, 129, 0.4);
+
+          --lp-shadow-card: 0 2px 6px rgba(0, 0, 0, 0.3);
+          --lp-shadow-lift: 0 8px 24px rgba(0, 0, 0, 0.4);
+          --lp-shadow-lg: 0 30px 70px rgba(0, 0, 0, 0.6);
         }
 
         .page-wrapper {
-          height: 100vh;
-          height: 100dvh;
-          width: 100%;
-          display: grid;
-          grid-template-rows: auto 1fr auto;
-          gap: clamp(1rem, 2vh, 2rem);
-          padding: clamp(1rem, 3vw, 2.5rem);
-          background-color: var(--bg-main);
-          color: var(--text-primary);
-          font-family: var(--font-body);
-          position: relative;
-          z-index: 1;
-          transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        /* Dot pattern background */
-        .page-wrapper::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          background-image: radial-gradient(var(--canvas-grid) 1.5px, transparent 1.5px);
-          background-size: 28px 28px;
-          z-index: -2;
-          pointer-events: none;
-        }
-
-        .ambient-glow {
-          position: absolute;
-          top: -15%;
-          left: 20%;
-          width: 60vw;
-          height: 60vw;
-          background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0,0,0,0) 70%);
-          z-index: -1;
-          pointer-events: none;
-          filter: blur(50px);
+          font-family: var(--lp-font-sans), ui-sans-serif, system-ui, sans-serif;
+          font-size: 14px;
+          line-height: 1.5;
+          -webkit-font-smoothing: antialiased;
         }
 
         .sr-only {
@@ -348,552 +290,534 @@ export default function LeadingPage() {
           overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
         }
 
-        /* ================= HEADER ================= */
-        .header-bar {
+        /* ====================== HEADER ====================== */
+        .lp-header {
+          position: sticky;
+          top: 0;
+          height: 64px;
           display: flex;
+          align-items: center;
           justify-content: space-between;
-          align-items: center;
-          gap: 1rem;
-          padding: 0.6rem 1.25rem;
-          border-radius: 999px;
-          background: var(--bg-surface);
-          border: 1px solid var(--border-subtle);
-          backdrop-filter: blur(16px);
-          box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+          gap: 16px;
+          padding: 0 clamp(16px, 4vw, 40px);
+          background: color-mix(in srgb, var(--lp-bg) 82%, transparent);
+          border-bottom: 1px solid var(--lp-line);
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
         }
 
-        .branding {
+        .lp-brand {
           display: flex;
           align-items: center;
-          gap: 1.25rem;
+          gap: 12px;
+          min-width: 0;
         }
 
-        .logo-link {
+        .lp-logo-link {
           display: flex;
           align-items: center;
-          gap: 0.65rem;
+          gap: 10px;
           text-decoration: none;
-          color: var(--text-primary);
+          color: var(--lp-ink);
+          flex-shrink: 0;
         }
 
-        .logo-mark {
-          width: 34px;
-          height: 34px;
-          border-radius: 8px;
-          background: linear-gradient(135deg, var(--accent), #059669);
-          color: #000;
-          font-family: var(--font-display);
+        .lp-wordmark {
+          font-size: 15px;
           font-weight: 700;
-          font-size: 0.95rem;
+          letter-spacing: -0.03em;
+          color: var(--lp-ink);
+        }
+
+        .lp-brand-divider {
+          width: 1px;
+          height: 18px;
+          background: var(--lp-line-2);
+        }
+
+        .lp-brand-tag {
+          font-size: 11px;
+          font-weight: 600;
+          color: var(--lp-gold);
+          letter-spacing: 0.02em;
+          white-space: nowrap;
+        }
+
+        .lp-nav {
           display: flex;
           align-items: center;
-          justify-content: center;
-          box-shadow: 0 0 16px var(--accent-glow);
+          gap: 8px;
+          flex-shrink: 0;
         }
 
-        .wordmark {
-          font-family: var(--font-display);
-          font-size: 1.35rem;
-          font-weight: 700;
-          letter-spacing: 0.08em;
+        .lp-nav-link {
+          font-size: 13px;
+          font-weight: 550;
+          color: var(--lp-text);
+          text-decoration: none;
+          padding: 8px 12px;
+          border-radius: 99px;
+          transition: background-color 0.15s, color 0.15s;
         }
 
-        .tagline {
-          color: var(--text-dim);
-          font-family: var(--font-tech);
-          font-size: 0.78rem;
-          letter-spacing: 0.03em;
-          padding-left: 1.25rem;
-          border-left: 1px solid var(--border-strong);
+        .lp-nav-link:hover {
+          background: var(--lp-fill);
+          color: var(--lp-accent);
         }
 
-        .nav-controls {
-          display: flex;
-          align-items: center;
-          gap: 0.75rem;
-        }
-
-        .nav-cta {
+        /* ====================== BUTTONS ====================== */
+        .lp-btn-primary {
           display: inline-flex;
           align-items: center;
-          gap: 0.5rem;
-          padding: 0.5rem 1.1rem;
-          border-radius: 999px;
-          background: var(--bg-main);
-          border: 1px solid var(--border-strong);
-          color: var(--text-primary);
-          font-family: var(--font-tech);
-          font-size: 0.82rem;
-          font-weight: 600;
+          justify-content: center;
+          gap: 8px;
+          height: 44px;
+          padding: 0 20px;
+          border: 0;
+          border-radius: 99px;
+          background: var(--lp-accent);
+          color: #ffffff;
+          font-family: inherit;
+          font-size: 13.5px;
+          font-weight: 650;
           text-decoration: none;
-          transition: all 0.2s ease;
+          white-space: nowrap;
+          cursor: pointer;
+          transition: background-color 0.15s, transform 0.15s, box-shadow 0.15s;
+          box-shadow: 0 8px 20px -10px rgba(1, 172, 129, 0.5);
         }
-
-        .nav-cta:hover {
-          border-color: var(--accent);
-          color: var(--accent);
-          box-shadow: 0 0 16px var(--accent-glow);
+        .lp-btn-primary:hover {
+          background: var(--lp-accent-hover);
+          transform: translateY(-1px);
         }
-
-        .nav-arrow {
-          transition: transform 0.2s ease;
+        .lp-btn-primary .lp-btn-arrow {
+          transition: transform 0.15s;
         }
-
-        .nav-cta:hover .nav-arrow {
+        .lp-btn-primary:hover .lp-btn-arrow {
           transform: translateX(3px);
         }
-
-        /* ================= MAIN STAGE ================= */
-        .stage {
-          display: grid;
-          grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
-          gap: clamp(2rem, 4vw, 4.5rem);
-          min-height: 0;
-          align-items: center;
+        .lp-btn-sm {
+          height: 34px;
+          padding: 0 14px;
+          font-size: 12.5px;
         }
 
-        .pitch {
-          display: flex;
-          flex-direction: column;
-          gap: 1.5rem;
-          max-width: 540px;
-        }
-
-        .status-pill {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.6rem;
-          width: fit-content;
-          padding: 0.4rem 0.9rem;
-          border-radius: 999px;
-          background: rgba(16, 185, 129, 0.1);
-          border: 1px solid rgba(16, 185, 129, 0.3);
-        }
-
-        .pulse-indicator {
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          background: var(--accent);
-          box-shadow: 0 0 8px var(--accent);
-          animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-          0% { transform: scale(0.95); opacity: 0.8; }
-          50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 14px var(--accent); }
-          100% { transform: scale(0.95); opacity: 0.8; }
-        }
-
-        .status-text {
-          color: var(--accent);
-          font-size: 0.78rem;
-          font-weight: 600;
-          letter-spacing: 0.03em;
-          font-family: var(--font-tech);
-        }
-
-        .pitch h2 {
-          font-family: var(--font-display);
-          font-weight: 700;
-          line-height: 1.05;
-          font-size: clamp(2.4rem, 1.8rem + 3vw, 4.2rem);
-          margin: 0;
-          text-transform: uppercase;
-          color: var(--text-primary);
-        }
-
-        .highlight-gradient {
-          background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-
-        .description {
-          color: var(--text-secondary);
-          line-height: 1.65;
-          font-size: clamp(0.98rem, 0.9rem + 0.3vw, 1.12rem);
-          margin: 0;
-        }
-
-        .action-row {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-          margin-top: 0.5rem;
-        }
-
-        .btn-primary {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.75rem;
-          height: 52px;
-          padding: 0 1.75rem;
-          border-radius: 12px;
-          background: var(--accent);
-          color: #000000;
-          font-weight: 600;
-          font-size: 0.98rem;
-          text-decoration: none;
-          transition: all 0.2s ease;
-          box-shadow: 0 8px 20px -4px rgba(16, 185, 129, 0.4);
-        }
-
-        .btn-primary:hover {
-          background: #34d399;
-          transform: translateY(-2px);
-          box-shadow: 0 12px 24px -4px rgba(16, 185, 129, 0.6);
-        }
-
-        .btn-icon {
-          font-family: var(--font-tech);
-          font-weight: 700;
-          transition: transform 0.2s ease;
-        }
-
-        .btn-primary:hover .btn-icon {
-          transform: translateX(4px);
-        }
-
-        .btn-secondary {
+        .lp-btn-ghost {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          height: 52px;
-          padding: 0 1.5rem;
-          border-radius: 12px;
-          background: var(--bg-surface);
-          border: 1px solid var(--border-strong);
-          color: var(--text-primary);
-          font-weight: 500;
-          font-size: 0.95rem;
+          gap: 8px;
+          height: 44px;
+          padding: 0 20px;
+          border: 1px solid var(--lp-accent-line);
+          border-radius: 99px;
+          background: var(--lp-surface);
+          color: var(--lp-ink);
+          font-family: inherit;
+          font-size: 13.5px;
+          font-weight: 600;
           text-decoration: none;
-          transition: all 0.2s ease;
+          white-space: nowrap;
+          cursor: pointer;
+          transition: background-color 0.15s, border-color 0.15s, transform 0.15s;
+        }
+        .lp-btn-ghost:hover {
+          background: var(--lp-fill);
+          border-color: var(--lp-accent);
+          transform: translateY(-1px);
         }
 
-        .btn-secondary:hover {
-          background: var(--bg-surface-hover);
-          border-color: var(--text-dim);
+        /* ====================== HERO ====================== */
+        .lp-hero {
+          position: relative;
+          width: 100%;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: clamp(56px, 9vw, 104px) clamp(16px, 4vw, 40px) clamp(48px, 6vw, 72px);
         }
 
-        /* ================= WORKBENCH CANVAS ================= */
-        .workbench-wrap {
+        .lp-hero-inner {
           display: flex;
           flex-direction: column;
-          height: 100%;
-          min-height: 380px;
-          border: 1px solid var(--border-strong);
-          border-radius: 16px;
-          overflow: hidden;
-          background: var(--canvas-bg);
-          box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
-          backdrop-filter: blur(12px);
+          gap: 20px;
+          max-width: 820px;
         }
 
-        .workbench-header {
+        .lp-chip {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          width: fit-content;
+          height: 30px;
+          padding: 0 14px;
+          border-radius: 99px;
+          border: 1px solid var(--lp-green-line);
+          background: var(--lp-green-soft);
+          color: var(--lp-accent);
+          font-size: 12px;
+          font-weight: 600;
+        }
+
+        .lp-chip-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: var(--lp-accent);
+          animation: lp-pulse 2s infinite;
+        }
+
+        @keyframes lp-pulse {
+          0%, 100% { opacity: 1; box-shadow: 0 0 0 0 var(--lp-accent); }
+          50%      { opacity: 0.85; box-shadow: 0 0 0 3px transparent; }
+        }
+
+        .lp-eyebrow {
+          margin: 4px 0 0;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: var(--lp-gold);
+        }
+
+        .lp-hero-title {
+          margin: 0;
+          font-size: clamp(2.8rem, 8vw, 5.6rem);
+          font-weight: 800;
+          line-height: 0.96;
+          letter-spacing: -0.045em;
+          color: var(--lp-ink);
+        }
+
+        .lp-highlight {
+          display: inline-block;
+          padding: 0.02em 0.28em 0.08em;
+          margin: 0 -0.06em;
+          border-radius: 0.18em;
+          background: var(--lp-gold);
+          color: #07080b;
+          line-height: 1;
+          transform: rotate(-0.5deg);
+        }
+
+        .lp-hero-desc {
+          margin: 0;
+          max-width: 620px;
+          font-size: clamp(15px, 1.15vw, 17px);
+          line-height: 1.7;
+          color: var(--lp-text);
+        }
+
+        .lp-hero-actions {
           display: flex;
           align-items: center;
-          justify-content: space-between;
-          padding: 0.75rem 1rem;
-          background: var(--bg-surface);
-          border-bottom: 1px solid var(--border-subtle);
+          gap: 10px;
+          flex-wrap: wrap;
+          margin-top: 8px;
         }
 
-        .window-dots {
+        .lp-proof {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-top: 24px;
+        }
+
+        .lp-proof-chip {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          height: 28px;
+          padding: 0 12px;
+          border-radius: 99px;
+          background: var(--lp-fill);
+          border: 1px solid var(--lp-line);
+          font-size: 12px;
+          font-weight: 600;
+          color: var(--lp-text);
+        }
+
+        .lp-proof-chip i {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: var(--lp-gold);
+          box-shadow: 0 0 8px rgba(233, 161, 33, 0.6);
+        }
+
+        /* ====================== PLAYGROUND SECTION ====================== */
+        .lp-playground {
+          position: relative;
+          width: 100%;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 clamp(16px, 4vw, 40px) clamp(56px, 8vw, 96px);
+          display: flex;
+          flex-direction: column;
+          gap: clamp(28px, 4vw, 44px);
+        }
+
+        .lp-playground-grid {
+          display: grid;
+          grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+          gap: clamp(24px, 4vw, 48px);
+          align-items: start;
+        }
+
+        .lp-playground-copy {
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+        }
+
+        .lp-kicker {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: var(--lp-gold);
+          margin: 0;
+        }
+
+        .lp-kicker-dot {
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background: var(--lp-accent);
+          box-shadow: 0 0 8px rgba(1, 172, 129, 0.65);
+        }
+
+        .lp-playground-title {
+          margin: 0;
+          font-size: clamp(2rem, 4.4vw, 3.4rem);
+          font-weight: 800;
+          letter-spacing: -0.04em;
+          line-height: 1;
+          color: var(--lp-ink);
+        }
+
+        .lp-playground-title span {
+          color: var(--lp-faint);
+        }
+
+        .lp-playground-copy p {
+          margin: 0;
+          max-width: 560px;
+          font-size: 15px;
+          line-height: 1.7;
+          color: var(--lp-text);
+        }
+
+        .lp-playground-copy strong {
+          color: var(--lp-ink);
+          font-weight: 700;
+        }
+
+        .lp-features {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .lp-feature-card {
+          display: flex;
+          align-items: flex-start;
+          gap: 14px;
+          padding: 16px 18px;
+          border-radius: 20px;
+          background: var(--lp-fill);
+          border: 1px solid var(--lp-line);
+          color: var(--lp-ink);
+          transition: background-color 0.15s, box-shadow 0.15s, transform 0.15s;
+        }
+
+        .lp-feature-card:hover {
+          background: var(--lp-surface);
+          border-color: var(--lp-accent);
+          box-shadow: var(--lp-shadow-lift);
+          transform: translateY(-2px);
+        }
+
+        .lp-feature-icon {
+          width: 42px;
+          height: 42px;
+          flex-shrink: 0;
+          display: grid;
+          place-items: center;
+          border-radius: 12px;
+          background: var(--lp-accent-soft);
+          color: var(--lp-accent);
+          font-size: 20px;
+          font-weight: 700;
+        }
+
+        .lp-feature-copy {
+          display: flex;
+          flex-direction: column;
+          gap: 3px;
+          min-width: 0;
+        }
+
+        .lp-feature-copy b {
+          font-size: 14px;
+          font-weight: 650;
+          color: var(--lp-ink);
+        }
+
+        .lp-feature-copy small {
+          font-size: 12.5px;
+          line-height: 1.5;
+          color: var(--lp-muted);
+        }
+
+        /* ====================== BROWSER MOCKUP ====================== */
+        .lp-browser {
+          width: 100%;
+          border-radius: 32px;
+          overflow: hidden;
+          border: 1px solid var(--lp-accent-line);
+          background: var(--lp-surface);
+          box-shadow: var(--lp-shadow-lg);
+        }
+
+        .lp-chrome {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          padding: 12px 16px;
+          background: var(--lp-fill);
+          border-bottom: 1px solid var(--lp-line);
+        }
+
+        .lp-chrome-dots {
           display: flex;
           align-items: center;
           gap: 6px;
+          flex-shrink: 0;
         }
 
-        .dot {
+        .lp-dot {
           width: 10px;
           height: 10px;
           border-radius: 50%;
         }
-        .dot-close { background-color: #ef4444; }
-        .dot-min { background-color: #f59e0b; }
-        .dot-max { background-color: #10b981; }
+        .lp-dot-close { background-color: #ff5f57; }
+        .lp-dot-min   { background-color: #febc2e; }
+        .lp-dot-max   { background-color: #28c840; }
 
-        .workbench-title {
-          font-family: var(--font-tech);
-          font-size: 0.75rem;
-          font-weight: 600;
-          letter-spacing: 0.08em;
-          color: var(--text-secondary);
-        }
-
-        .workbench-badge {
-          font-family: var(--font-tech);
-          font-size: 0.7rem;
-          font-weight: 600;
-          color: var(--accent);
-          background: rgba(16, 185, 129, 0.1);
-          padding: 0.2rem 0.6rem;
-          border-radius: 4px;
-          border: 1px solid rgba(16, 185, 129, 0.3);
-        }
-
-        .workbench-canvas {
-          position: relative;
+        .lp-chrome-url {
           flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          overflow: hidden;
-        }
-
-        .crosshair {
-          position: absolute;
-          font-family: var(--font-tech);
-          color: var(--border-strong);
-          font-size: 1.2rem;
-          line-height: 1;
-          pointer-events: none;
-          z-index: 1;
-        }
-        .top-left { top: 10px; left: 14px; }
-        .top-right { top: 10px; right: 14px; }
-        .bottom-left { bottom: 50px; left: 14px; }
-        .bottom-right { bottom: 50px; right: 14px; }
-
-        .canvas-watermark {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 0.75rem;
-          pointer-events: none;
-          z-index: 0;
-          opacity: 0.35;
-        }
-
-        .watermark-icon {
-          font-size: 2rem;
-          color: var(--text-dim);
-        }
-
-        .canvas-watermark span {
-          font-family: var(--font-tech);
-          font-size: 0.75rem;
-          letter-spacing: 0.2em;
-          color: var(--text-dim);
-          font-weight: 600;
-        }
-
-        .artifact-field {
-          position: absolute;
-          inset: 0;
-          bottom: 44px; /* Leave space for HUD */
-        }
-
-        .artifact-slot {
-          position: absolute;
-          z-index: 10;
-        }
-
-        .artifact-card {
+          max-width: 360px;
+          margin: 0 auto;
           display: flex;
           align-items: center;
-          gap: 0.65rem;
-          padding: 0.65rem 1.1rem;
-          border-radius: 8px;
-          background: var(--card-bg);
-          color: var(--text-primary);
-          border: 1px solid var(--border-strong);
-          font-family: var(--font-tech);
-          font-size: 0.85rem;
-          font-weight: 600;
-          white-space: nowrap;
-          cursor: grab;
-          user-select: none;
-          touch-action: none;
-          box-shadow: var(--card-shadow);
-          backdrop-filter: blur(8px);
-          transition: border-color 0.2s, box-shadow 0.2s;
+          justify-content: center;
+          height: 30px;
+          padding: 0 12px;
+          border-radius: 99px;
+          background: var(--lp-surface);
+          border: 1px solid var(--lp-line);
+          font-family: ui-monospace, monospace;
+          font-size: 11px;
+          color: var(--lp-text);
         }
 
-        .artifact-dot {
-          width: 8px;
-          height: 8px;
+        .lp-url-text { font-weight: 500; }
+        .lp-url-path { color: var(--lp-faint); }
+
+        .lp-live {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          height: 22px;
+          padding: 0 10px;
+          border-radius: 99px;
+          border: 1px solid var(--lp-green-line);
+          background: var(--lp-green-soft);
+          color: var(--lp-accent);
+          font-family: ui-monospace, monospace;
+          font-size: 10px;
+          font-weight: 700;
+          text-transform: uppercase;
+        }
+
+        .lp-live i {
+          width: 5px;
+          height: 5px;
           border-radius: 50%;
-          background: var(--accent-color, #fff);
-          box-shadow: 0 0 10px var(--accent-color, #fff);
+          background: var(--lp-accent);
         }
 
-        .artifact-card:hover, .artifact-card.is-active {
-          border-color: var(--accent-color, var(--accent));
-          box-shadow: 0 14px 30px -5px rgba(0, 0, 0, 0.3), 0 0 15px -3px var(--accent-color, var(--accent));
+        .lp-browser-stage {
+          background: var(--lp-surface);
         }
 
-        .artifact-card:active {
-          cursor: grabbing;
+        .lp-browser-stage :global(.nexa-app-embedded),
+        .lp-browser-stage :global(.nexa-app) {
+          border-radius: 0 !important;
         }
 
-        /* Telemetry HUD Inspector */
-        .telemetry-hud {
-          position: relative;
-          z-index: 20;
-          height: 42px;
-          margin-top: auto;
-          background: var(--hud-bg);
-          border-top: 1px solid var(--border-subtle);
-          padding: 0 1.25rem;
-          display: flex;
-          align-items: center;
-          font-family: var(--font-tech);
-          font-size: 0.78rem;
-          backdrop-filter: blur(8px);
-        }
-
-        .hud-data {
-          display: flex;
-          align-items: center;
-          gap: 0.75rem;
+        /* ====================== FOOTER ====================== */
+        .lp-footer {
           width: 100%;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-
-        .idle-state {
-          color: var(--text-dim);
-        }
-
-        .hud-category {
-          font-weight: 700;
-          letter-spacing: 0.05em;
-        }
-
-        .hud-name {
-          color: var(--text-primary);
-          font-weight: 700;
-        }
-
-        .hud-code {
-          color: var(--text-secondary);
-          font-family: var(--font-tech);
-          background: rgba(15, 23, 42, 0.06);
-          padding: 0.15rem 0.5rem;
-          border-radius: 4px;
-        }
-
-        /* ================= FOOTER ================= */
-        .footer-bar {
+          max-width: 1200px;
+          margin: 0 auto;
+          margin-top: auto;
+          padding: 20px clamp(16px, 4vw, 40px);
+          border-top: 1px solid var(--lp-line);
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding-top: 1rem;
-          border-top: 1px solid var(--border-subtle);
-          font-family: var(--font-tech);
-          font-size: 0.78rem;
-          color: var(--text-dim);
+          gap: 16px;
+          font-size: 12px;
+          color: var(--lp-muted);
+          font-weight: 500;
         }
 
-        .footer-meta {
+        .lp-footer-left {
           display: flex;
           align-items: center;
-          gap: 0.75rem;
+          gap: 10px;
+          flex-wrap: wrap;
         }
 
-        .divider {
-          color: var(--border-strong);
+        .lp-divider {
+          color: var(--lp-line-2);
         }
 
-        .footer-status {
+        .lp-footer-right {
           display: flex;
           align-items: center;
-          gap: 0.5rem;
-          color: var(--text-secondary);
+          gap: 8px;
+          color: var(--lp-text);
         }
 
-        .status-dot {
-          color: var(--accent);
-          font-size: 0.6rem;
+        .lp-footer-dot {
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background: var(--lp-gold);
+          box-shadow: 0 0 8px rgba(233, 161, 33, 0.5);
         }
 
-        /* ================= RESPONSIVE BREAKPOINTS ================= */
         @media (max-width: 900px) {
-          .stage {
+          .lp-brand-tag { display: none; }
+          .lp-playground-grid {
             grid-template-columns: 1fr;
-            grid-template-rows: auto 1fr;
-            gap: 2.5rem;
-          }
-
-          .pitch {
-            max-width: 100%;
-          }
-
-          .tagline {
-            display: none;
-          }
-
-          .workbench-wrap {
-            min-height: 340px;
+            gap: 24px;
           }
         }
 
         @media (max-width: 640px) {
-          .page-wrapper {
-            padding: 1rem;
-            grid-template-rows: auto 1fr auto;
-            overflow-y: auto;
-          }
-
-          .header-bar {
-            padding: 0.5rem 1rem;
-          }
-
-          .action-row {
-            flex-direction: column;
-            align-items: stretch;
-          }
-
-          .btn-primary, .btn-secondary {
-            width: 100%;
-            justify-content: center;
-          }
-
-          .canvas-watermark {
-            display: none;
-          }
-
-          .artifact-field {
-            position: static;
-            display: flex;
-            flex-wrap: wrap;
-            align-content: flex-start;
-            justify-content: center;
-            gap: 0.6rem;
-            padding: 1.5rem 1rem;
-          }
-
-          .artifact-slot {
-            position: static;
-          }
-
-          .footer-bar {
-            flex-direction: column;
-            gap: 0.6rem;
-            align-items: flex-start;
-          }
-        }
-
-        @media (max-height: 600px) {
-          .footer-bar, .tagline, .workbench-badge {
-            display: none;
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .pulse-indicator {
-            animation: none;
-          }
-          .btn-primary, .nav-cta, .artifact-card {
-            transition: none !important;
-          }
+          .lp-nav-link { display: none; }
+          .lp-hero-title { font-size: clamp(2.4rem, 12vw, 3.4rem); }
+          .lp-hero-actions { flex-direction: column; align-items: stretch; }
+          .lp-btn-primary, .lp-btn-ghost { width: 100%; }
+          .lp-live { display: none; }
+          .lp-footer { flex-direction: column; align-items: flex-start; gap: 10px; }
         }
       `}</style>
     </div>

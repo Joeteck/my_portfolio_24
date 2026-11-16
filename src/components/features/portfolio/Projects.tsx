@@ -28,7 +28,7 @@ export default function Projects({ projects, className }: ProjectsProps) {
             
             {/* Project Title */}
             <Heading variant="sectionTitle" className="py-10 max-w-sm text-center text-neutral-800 dark:text-neutral-100">
-                Hey Welcome to Joeteck's Project
+                Hey Welcome to Joeteck&apos;s Project
             </Heading>
 
             {/* Projects List */}
@@ -85,7 +85,7 @@ export default function Projects({ projects, className }: ProjectsProps) {
                         <FaWhatsapp className="text-xl" />
                     </a>
                     <a
-                        href="https://www.linkedin.com/in/adeyoju-ibukunoluwa-375018209/"
+                        href="https://www.linkedin.com/in/joeteck/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:text-blue-600 transition-colors"

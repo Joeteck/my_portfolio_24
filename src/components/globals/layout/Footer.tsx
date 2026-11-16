@@ -151,7 +151,7 @@ export function Footer({ type }: FooterProps) {
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.linkedin.com/in/adeyoju-ibukunoluwa-375018209/" target="_blank" className="hover:text-primary flex items-center gap-2" rel="noopener noreferrer">
+                                <a href="https://www.linkedin.com/in/joeteck/" target="_blank" className="hover:text-primary flex items-center gap-2" rel="noopener noreferrer">
                                     <FaLinkedinIn /> LinkedIn
                                 </a>
                             </li>

@@ -201,7 +201,7 @@ export default function LeadingPage() {
             </div>
           </div>
           <div className="lp-browser-stage">
-            <JoeteckPlayground />
+            <JoeteckPlayground embedded/>
           </div>
         </motion.div>
       </section>

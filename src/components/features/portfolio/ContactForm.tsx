@@ -1,17 +1,25 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 import Image from "next/image"
 import emailjs from "@emailjs/browser"
 import TextInput from "@/components/globals/form/TextInput"
 import Textarea from "@/components/globals/form/Textarea"
 import Button from "@/components/globals/ui/Button"
+import { Toast, type ToastType } from "@/components/globals/ui/Toast"
 import {
     FaFacebook,
     FaInstagram,
     FaLinkedin,
     FaTwitter,
 } from "react-icons/fa"
+
+type ToastData = {
+    id: number
+    type: ToastType
+    title: string
+    message?: string
+}
 
 export const ContactForm = () => {
     const [formData, setFormData] = useState({
@@ -21,11 +29,13 @@ export const ContactForm = () => {
         message: "",
     })
 
-    const [status, setStatus] = useState<
-        "idle" | "loading" | "success" | "error"
-    >("idle")
+    const [isLoading, setIsLoading] = useState(false)
+    const [toast, setToast] = useState<ToastData | null>(null)
 
-    const [errorMsg, setErrorMsg] = useState("")
+    const notify = (type: ToastType, title: string, message?: string) =>
+        setToast({ id: Date.now(), type, title, message })
+
+    const closeToast = useCallback(() => setToast(null), [])
 
     useEffect(() => {
         const key = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
@@ -55,13 +65,15 @@ export const ContactForm = () => {
             !formData.subject.trim() ||
             !formData.message.trim()
         ) {
-            setStatus("error")
-            setErrorMsg("Please fill in all fields.")
+            notify(
+                "error",
+                "Some fields are empty",
+                "Fill in your name, email, subject and message, then send again."
+            )
             return
         }
 
-        setStatus("loading")
-        setErrorMsg("")
+        setIsLoading(true)
 
         try {
             await emailjs.send(
@@ -76,7 +88,11 @@ export const ContactForm = () => {
                 }
             )
 
-            setStatus("success")
+            notify(
+                "success",
+                "Message sent",
+                "Thanks for reaching out. I'll reply to your email soon."
+            )
 
             setFormData({
                 name: "",
@@ -87,8 +103,6 @@ export const ContactForm = () => {
         } catch (error: unknown) {
             console.error("EmailJS error:", error)
 
-            setStatus("error")
-
             const errMsg =
                 error instanceof Error
                     ? error.message
@@ -96,14 +110,28 @@ export const ContactForm = () => {
                       error !== null &&
                       "text" in error
                     ? (error as { text: string }).text
-                    : "Failed to send message. Please try again."
+                    : "Check your connection and try again."
 
-            setErrorMsg(errMsg)
+            notify("error", "Message not sent", errMsg)
+        } finally {
+            setIsLoading(false)
         }
     }
 
     return (
         <section className="w-full bg-[#CCE8E0] dark:bg-primaryDarklight py-12 px-4 text-primaryDark dark:text-primaryLight">
+            {/* key remounts the toast so a new notification restarts its timer */}
+            {toast && (
+                <Toast
+                    key={toast.id}
+                    type={toast.type}
+                    title={toast.title}
+                    message={toast.message}
+                    duration={toast.type === "error" ? 7000 : 5000}
+                    onClose={closeToast}
+                />
+            )}
+
             <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-10">
 
                 {/* Left Image */}
@@ -125,18 +153,6 @@ export const ContactForm = () => {
                     <h2 className="text-3xl md:text-4xl font-serif">
                         Contact Me
                     </h2>
-
-                    {status === "success" && (
-                        <div className="mt-4 rounded-lg bg-green-100 dark:bg-green-900 p-4 text-sm text-green-800 dark:text-green-200">
-                                ✅ Message sent successfully! I&apos;ll get back to you soon.
-                        </div>
-                    )}
-
-                    {status === "error" && (
-                        <div className="mt-4 rounded-lg bg-red-100 dark:bg-red-900 p-4 text-sm text-red-800 dark:text-red-200">
-                            ❌ {errorMsg}
-                        </div>
-                    )}
 
                     <form
                         onSubmit={handleSubmit}
@@ -181,12 +197,10 @@ export const ContactForm = () => {
 
                         <Button
                             type="submit"
-                            disabled={status === "loading"}
+                            disabled={isLoading}
                             className="px-6 py-2 bg-primaryDark dark:bg-primaryLight text-white dark:text-primaryDark rounded-full hover:opacity-90 transition disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                            {status === "loading"
-                                ? "Sending..."
-                                : "Send Message"}
+                            {isLoading ? "Sending..." : "Send Message"}
                         </Button>
                     </form>
 
